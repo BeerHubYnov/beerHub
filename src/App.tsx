@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Homepage from './pages/Homepage';
 import NotFound from './pages/NotFound';
 import Header from './components/Header';
+import React from "react";
 // import Footer from './components/Footer';
 
 export default function App() {
@@ -10,8 +11,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Homepage />} />
-          <Route path="about" element={<About />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

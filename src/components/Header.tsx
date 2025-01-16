@@ -1,3 +1,4 @@
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
 const Header: React.FC = () => {
     return (
@@ -11,10 +12,10 @@ const Header: React.FC = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="*">About</Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="*">Dashboard</Link>
+            <Link to="/dashboard">Dashboard</Link>
           </li>
           <li>
             <Link to="*">Nothing Here</Link>
