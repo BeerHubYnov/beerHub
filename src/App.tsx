@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Homepage from './pages/Homepage';
 import NotFound from './pages/NotFound';
 import Header from './components/Header';
-import React from "react";
+// import React from "react";
 // import Footer from './components/Footer';
 
 export default function App() {
