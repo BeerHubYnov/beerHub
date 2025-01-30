@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import Homepage from './pages/Homepage';
 import NotFound from './pages/NotFound';
 import Header from './components/Header';
+import Barspage from "./pages/Barspage";
+import BarForm from "./pages/BarForm";
 // import React from "react";
 // import Footer from './components/Footer';
 
@@ -12,6 +14,9 @@ export default function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Homepage />} />
           <Route path="/about" element={<About />} />
+          <Route path="/bars" element={<Barspage />} />
+          <Route path="/bar-form" element={<BarForm />} />
+    
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
         </Route>

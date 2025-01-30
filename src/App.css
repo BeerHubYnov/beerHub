@@ -44,7 +44,7 @@
 
 .header-content {
   height: 100px !important;
-  width: 100vw !important;
+  /* width: 100vw !important; */
   position: absolute;
   top: 0;
 }
