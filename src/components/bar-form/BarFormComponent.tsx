@@ -69,32 +69,28 @@ const BarCreationForm: React.FC = () => {
 
   return (
     <div className="form-container">
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-      <form  onSubmit={handleSubmit}>
-        <label>
-          Nom:
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        </label>
-        <label>
-          Description:
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-        </label>
-        <label>
-          Happy Hour:
-          <input type="text" value={happyHour} onChange={(e) => setHappyHour(e.target.value)} />
-        </label>
-        <label>
-          Localisation X:
-          <input type="number" value={localisationX} onChange={(e) => setLocalisationX(e.target.value)} />
-        </label>
-        <label>
-          Localisation Y:
-          <input type="number" value={localisationY} onChange={(e) => setLocalisationY(e.target.value)} />
-        </label>
-        <button type="submit">Ajouter</button>
-      </form>
-    </div>
+    {errorMessage && <p className="error">{errorMessage}</p>}
+    {successMessage && <p className="success">{successMessage}</p>}
+    <form onSubmit={handleSubmit}>
+      <label>Nom:</label>
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+  
+      <label>Description:</label>
+      <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+  
+      <label>Happy Hour:</label>
+      <input type="text" value={happyHour} onChange={(e) => setHappyHour(e.target.value)} />
+  
+      <label>Localisation X:</label>
+      <input type="number" value={localisationX} onChange={(e) => setLocalisationX(e.target.value)} />
+  
+      <label>Localisation Y:</label>
+      <input type="number" value={localisationY} onChange={(e) => setLocalisationY(e.target.value)} />
+  
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+  
   );
 };
 
