@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./BarListComponent.css";
+import BarCard from "./BarCard";
 
 interface Bar {
   id: string;
@@ -43,7 +44,7 @@ const mockBars: Bar[] = [
 
 const BarListComponent: React.FC = () => {
   const [bars, setBars] = useState<Bar[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [errorMessage] = useState<string | null>(null);
 
 
   useEffect(() => {
@@ -72,18 +73,10 @@ const BarListComponent: React.FC = () => {
 
   return (
     <div className="bar-list-container">
-      <h2>Liste des Bars</h2>
       {errorMessage && <p className="error">{errorMessage}</p>}
       <div className="bar-list">
         {bars.length > 0 ? (
-          bars.map((bar) => (
-            <div key={bar.id} className="bar-card">
-              <h3>{bar.name}</h3>
-              <p><strong>Description :</strong> {bar.description}</p>
-              <p><strong>Happy Hour :</strong> {bar.happyHoure}</p>
-              <p><strong>Localisation :</strong> {bar.localisationX}, {bar.localisationY}</p>
-            </div>
-          ))
+          bars.map((bar) => <BarCard key={bar.id} bar={bar} />) 
         ) : (
           <p>Chargement des bars...</p>
         )}

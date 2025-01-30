@@ -17,23 +17,7 @@
     flex-direction: column;
     gap: 15px;
   }
-  
-  .bar-card {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-  }
-  
-  .bar-card:hover {
-    transform: scale(1.02);
-  }
-  
-  h3 {
-    margin: 0 0 10px;
-    color: #007bff;
-  }
+
   
   p {
     margin: 5px 0;
