@@ -54,7 +54,7 @@ const BarDeleteComponent: React.FC<{ barId: string }> = ({ barId }) => {
       if (!response.ok) throw new Error("Erreur lors de la suppression du bar.");
 
       setSuccessMessage("Bar supprimé avec succès !");
-      setTimeout(() => navigate("/"), 1500); // Redirection vers l'accueil après suppression
+      setTimeout(() => navigate("/bars"), 1500); // Redirection vers l'accueil après suppression
     } catch (error) {
       setErrorMessage("Erreur lors de la suppression du bar.");
     }
