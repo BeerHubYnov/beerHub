@@ -32,13 +32,13 @@ const BarCreationForm: React.FC = () => {
       happyHoure: happyHour,
       localisationX: parseFloat(localisationX),
       localisationY: parseFloat(localisationY),
-      // id_User: user.id,
+      id_User: "4f79202c-1efb-4716-910e-3eb2b2a065a6",
     };
 
     console.log("Données du bar à envoyer :", barData);
 
     try {
-      const response = await fetch("http://localhost:3000/bars", {
+      const response = await fetch("http://localhost:3000/bar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
