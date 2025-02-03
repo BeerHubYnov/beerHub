@@ -10,6 +10,7 @@ import BarEdit from "./pages/BarEdit";
 import BarDetail from "./pages/BarDetail";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import BarDeletePage from "./pages/BarDeletePage";
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/bars" element={<BarList />} />
           <Route path="/bar-edit/:id" element={<BarEdit />} />
           <Route path="/bar-form" element={<BarForm />} />
+          <Route path="/bar-delete/:id" element={<BarDeletePage />} />
           <Route path="/bar/:id" element={<BarDetail />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profil" element={<Profil />} />
