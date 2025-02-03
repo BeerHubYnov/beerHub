@@ -1,6 +1,9 @@
 import React from "react";
 import './../App.css'
 import { Link, Outlet } from "react-router-dom";
+
+const isConnected = !!localStorage.getItem("token");
+
 const Header: React.FC = () => {
     return (
       <>
@@ -23,15 +26,17 @@ const Header: React.FC = () => {
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
+          {isConnected ? (
           <li>
             <Link to="/profil">Profil</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
+        ) : (
+          <>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </>
+        )}
           <li>
             <Link to="*">Nothing Here</Link>
           </li>
