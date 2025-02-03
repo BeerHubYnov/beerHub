@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ const Login: React.FC = () => {
     try {
       // Remplacez l'URL par votre route de connexion
       const response = await axios.post("http://localhost:3000/auth/login", {
-        email,
+        username,
         password,
       });
       console.log("Réponse login :", response.data);
@@ -30,12 +30,12 @@ const Login: React.FC = () => {
     <div>
       <h2>Connexion</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email :</label>
+      <div>
+          <label>Nom d'utilisateur :</label>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
