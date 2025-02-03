@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Profil: React.FC = () => {
@@ -20,7 +21,9 @@ const Profil: React.FC = () => {
       {isConnected ? (
         <button onClick={handleLogout}>Déconnexion</button>
       ) : (
-        <a href="/login">Connexion</a>
+   
+        <NavLink to={`/login`}>Connexion</NavLink> 
+
       )}
     </div>
   );

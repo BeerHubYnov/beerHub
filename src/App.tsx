@@ -10,15 +10,28 @@ import BarDetail from "./pages/BarDetail";
 import BarDeletePage from "./pages/BarDeletePage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { useState, useEffect } from "react";
+import Loading from "./pages/Loading";
 
 
 
 export default function App() {
+
+  const [loading, setLoding] = useState(true);
+ 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoding(false);
+    }, 3500);
+  }, []);
+
+
   return (
     <div>
       <Routes>
         <Route path="/" element={<Header />}>
-          <Route index element={<Homepage />} />
+        <Route index element={loading ? <Loading /> : <Homepage />}/>
+      
           <Route path="/about" element={<About />} />
           <Route path="/bars" element={<BarList />} />
           <Route path="/bar-edit/:id" element={<BarEdit />} />
