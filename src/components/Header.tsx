@@ -27,6 +27,12 @@ const Header: React.FC = () => {
             <Link to="/profil">Profil</Link>
           </li>
           <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+          <li>
             <Link to="*">Nothing Here</Link>
           </li>
         </ul>
