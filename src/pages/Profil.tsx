@@ -1,37 +1,44 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+// import { NavLink } from "react-router-dom";
+import { AuthContext } from "./../providers/AuthProvider";
+// import { useNavigate } from "react-router-dom";
 
 
 const Profil: React.FC = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // On considère l'utilisateur connecté s'il existe un token dans le localStorage
-  const isConnected = !!localStorage.getItem("token");
-
-  const handleLogout = () => {
-    // Vide tout le local storage (ou utilisez localStorage.removeItem("token") pour supprimer uniquement le token)
-    localStorage.clear();
-    // Redirige vers la page de connexion
-    navigate("/login");
-  };
+  // const isConnected = !!localStorage.getItem("token");
+  const { state } = useContext(AuthContext);
+  // const handleLogout = () => {
+  //   localStorage.clear();
+  //   navigate("/login");
+  // };
+  if (!state.isLogged) {
+    return <div>Veuillez vous connecter</div>;
+  }
 
   return (
     <div>
-      <h2>Mon Profil</h2>
-      <p>Bienvenue sur votre page profil !</p>
+    <h1>Bienvenue, {state.userInfos.username}</h1>
+    {/* Affiche les autres informations utilisateur ici */}
+  </div>
+    // <div>
+    //   <h2>Mon Profil</h2>
+    //   <p>Bienvenue sur votre page profil !</p>
 
-      <NavLink to={`/login`}>Se connecter</NavLink>
+    //   <NavLink to={`/login`}>Se connecter</NavLink>
 
-      {isConnected ? (
-        <button onClick={handleLogout}>Déconnexion</button>
-      ) : (
+    //   {isConnected ? (
+    //     <button onClick={handleLogout}>Déconnexion</button>
+    //     <h1>Bienvenue, {state.userInfos.username}</h1>
+    //   ) : (
    
-        <NavLink to={`/login`}>Connexion</NavLink> 
+    //     <NavLink to={`/login`}>Connexion</NavLink> 
 
-      )}
+    //   )}
 
-    </div>
+    // </div>
   );
 };
 

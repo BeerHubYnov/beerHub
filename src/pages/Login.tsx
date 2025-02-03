@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./../providers/AuthProvider"; // Assurez-vous de bien importer le contexte
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
+
+  // Récupérer le contexte d'authentification
+  const { dispatch } = useContext(AuthContext);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,9 +21,15 @@ const Login: React.FC = () => {
         password,
       });
       console.log("Réponse login :", response.data);
-      // Vous pouvez stocker le token reçu dans le localStorage par exemple :
+
+      // Sauvegarder le token et l'utilisateur dans le localStorage
       localStorage.setItem("token", response.data.token);
-      // Puis rediriger vers la page de profil
+      localStorage.setItem("@user", JSON.stringify(response.data.user)); // Sauvegarder les infos utilisateur
+
+      // Mettre à jour l'état global de l'utilisateur dans le contexte via dispatch
+      dispatch({ type: "LOGIN", payload: response.data.user });
+
+      // Rediriger vers la page de profil
       navigate("/profil");
     } catch (error) {
       console.error("Erreur lors de la connexion", error);
@@ -30,7 +41,7 @@ const Login: React.FC = () => {
     <div>
       <h2>Connexion</h2>
       <form onSubmit={handleSubmit}>
-      <div>
+        <div>
           <label>Nom d'utilisateur :</label>
           <input
             type="text"
