@@ -44,6 +44,7 @@ const Header: React.FC = () => {
               <ul style={{ listStyle: "none", padding: 0 }}>
                 <li><Link to="/" onClick={toggleModal}>Home</Link></li>
                 <li><Link to="/bars" onClick={toggleModal}>Bars</Link></li>
+                <li><Link to="/events" onClick={toggleModal}>Events</Link></li>
                 <li><Link to="/bar-form" onClick={toggleModal}>Add a bar</Link></li>
                 <li><Link to="/about" onClick={toggleModal}>About</Link></li>
                 <li><Link to="/dashboard" onClick={toggleModal}>Dashboard</Link></li>

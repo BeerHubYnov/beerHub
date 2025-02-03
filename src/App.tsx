@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import { useState, useEffect } from "react";
 import Loading from "./pages/Loading";
 import Dashboard from "./pages/Dashboard";
+import EventList from "./pages/EventList";
 
 
 
@@ -34,6 +35,7 @@ export default function App() {
         <Route index element={loading ? <Loading /> : <Homepage />}/>
           <Route path="/about" element={<About />} />
           <Route path="/bars" element={<BarList />} />
+          <Route path="/events" element={<EventList />} />
           <Route path="/bar-edit/:id" element={<BarEdit />} />
           <Route path="/bar-form" element={<BarForm />} />
           <Route path="/bar-delete/:id" element={<BarDeletePage />} />
