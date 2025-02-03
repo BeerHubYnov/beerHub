@@ -25,11 +25,9 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
       </p>
       <NavLink to={`/bar/${bar.id}`}>Voir les détails</NavLink>
       <br></br>
-      <NavLink to={`/bar-edit/${bar.id}`}>Modifier</NavLink> 
+      <NavLink to={`/bar-edit/${bar.id}`}>Modifier</NavLink>
       <br></br>
-      <NavLink to={`/bar-delete/${bar.id}`}>Supprimer</NavLink> 
-
-
+      <NavLink to={`/bar-delete/${bar.id}`}>Supprimer</NavLink>
     </div>
   );
 };
