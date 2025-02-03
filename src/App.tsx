@@ -5,12 +5,13 @@ import Header from './components/Header';
 import BarList from "./pages/BarList";
 import BarForm from "./pages/BarForm";
 import Profil from "./pages/Profil";
-
 import BarEdit from "./pages/BarEdit";
 import BarDetail from "./pages/BarDetail";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import BarDeletePage from "./pages/BarDeletePage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 
 export default function App() {
