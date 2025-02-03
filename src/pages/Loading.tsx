@@ -1,5 +1,6 @@
 
-
+import Lottie from "lottie-react";
+import drink from "../assets/drink.json";
 const Loading: React.FC = () => {
 
 
@@ -7,7 +8,7 @@ const Loading: React.FC = () => {
     <>
       <div className="loader-container">
         <div className="loader-wrap">
-
+        <Lottie animationData={drink} />
 
           <p className="loader-text">chargement en cours</p>
         </div>

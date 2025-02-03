@@ -1,12 +1,14 @@
 import React from "react";
 import './../App.css'
 import { Link, Outlet } from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
 
 const isConnected = !!localStorage.getItem("token");
 
 const Header: React.FC = () => {
     return (
       <>
+      <MenuIcon/>
          <div className="header-content">
       {/* A "layout route" is a good place to put markup you want to
           share across all the pages on your site, like navigation. */}
