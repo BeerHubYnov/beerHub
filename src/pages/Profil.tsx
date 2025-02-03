@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+
 import { useNavigate } from "react-router-dom";
+
 
 const Profil: React.FC = () => {
   const navigate = useNavigate();
@@ -18,6 +20,9 @@ const Profil: React.FC = () => {
     <div>
       <h2>Mon Profil</h2>
       <p>Bienvenue sur votre page profil !</p>
+
+      <NavLink to={`/login`}>Se connecter</NavLink>
+
       {isConnected ? (
         <button onClick={handleLogout}>Déconnexion</button>
       ) : (
@@ -25,6 +30,7 @@ const Profil: React.FC = () => {
         <NavLink to={`/login`}>Connexion</NavLink> 
 
       )}
+
     </div>
   );
 };
