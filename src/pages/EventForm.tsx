@@ -1,12 +1,12 @@
 import React from "react";
-import BarFormComponent from "../components/bar-form/BarFormComponent";
+import EventFormComponent from './../components/event-form/EventFormComponent'
 
-const BarForm: React.FC = () => {
+const EventForm: React.FC = () => {
     return (
         <>
-  <h2>Ajouter un Bar</h2>
-<BarFormComponent/>
+  <h2>Ajouter un Event</h2>
+<EventFormComponent/>
         </>
     );
 };
-export default BarForm;
+export default EventForm;

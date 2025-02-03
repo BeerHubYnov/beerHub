@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import Loading from "./pages/Loading";
 import Dashboard from "./pages/Dashboard";
 import EventList from "./pages/EventList";
+import EventForm from "./pages/EventForm";
 
 
 
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/events" element={<EventList />} />
           <Route path="/bar-edit/:id" element={<BarEdit />} />
           <Route path="/bar-form" element={<BarForm />} />
+          <Route path="/event-form" element={<EventForm />} />
           <Route path="/bar-delete/:id" element={<BarDeletePage />} />
           <Route path="/bar/:id" element={<BarDetail />} />
           <Route path="/dashboard" element={<Dashboard />} />
