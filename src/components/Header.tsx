@@ -24,6 +24,9 @@ const Header: React.FC = () => {
             <Link to="/dashboard">Dashboard</Link>
           </li>
           <li>
+            <Link to="/profil">Profil</Link>
+          </li>
+          <li>
             <Link to="*">Nothing Here</Link>
           </li>
         </ul>
