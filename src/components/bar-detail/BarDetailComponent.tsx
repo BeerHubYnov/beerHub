@@ -1,5 +1,5 @@
 import React from "react";
-import "./BarDetailComponent.css";
+import MapComponent from "./MapComponent";
 
 interface Bar {
   id: string;
@@ -10,13 +10,18 @@ interface Bar {
   localisationY: number;
 }
 
-const BarDetailComponent: React.FC<{ bar: Bar }> = ({ bar }) => {
+interface BarDetailComponentProps {
+  bar: Bar;
+}
+
+const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
   return (
-    <div className="bar-detail">
+    <div>
       <h2>{bar.name}</h2>
-      <p><strong>Description :</strong> {bar.description}</p>
-      <p><strong>Happy Hour :</strong> {bar.happyHoure}</p>
-      <p><strong>Localisation :</strong> {bar.localisationX}, {bar.localisationY}</p>
+      <p>{bar.description}</p>
+      <p>Happy Hour : {bar.happyHoure}</p>
+      <h3>Localisation</h3>
+      <MapComponent lat={bar.localisationX} lng={bar.localisationY} />
     </div>
   );
 };
