@@ -7,9 +7,27 @@ const Register: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [idRole, setIdRole] = useState<string>("");
   const navigate = useNavigate();
+  
+
+  const fetchRoleId = async () => {
+    try {
+      // Appel à l'endpoint pour récupérer le rôle "Bar"
+      const response = await axios.get("http://localhost:3000/role/name/User");
+      // Supposons que la réponse renvoie un objet avec une propriété "id"
+      setIdRole(response.data.id);
+    } catch (error) {
+      console.error("Erreur lors de la récupération de l'id du role", error);
+    }
+  };
+
+  fetchRoleId();
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    
+    
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -19,7 +37,7 @@ const Register: React.FC = () => {
 
     try {
       // Votre id_Role reste inchangé
-      const id_Role = "384cfa01-6183-44f2-862b-e165ad99b51e";
+      const id_Role = {idRole};
 
       
       const response = await axios.post("http://localhost:3000/auth/register", {
