@@ -17,7 +17,7 @@ const Login: React.FC = () => {
       });
       console.log("Réponse login :", response.data);
       // Vous pouvez stocker le token reçu dans le localStorage par exemple :
-      // localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.token);
       // Puis rediriger vers la page de profil
       navigate("/profil");
     } catch (error) {

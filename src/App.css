@@ -67,3 +67,23 @@ nav ul li {
   text-decoration: none;
   list-style: none;
 }
+
+.loader-container {
+  position: fixed; /* Couvre toute la page */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white; /* Ajuste la couleur de fond */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* S'assure qu'il est au-dessus du header */
+}
+
+.loader-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
