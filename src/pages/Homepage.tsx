@@ -1,9 +1,10 @@
 import React from "react";
+import HomeContent from './../components/HomeContent'
 
 const Homepage: React.FC = () => {
   return (
     <>
-      <p>Homepage</p>
+      <HomeContent/>
     </>
   );
 };
