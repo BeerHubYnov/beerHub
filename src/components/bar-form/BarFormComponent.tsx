@@ -32,7 +32,7 @@ const BarCreationForm: React.FC = () => {
       happyHoure: happyHour,
       localisationX: parseFloat(localisationX),
       localisationY: parseFloat(localisationY),
-      id_User: "71172e03-b001-4b8f-ba9c-9a40d170a1f9",
+      id_User: "f5bd3efa-093e-4d1f-9f49-caf57998d90d",
     };
 
     console.log("Données du bar à envoyer :", barData);

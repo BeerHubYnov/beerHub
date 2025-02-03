@@ -31,7 +31,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Header />}>
         <Route index element={loading ? <Loading /> : <Homepage />}/>
-      
           <Route path="/about" element={<About />} />
           <Route path="/bars" element={<BarList />} />
           <Route path="/bar-edit/:id" element={<BarEdit />} />
