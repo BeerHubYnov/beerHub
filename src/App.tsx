@@ -16,6 +16,7 @@ import Dashboard from "./pages/Dashboard";
 import EventList from "./pages/EventList";
 import EventForm from "./pages/EventForm";
 import EventEdit from "./pages/EventEdit";
+import EventDeletePage from "./pages/EventDeletePage";
 
 
 
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/bar-form" element={<BarForm />} />
           <Route path="/event-form" element={<EventForm />} />
           <Route path="/bar-delete/:id" element={<BarDeletePage />} />
+          <Route path="/event-delete/:id" element={<EventDeletePage />} />
           <Route path="/bar/:id" element={<BarDetail />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profil" element={<Profil />} />

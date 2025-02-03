@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './EventEditComponent.css';
 
 interface EventEditComponentProps {
-  eventId: string; // ✅ On définit la prop eventId
+  eventId: string; 
 }
 
 const EventEditComponent: React.FC<EventEditComponentProps> = ({ eventId }) => {
