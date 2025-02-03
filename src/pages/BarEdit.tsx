@@ -1,12 +1,19 @@
 import React from "react";
-import BarEditComponent from './../components/bar-edit/BarEditComponent'
+import { useParams } from "react-router-dom";
+import BarEditComponent from './../components/bar-edit/BarEditComponent';
 
 const BarEdit: React.FC = () => {
+    const { id } = useParams<{ id?: string }>(); // id peut être undefined
+    if (!id) {
+        return <p>Erreur : ID du bar introuvable.</p>;
+    }
+
     return (
         <>
-<p>BarEdit</p>
-<BarEditComponent/>
+            <h2>Modifier le Bar</h2>
+            <BarEditComponent barId={id} />
         </>
     );
 };
+
 export default BarEdit;
