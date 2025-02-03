@@ -20,7 +20,7 @@ export default function App() {
           <Route index element={<Homepage />} />
           <Route path="/about" element={<About />} />
           <Route path="/bars" element={<BarList />} />
-          <Route path="/bar-edit" element={<BarEdit />} />
+          <Route path="/bar-edit/:id" element={<BarEdit />} />
           <Route path="/bar-form" element={<BarForm />} />
           <Route path="/bar/:id" element={<BarDetail />} />
           <Route path="/dashboard" element={<Dashboard />} />
