@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useState, useEffect } from "react";
 import Loading from "./pages/Loading";
+import Dashboard from "./pages/Dashboard";
 
 
 
@@ -58,10 +59,3 @@ function About() {
   );
 }
 
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
