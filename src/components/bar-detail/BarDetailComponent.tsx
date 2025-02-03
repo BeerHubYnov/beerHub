@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
-import "./BarCard.css";
+import React from "react";
+import "./BarDetailComponent.css";
 
 interface Bar {
   id: string;
@@ -10,18 +10,15 @@ interface Bar {
   localisationY: number;
 }
 
-const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
+const BarDetailComponent: React.FC<{ bar: Bar }> = ({ bar }) => {
   return (
-    <div className="bar-card">
-      <h3>{bar.name}</h3>
+    <div className="bar-detail">
+      <h2>{bar.name}</h2>
       <p><strong>Description :</strong> {bar.description}</p>
       <p><strong>Happy Hour :</strong> {bar.happyHoure}</p>
       <p><strong>Localisation :</strong> {bar.localisationX}, {bar.localisationY}</p>
-      <NavLink to={`/bar/${bar.id}`}>Voir les détails</NavLink>
- 
-      {/* <NavLink to="/bar-edit">Modifier</NavLink> */}
     </div>
   );
 };
 
-export default BarCard;
+export default BarDetailComponent;
