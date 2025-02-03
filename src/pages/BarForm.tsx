@@ -1,11 +1,11 @@
 import React from "react";
-import BarFormComponent from "../components/bar-form/BarFormComponent";
+import BarCreationForm from "../components/bar-form/BarCreationForm";
 
 const BarForm: React.FC = () => {
     return (
         <>
   <h2>Ajouter un Bar</h2>
-<BarFormComponent/>
+<BarCreationForm/>
         </>
     );
 };
