@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import BarEditComponent from './../components/bar-edit/BarEditComponent';
 
 const BarEdit: React.FC = () => {
-    const { id } = useParams<{ id?: string }>(); // id peut être undefined
+    const { id } = useParams<{ id?: string }>(); 
     if (!id) {
         return <p>Erreur : ID du bar introuvable.</p>;
     }

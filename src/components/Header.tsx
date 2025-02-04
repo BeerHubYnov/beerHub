@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import { Dialog, DialogContent, IconButton, List } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import WidgetsIcon from "@mui/icons-material/Widgets";
-
+import { Zoom, Fade, Flip, Bounce, Roll } from "react-awesome-reveal";
 const Header: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConnected, setIsConnected] = useState(!!localStorage.getItem("token"));
@@ -27,34 +27,38 @@ const Header: React.FC = () => {
   return (
     <>
       {/* Icône pour ouvrir le menu */}
-      <WidgetsIcon onClick={toggleModal} style={{ cursor: "pointer" }} />
+      <div className="header-container">
+        <WidgetsIcon onClick={toggleModal} className="menu-icon" />
+      </div>
 
       {/* Menu en dialogue modal */}
       <Dialog open={isModalOpen} onClose={toggleModal} fullScreen>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 20px", background: "white", color: "#fff" }}>
+        <div className="modal-header">
           <h2>Menu</h2>
-          <IconButton onClick={toggleModal} style={{ color: "#fff" }}>
-            <CloseIcon style={{ color: "black" }}/>
+          <IconButton onClick={toggleModal} className="close-btn">
+            <CloseIcon />
           </IconButton>
         </div>
 
-        <DialogContent>
-          <List style={{ textAlign: "center" }}>
+        <DialogContent className="menu-content">
+          <List>
             <nav>
-              <ul style={{ listStyle: "none", padding: 0 }}>
-                <li><Link to="/" onClick={toggleModal}>Home</Link></li>
-                <li><Link to="/bars" onClick={toggleModal}>Bars</Link></li>
-                <li><Link to="/events" onClick={toggleModal}>Events</Link></li>
-                <li><Link to="/bar-form" onClick={toggleModal}>Add a bar</Link></li>
-                <li><Link to="/event-form" onClick={toggleModal}>Add an event</Link></li>
-                <li><Link to="/about" onClick={toggleModal}>About</Link></li>
+              <ul className="menu-list">
+                <Zoom>  <li><Link to="/" onClick={toggleModal}>Accueil</Link></li></Zoom>
+              <Fade><li><Link to="/bars" onClick={toggleModal}>Les bars</Link></li></Fade>
+                <Flip>
+                <li><Link to="/events" onClick={toggleModal}>Les events</Link></li></Flip>
+                <Bounce>
+                <li><Link to="/bar-form" onClick={toggleModal}>Ajouter un bar</Link></li></Bounce>
+                <Roll>
+                <li><Link to="/event-form" onClick={toggleModal}>Ajouter un event</Link></li></Roll>
+                <li><Link to="/about" onClick={toggleModal}>A propos</Link></li>
                 <li><Link to="/dashboard" onClick={toggleModal}>Dashboard</Link></li>
                 {isConnected ? (
                   <li><Link to="/profil" onClick={toggleModal}>Profil</Link></li>
                 ) : (
-                  <li><Link to="/login" onClick={toggleModal}>Login</Link></li>
+                  <li><Link to="/login" onClick={toggleModal}>Connexion</Link></li>
                 )}
-                <li><Link to="*" onClick={toggleModal}>Nothing Here</Link></li>
               </ul>
             </nav>
           </List>
@@ -62,6 +66,7 @@ const Header: React.FC = () => {
       </Dialog>
 
       <Outlet />
+    
     </>
   );
 };

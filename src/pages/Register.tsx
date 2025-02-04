@@ -56,7 +56,7 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="profil">
       <h2>Inscription</h2>
       <form onSubmit={handleSubmit}>
         <div>

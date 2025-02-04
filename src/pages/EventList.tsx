@@ -5,9 +5,13 @@ import EventListComponent from './../components/event-list/EventListComponent'
 const EventList: React.FC = () => {
     return (
         <>
-              <h2>Liste des Events</h2>
+        <div className="profil">
+        <h2>Liste des Events</h2>
 
 <EventListComponent/>
+
+        </div>
+
         </>
     );
 };

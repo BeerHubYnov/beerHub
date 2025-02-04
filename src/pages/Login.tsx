@@ -28,7 +28,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="profil">
       <h2>Connexion</h2>
       <form onSubmit={handleSubmit}>
       <div>

@@ -101,3 +101,83 @@ footer {
   height: 100px;
   background-color: #D9BBF9;
 }
+
+.header-container {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+}
+
+.menu-icon {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.3s ease-in-out;
+}
+
+.menu-icon:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: black;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+}
+
+.close-btn {
+  color: white !important;
+}
+
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.9);
+  height: 100%;
+  padding: 40px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-list li {
+  margin: 15px 0;
+}
+
+.menu-list a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+
+.menu-list a:hover {
+  background-color: #fdfdfd;
+  padding: 10px;
+  color: black;
+  /* text-decoration: underline; */
+}
+
+.modal-header h2 {
+  color: white;
+}
+
+form {
+  width: 80%;
+  margin: auto;
+}

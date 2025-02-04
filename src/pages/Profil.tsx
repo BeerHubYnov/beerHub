@@ -25,7 +25,6 @@ const Profil: React.FC = () => {
 
       {isConnected ? (
         <Favorites />
-        // <button onClick={handleLogout}>Déconnexion</button>
       ) : (
    
         <NavLink to={`/login`}>Connexion</NavLink> 
