@@ -15,7 +15,7 @@ const BarDeleteComponent: React.FC<{ barId: string }> = ({ barId }) => {
   const navigate = useNavigate();
 
   // const { user } = useAuth(); // Récupérer l'utilisateur connecté si auth en place
-  const currentUserId = "71172e03-b001-4b8f-ba9c-9a40d170a1f9"; // À remplacer par `user?.id`
+  const currentUserId = "be57e5d7-0fbb-4d59-9232-e0933acc8b12"; // À remplacer par `user?.id`
 
   useEffect(() => {
     const fetchBar = async () => {
