@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BarCard from "./../bar-list/BarCard"; 
 
 interface Bar {
   id: string;
@@ -18,10 +19,9 @@ const Favorites: React.FC = () => {
   // Récupérer userId depuis localStorage
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
-if (storedUserId) {
-  setUserId(storedUserId);
-}
-
+    if (storedUserId) {
+      setUserId(storedUserId);
+    }
   }, []);
 
   // Récupérer les favoris de l'utilisateur
@@ -40,8 +40,8 @@ if (storedUserId) {
         }
         
         const data = await response.json();
-        console.log("Réponse API favorite :", data); // Ajout du log pour voir la structure de la réponse
-    
+        console.log("Réponse API favorite :", data); // Vérification du format
+
         if (Array.isArray(data)) {
           setFavorites(data.map((fav: any) => fav.Bar));
         } else {
@@ -55,7 +55,6 @@ if (storedUserId) {
         setLoading(false);
       }
     };
-    
 
     fetchFavorites();
   }, [userId]);
@@ -69,13 +68,11 @@ if (storedUserId) {
       ) : error ? (
         <p style={{ color: "red" }}>❌ {error}</p>
       ) : favorites.length > 0 ? (
-        <ul>
+        <div className="bar-list">
           {favorites.map((bar) => (
-            <li key={bar.id}>
-              <strong>{bar.name}</strong> - {bar.description}
-            </li>
+            <BarCard key={bar.id} bar={bar} /> // Utilisation de BarCard
           ))}
-        </ul>
+        </div>
       ) : (
         <p>Aucun favori ajouté.</p>
       )}
