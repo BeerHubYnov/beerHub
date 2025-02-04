@@ -15,6 +15,7 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isConnected, setIsConnected] = useState(!!localStorage.getItem("token"));
   const [userId, setUserId] = useState<string | null>(null);
+  const [favoriteId, setFavoriteId] = useState<string | null>(null);  // Ajout de l'ID du favori
 
   // Vérifie si l'utilisateur est connecté et récupère son ID
   useEffect(() => {
@@ -46,8 +47,11 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
         const data = await response.json();
         
         // Vérifier si ce bar est déjà favori
-        const alreadyFavorite = data.some((fav: any) => fav.id_Bar === bar.id);
-        setIsFavorite(alreadyFavorite);
+        const favorite = data.find((fav: any) => fav.id_Bar === bar.id);
+        if (favorite) {
+          setIsFavorite(true);
+          setFavoriteId(favorite.id);  // Stocke l'ID du favori
+        }
       } catch (error) {
         console.error("Erreur :", error);
       }
@@ -92,17 +96,20 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
   };
 
   const removeFromFavorites = async () => {
-    if (!userId) return;
-  
+    if (!favoriteId) {
+      alert("Ce bar n'est pas dans vos favoris.");
+      return;
+    }
+
     try {
-      const response = await fetch(`http://localhost:3000/favorite/${bar.id}`, {
+      const response = await fetch(`http://localhost:3000/favorite/${favoriteId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id_User: userId }),
       });
-  
+
       if (response.ok) {
         setIsFavorite(false);
+        setFavoriteId(null);  // Réinitialiser l'ID du favori
         alert("Bar retiré des favoris !");
       } else {
         alert("Erreur lors de la suppression du favori.");
@@ -112,7 +119,6 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
     }
   };
 
-  
   return (
     <div className="bar-card">
       <h3>{bar.name}</h3>
@@ -134,17 +140,16 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
 
       {/* Bouton Favori */}
       {isConnected ? (
-  isFavorite ? (
-    <button onClick={removeFromFavorites} style={{ background: "red", color: "white" }}>
-      Retirer des favoris
-    </button>
-  ) : (
-    <button onClick={addToFavorites}>Ajouter aux favoris</button>
-  )
-) : (
-  <p>Connectez-vous pour ajouter ce bar en favori.</p>
-)}
-
+        isFavorite ? (
+          <button onClick={removeFromFavorites} style={{ background: "red", color: "white" }}>
+            Retirer des favoris
+          </button>
+        ) : (
+          <button onClick={addToFavorites}>Ajouter aux favoris</button>
+        )
+      ) : (
+        <p>Connectez-vous pour ajouter ce bar en favori.</p>
+      )}
     </div>
   );
 };
