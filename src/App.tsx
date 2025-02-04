@@ -21,6 +21,7 @@ import EventDetail from "./pages/EventDetail";
 
 
 
+
 export default function App() {
 
   const [loading, setLoding] = useState(true);
