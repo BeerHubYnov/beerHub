@@ -14,19 +14,47 @@ interface Bar {
 const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isConnected, setIsConnected] = useState(!!localStorage.getItem("token"));
+  const [userId, setUserId] = useState<string | null>(null);
 
-  // Vérifie si l'utilisateur est connecté (simulation via localStorage)
+  // Vérifie si l'utilisateur est connecté et récupère son ID
   useEffect(() => {
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserId) {
+      setUserId(storedUserId);
+    }
+
     const handleStorageChange = () => {
       setIsConnected(!!localStorage.getItem("token"));
     };
- 
-    window.addEventListener("storage", handleStorageChange);
 
+    window.addEventListener("storage", handleStorageChange);
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
+
+  // Vérifier si le bar est déjà dans les favoris
+  useEffect(() => {
+    if (!userId) return;
+
+    const checkIfFavorite = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/favorite/user/${userId}`);
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des favoris.");
+        }
+        const data = await response.json();
+        
+        // Vérifier si ce bar est déjà favori
+        const alreadyFavorite = data.some((fav: any) => fav.id_Bar === bar.id);
+        setIsFavorite(alreadyFavorite);
+      } catch (error) {
+        console.error("Erreur :", error);
+      }
+    };
+
+    checkIfFavorite();
+  }, [userId, bar.id]);
 
   // Fonction pour ajouter un bar aux favoris
   const addToFavorites = async () => {
@@ -35,15 +63,19 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
       return;
     }
 
+    if (isFavorite) {
+      alert("Ce bar est déjà dans vos favoris !");
+      return;
+    }
+
     try {
-      const storedUser = localStorage.getItem("userId");
       const response = await fetch("http://localhost:3000/favorite", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id_User: storedUser,
+          id_User: userId,
           id_Bar: bar.id,
         }),
       });
@@ -59,6 +91,28 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
     }
   };
 
+  const removeFromFavorites = async () => {
+    if (!userId) return;
+  
+    try {
+      const response = await fetch(`http://localhost:3000/favorite/${bar.id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id_User: userId }),
+      });
+  
+      if (response.ok) {
+        setIsFavorite(false);
+        alert("Bar retiré des favoris !");
+      } else {
+        alert("Erreur lors de la suppression du favori.");
+      }
+    } catch (error) {
+      console.error("Erreur :", error);
+    }
+  };
+
+  
   return (
     <div className="bar-card">
       <h3>{bar.name}</h3>
@@ -80,12 +134,17 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
 
       {/* Bouton Favori */}
       {isConnected ? (
-        <button onClick={addToFavorites} disabled={isFavorite}>
-          {isFavorite ? "Ajouté aux favoris" : "Ajouter aux favoris"}
-        </button>
-      ) : (
-        <p>Connectez-vous pour ajouter ce bar en favori.</p>
-      )}
+  isFavorite ? (
+    <button onClick={removeFromFavorites} style={{ background: "red", color: "white" }}>
+      Retirer des favoris
+    </button>
+  ) : (
+    <button onClick={addToFavorites}>Ajouter aux favoris</button>
+  )
+) : (
+  <p>Connectez-vous pour ajouter ce bar en favori.</p>
+)}
+
     </div>
   );
 };
