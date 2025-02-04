@@ -21,6 +21,7 @@ import EventDetail from "./pages/EventDetail";
 
 import Footer from "./components/Footer";
 
+
 export default function App() {
 
   const [loading, setLoding] = useState(true);
