@@ -88,5 +88,5 @@ jobs:
           sonar-scanner \
           -Dsonar.organization=beerhubynov \
           -Dsonar.projectKey=BeerHubYnov_beerHub \
-          -Dsonar.sources=.
+          -Dsonar.sources=. \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
