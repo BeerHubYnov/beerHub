@@ -87,3 +87,10 @@ nav ul li {
   color: black;
 }
 
+
+
+.anim-home {
+display: flex;
+justify-content: center;
+margin-top: 150px;
+}
