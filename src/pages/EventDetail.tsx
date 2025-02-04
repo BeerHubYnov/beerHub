@@ -6,9 +6,8 @@ interface Event {
   id: string;
   name: string;
   description: string;
-  happyHoure: string;
-  localisationX: number;
-  localisationY: number;
+  dateHour: string;
+
 }
 
 const EventDetail: React.FC = () => {
