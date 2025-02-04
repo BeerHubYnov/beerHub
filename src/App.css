@@ -69,7 +69,9 @@ nav ul li {
   color: black;
 }
 
-
+.profil {
+  min-height: 100vh;
+}
 
 .anim-home {
   display: flex;
