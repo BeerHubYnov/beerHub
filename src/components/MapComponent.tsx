@@ -7,12 +7,20 @@ import L from "leaflet";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import markerShadowPng from "leaflet/dist/images/marker-shadow.png";
 
+interface Bar {
+  id: string;
+  name: string;
+  localisationX: number;
+  localisationY: number;
+}
+
 interface MapComponentProps {
   lat: number;
   lng: number;
+  markers: Bar[];
 }
 
-const MapComponent: React.FC<MapComponentProps> = ({ lat, lng }) => {
+const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, markers }) => {
   const customIcon = L.icon({
     iconUrl: markerIconPng,
     shadowUrl: markerShadowPng,
@@ -23,19 +31,23 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng }) => {
   return (
     <MapContainer
       center={[lat, lng]}
-      zoom={13}
+      zoom={11}
       scrollWheelZoom={false}
-      style={{ height: "300px", width: "100%" }}
+      style={{ height: "500px", width: "100%" }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[lat, lng]} icon={customIcon}>
-        <Popup>
-          Localisation : {lat}, {lng}
-        </Popup>
-      </Marker>
+      {markers.map((bar) => (
+        <Marker
+          key={bar.id}
+          position={[bar.localisationX, bar.localisationY]}
+          icon={customIcon}
+        >
+          <Popup>{bar.name}</Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 };
