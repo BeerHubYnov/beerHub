@@ -1,4 +1,4 @@
-import { Html, OrbitControls, useProgress } from "@react-three/drei";
+import { Html, useProgress } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
@@ -23,12 +23,11 @@ const Scene: React.FC = () => {
         <primitive
           object={gltf.scene}
           position={[0, 1, 0]}
-          scale={[0.01, 0.01, 0.01]}
+          scale={[0.07, 0.07, 0.07]}
           rotation={[8, -6, 7]} 
           children-0-castShadow
         />
 
-        <OrbitControls target={[0, 1, 0]} />
       </Canvas>
     </Suspense>
   );
