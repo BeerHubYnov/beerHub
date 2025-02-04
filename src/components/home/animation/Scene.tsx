@@ -23,7 +23,7 @@ const Scene: React.FC = () => {
         <primitive
           object={gltf.scene}
           position={[0, 1, 0]}
-          scale={[0.07, 0.07, 0.07]}
+          scale={[0.7, 0.7, 0.7]}
           rotation={[8, -6, 7]} 
           children-0-castShadow
         />
