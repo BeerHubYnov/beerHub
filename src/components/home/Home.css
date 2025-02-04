@@ -4,7 +4,6 @@
     min-height: 100vh;
     margin: 0;
     display: block;
-    background: #FF009C;
     padding: 50px;
 
 }
@@ -15,7 +14,7 @@
 
 }
 .head-home p{
-color: #FFDC60;
+color: #D9BBF9;
 font-weight: bold;
 font-size: 3em;
 
