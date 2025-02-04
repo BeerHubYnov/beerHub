@@ -4,7 +4,7 @@ import EventDetailComponent from "../components/event-detail/EventDetailComponen
 
 interface Event {
   id: string;
-  name: string;
+  title: string;
   description: string;
   dateHour: string;
 
