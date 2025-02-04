@@ -19,7 +19,7 @@ import EventEdit from "./pages/EventEdit";
 import EventDeletePage from "./pages/EventDeletePage";
 import EventDetail from "./pages/EventDetail";
 
-
+import Footer from "./components/Footer";
 
 
 export default function App() {
@@ -34,7 +34,7 @@ export default function App() {
 
 
   return (
-    <div>
+    <div className="home-box">
       <Routes>
         <Route path="/" element={<Header />}>
         <Route index element={loading ? <Loading /> : <Homepage />}/>
@@ -56,7 +56,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

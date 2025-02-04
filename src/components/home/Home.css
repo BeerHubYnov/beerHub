@@ -1,0 +1,51 @@
+.home-content {
+    width: 100%;
+    margin-top: -200px;
+    min-height: 100vh;
+    margin: 0;
+    display: block;
+    background: #FF009C;
+    padding: 50px;
+
+}
+
+.head-home {
+    display: flex;
+    flex-direction: column;
+
+}
+.head-home p{
+color: #FFDC60;
+font-weight: bold;
+font-size: 3em;
+
+}
+
+.head-home-content {
+    min-height: 100vh !important;
+}
+
+.head-home-title {
+   font-size: 6em;
+   margin-top: 200px;
+   font-weight: bolder;
+}
+
+.head-home-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  
+  .canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+    display: flex;
+    z-index: 2;
+    pointer-events: none; 
+  }
+  
