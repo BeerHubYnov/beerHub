@@ -37,7 +37,7 @@ const Register: React.FC = () => {
 
     try {
       // Votre id_Role reste inchangé
-      const id_Role = {idRole};
+      const id_Role = idRole;
 
       
       const response = await axios.post("http://localhost:3000/auth/register", {

@@ -21,7 +21,7 @@ const Profil: React.FC = () => {
       <h2>Mon Profil</h2>
       <p>Bienvenue sur votre page profil !</p>
 
-      <NavLink to={`/login`}>Se connecter</NavLink>
+  
 
       {isConnected ? (
         <button onClick={handleLogout}>Déconnexion</button>

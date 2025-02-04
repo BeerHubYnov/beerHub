@@ -58,7 +58,7 @@ const BarEditComponent: React.FC<{ barId: string }> = ({ barId }) => {
     }
 
     // Vérification de l'utilisateur
-    const userId = idUser ?? "71172e03-b001-4b8f-ba9c-9a40d170a1f9"; // À remplacer avec `user?.id` si l'auth est en place
+    const userId = idUser ?? "f5bd3efa-093e-4d1f-9f49-caf57998d90d"; // À remplacer avec `user?.id` si l'auth est en place
     if (!userId) {
       setErrorMessage("Erreur : utilisateur non identifié.");
       return;
