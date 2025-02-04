@@ -9,7 +9,7 @@ const EventFormComponent: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   // ID du bar hardcodé (Grizly Bar)
-  const hardcodedBarId = "af98e637-3391-4c9d-8afb-4b6bc990be45";
+  const hardcodedBarId = "2e0d3a73-4f12-42de-83ca-a2a2cd326e80";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
