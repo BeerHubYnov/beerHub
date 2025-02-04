@@ -1,5 +1,5 @@
 import React from "react";
-import MapComponent from "./MapComponent";
+import MapComponent from "../MapComponent";
 
 interface Bar {
   id: string;
@@ -21,7 +21,7 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
       <p>{bar.description}</p>
       <p>Happy Hour : {bar.happyHoure}</p>
       <h3>Localisation</h3>
-      <MapComponent lat={bar.localisationX} lng={bar.localisationY} />
+      <MapComponent lat={bar.localisationX} lng={bar.localisationY} markers={[bar]} />
     </div>
   );
 };
