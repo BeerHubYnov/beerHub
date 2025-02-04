@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
       <h2>Dashboard</h2>
       <MapContainer
         center={defaultCenter}
-        zoom={13}
+        zoom={11}
         style={{ height: "500px", width: "100%" }}
         scrollWheelZoom={false}
       >
