@@ -1,12 +1,37 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useReducer, useEffect } from "react";
 
-interface AuthContextType {
-  isConnected: boolean;
-  login: (token: string) => void;
-  logout: () => void;
+// Définir les types des informations utilisateur
+interface UserInfos {
+  email: string;
+  password: string;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+// Définir les actions possibles
+const UPDATE_USER_INFOS = "UPDATE_USER_INFOS";
+
+// Définir l'état du contexte
+interface AuthContextType {
+  isConnected: boolean;
+  userInfos: UserInfos | null;
+  login: (token: string) => void;
+  logout: () => void;
+  updateUserInfos: (userInfos: UserInfos) => void;
+}
+
+// Le reducer pour gérer les actions
+const authReducer = (state: AuthContextType, action: any): AuthContextType => {
+  switch (action.type) {
+    case UPDATE_USER_INFOS:
+      return {
+        ...state,
+        userInfos: action.payload, // Mettre à jour les infos utilisateur
+      };
+    default:
+      return state;
+  }
+};
+
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -18,6 +43,13 @@ export const useAuth = () => {
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isConnected, setIsConnected] = useState<boolean>(!!localStorage.getItem("token"));
+  const [state, dispatch] = useReducer(authReducer, {
+    isConnected,
+    userInfos: null, // Initialiser les informations de l'utilisateur à null
+    login: () => {},
+    logout: () => {},
+    updateUserInfos: () => {},
+  });
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -40,8 +72,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsConnected(false);
   };
 
+  // Fonction pour mettre à jour les informations de l'utilisateur dans l'état global
+  const updateUserInfos = (userInfos: UserInfos) => {
+    dispatch({
+      type: UPDATE_USER_INFOS,
+      payload: userInfos,
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{ isConnected, login, logout }}>
+    <AuthContext.Provider value={{ ...state, login, logout, updateUserInfos }}>
       {children}
     </AuthContext.Provider>
   );

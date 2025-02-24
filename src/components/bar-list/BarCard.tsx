@@ -15,7 +15,7 @@ interface Bar {
 const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
   const { isConnected } = useAuth(); // ✅ Utilisation du contexte
   const [isFavorite, setIsFavorite] = useState(false);
-  const [userId, setUserId] = useState<string | null>(localStorage.getItem("userId"));
+  const userId = localStorage.getItem("userId"); 
   const [favoriteId, setFavoriteId] = useState<string | null>(null);
 
   // Vérifier si le bar est déjà favori

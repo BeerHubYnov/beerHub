@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Favorites from "./../components/user/Favorites";
-// import UserInfo from "./../components/user/UserInfo"; 
+import UserInfo from "./../components/user/UserInfo"; 
 import { useAuth } from "../context/AuthContext";
 
 const Profil: React.FC = () => {
@@ -14,7 +14,7 @@ const Profil: React.FC = () => {
 
       {isConnected ? (
         <>
-          {/* <UserInfo />  */}
+          <UserInfo /> 
           <Favorites />
         </>
       ) : (
