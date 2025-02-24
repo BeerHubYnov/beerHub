@@ -15,6 +15,7 @@ const Profil: React.FC = () => {
       {isConnected ? (
         <>
           <UserInfo /> 
+          <br></br>
           <Favorites />
         </>
       ) : (

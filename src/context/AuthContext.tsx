@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useReducer, useEffect } fro
 
 // Définir les types des informations utilisateur
 interface UserInfos {
+  username: string;  // Utilisation du username pour le login
   email: string;
   password: string;
 }
@@ -43,9 +44,14 @@ export const useAuth = () => {
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isConnected, setIsConnected] = useState<boolean>(!!localStorage.getItem("token"));
+  
+  // Charger les infos utilisateur depuis localStorage au démarrage
+  const savedUserInfos = localStorage.getItem("userInfos");
+  const initialUserInfos = savedUserInfos ? JSON.parse(savedUserInfos) : null;
+  
   const [state, dispatch] = useReducer(authReducer, {
     isConnected,
-    userInfos: null, // Initialiser les informations de l'utilisateur à null
+    userInfos: initialUserInfos,  // Initialiser avec les infos utilisateur sauvegardées
     login: () => {},
     logout: () => {},
     updateUserInfos: () => {},
@@ -70,14 +76,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = () => {
     localStorage.removeItem("token");
     setIsConnected(false);
+    localStorage.removeItem("userInfos"); // Optionnellement, supprimer les infos utilisateur aussi
   };
 
-  // Fonction pour mettre à jour les informations de l'utilisateur dans l'état global
+  // Fonction pour mettre à jour les informations de l'utilisateur dans l'état global et localStorage
   const updateUserInfos = (userInfos: UserInfos) => {
     dispatch({
       type: UPDATE_USER_INFOS,
       payload: userInfos,
     });
+
+    // Sauvegarder les nouvelles infos utilisateur dans localStorage
+    localStorage.setItem("userInfos", JSON.stringify(userInfos));
   };
 
   return (
