@@ -1,5 +1,5 @@
 import React from "react";
-import MapComponent from "../MapComponent";
+import MapComponent from "../Map/MapComponent";
 
 interface Bar {
   id: string;

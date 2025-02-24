@@ -29,26 +29,28 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, markers }) => {
   });
 
   return (
-    <MapContainer
-      center={[lat, lng]}
-      zoom={5}
-      scrollWheelZoom={false}
-      style={{ height: "500px", width: "100%" }}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {markers.map((bar) => (
-        <Marker
-          key={bar.id}
-          position={[bar.localisationX, bar.localisationY]}
-          icon={customIcon}
-        >
-          <Popup>{bar.name}</Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+    <div style={{ height: "500px", width: "100%" }}>
+      <MapContainer
+        center={[lat, lng]}
+        zoom={5}
+        scrollWheelZoom={false}
+        style={{ height: "100%", width: "100%" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {markers.map((bar) => (
+          <Marker
+            key={bar.id}
+            position={[bar.localisationX, bar.localisationY]}
+            icon={customIcon}
+          >
+            <Popup>{bar.name}</Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </div>
   );
 };
 
