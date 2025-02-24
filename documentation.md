@@ -13,3 +13,6 @@ react-router
 npm install @mui/material @emotion/react @emotion/styled
 npm i @mui/icons-material
 npm i react-awesome-reveal
+npx playwright test
+npx playwright test --headed
+npx playwright test --debug  
