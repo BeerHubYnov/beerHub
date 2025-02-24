@@ -53,7 +53,7 @@ const Header: React.FC = () => {
                 <Roll>
                 <li><Link to="/event-form" onClick={toggleModal}>Ajouter un event</Link></li></Roll>
                 <li><Link to="/about" onClick={toggleModal}>A propos</Link></li>
-                <li><Link to="/dashboard" onClick={toggleModal}>Dashboard</Link></li>
+                <li><Link to="/BarsMapPage" onClick={toggleModal}>BarsMapPage</Link></li>
                 {isConnected ? (
                   <li><Link to="/profil" onClick={toggleModal}>Profil</Link></li>
                 ) : (

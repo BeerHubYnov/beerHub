@@ -37,6 +37,7 @@ const BarsMapPage: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center p-4">
+      <h2>tiak</h2>
       {bars.length > 0 ? (
         <MapCard 
           lat={bars[0].localisationX} 
