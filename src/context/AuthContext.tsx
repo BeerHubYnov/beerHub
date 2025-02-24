@@ -6,10 +6,8 @@ interface AuthContextType {
   logout: () => void;
 }
 
-// Création du contexte
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Hook personnalisé pour accéder au contexte
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -18,12 +16,18 @@ export const useAuth = () => {
   return context;
 };
 
-// Provider pour englober l'application
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isConnected, setIsConnected] = useState<boolean>(!!localStorage.getItem("token"));
 
   useEffect(() => {
-    setIsConnected(!!localStorage.getItem("token"));
+    const handleStorageChange = () => {
+      setIsConnected(!!localStorage.getItem("token"));
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
 
   const login = (token: string) => {
