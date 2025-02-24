@@ -18,9 +18,9 @@ import EventForm from "./pages/EventForm";
 import EventEdit from "./pages/EventEdit";
 import EventDeletePage from "./pages/EventDeletePage";
 import EventDetail from "./pages/EventDetail";
-
 import Footer from "./components/Footer";
 
+import { AuthProvider } from "./context/AuthContext";
 
 export default function App() {
 
@@ -35,6 +35,7 @@ export default function App() {
 
   return (
     <div className="home-box">
+         <AuthProvider>
       <Routes>
         <Route path="/" element={<Header />}>
         <Route index element={loading ? <Loading /> : <Homepage />}/>
@@ -57,6 +58,7 @@ export default function App() {
         </Route>
       </Routes>
       <Footer />
+      </AuthProvider>
     </div>
   );
 }
