@@ -21,7 +21,13 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
       <p>{bar.description}</p>
       <p>Happy Hour : {bar.happyHoure}</p>
       <h3>Localisation</h3>
-      <MapComponent lat={bar.localisationX} lng={bar.localisationY} markers={[bar]} />
+      <div style={{ height: "400px", width: "100%" }}>
+        <MapComponent 
+          lat={bar.localisationX} 
+          lng={bar.localisationY} 
+          markers={[bar]} 
+        />
+      </div>
     </div>
   );
 };
