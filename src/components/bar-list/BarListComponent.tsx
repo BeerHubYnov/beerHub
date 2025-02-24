@@ -11,48 +11,9 @@ interface Bar {
   localisationY: number;
 }
 
-
-// Données fictives (mock)
-// const mockBars: Bar[] = [
-//     {
-//       id: "1",
-//       name: "Le Bar du Coin",
-//       description: "Un bar chaleureux avec une ambiance conviviale.",
-//       happyHoure: "17h - 19h",
-//       localisationX: 48.8566,
-//       localisationY: 2.3522,
-//     },
-//     {
-//       id: "2",
-//       name: "La Cave à Bière",
-//       description: "Un large choix de bières artisanales.",
-//       happyHoure: "18h - 20h",
-//       localisationX: 48.8606,
-//       localisationY: 2.3376,
-//     },
-//     {
-//         id: "3",
-//         name: "Le Rooftop",
-//         description: "Un bar avec une superbe vue sur la ville.",
-//         happyHoure: "19h - 21h",
-//         localisationX: 48.8584,
-//         localisationY: 2.2945,
-//       },
-//     ];
-
-
-
 const BarListComponent: React.FC = () => {
   const [bars, setBars] = useState<Bar[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-
-  // useEffect(() => {
-  //   // Simule un appel API avec les données mockées
-  //   setTimeout(() => {
-  //     setBars(mockBars);
-  //   }, 500); // Simule un léger délai de chargement
-  // }, []);
 
   useEffect(() => {
     const fetchBars = async () => {
