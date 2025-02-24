@@ -71,7 +71,11 @@ nav ul li {
 
 .profil {
   min-height: 100vh;
-  margin: 0;
+  margin: 40px;
+}
+
+.profil p {
+  padding-bottom: 40px;
 }
 
 .anim-home {

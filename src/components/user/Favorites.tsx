@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import BarCard from "./../bar-list/BarCard"; 
-
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 interface Bar {
   id: string;
   name: string;
@@ -49,8 +52,13 @@ const Favorites: React.FC = () => {
           setError("Format de réponse incorrect.");
         }
       } catch (error) {
+        // Vérifie si l'erreur est une instance d'Error
+        if (error instanceof Error) {
+          setError(error.message); // Accède à message si c'est une instance d'Error
+        } else {
+          setError("Une erreur inconnue est survenue.");
+        }
         console.error("Erreur :", error);
-        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -61,8 +69,15 @@ const Favorites: React.FC = () => {
 
   return (
     <div>
-      <h2>Mes Bars Favoris</h2>
-
+         <Accordion className="user-profile-accordion">
+      <AccordionSummary
+        expandIcon={<ArrowDownwardIcon />}
+        aria-controls="panel1-content"
+        id="panel1-header"
+      >
+       <h2>Mes Bars Favoris</h2>
+      </AccordionSummary>
+      <AccordionDetails>
       {loading ? (
         <p>Chargement des favoris...</p>
       ) : error ? (
@@ -70,12 +85,18 @@ const Favorites: React.FC = () => {
       ) : favorites.length > 0 ? (
         <div className="bar-list">
           {favorites.map((bar) => (
-            <BarCard key={bar.id} bar={bar} /> // Utilisation de BarCard
+            <BarCard key={bar.id} bar={bar} /> 
           ))}
         </div>
       ) : (
         <p>Aucun favori ajouté.</p>
       )}
+      </AccordionDetails>
+    </Accordion>
+  
+    
+
+     
     </div>
   );
 };

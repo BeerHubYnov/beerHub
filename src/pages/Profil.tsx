@@ -1,36 +1,29 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
-import Favorites from './../components/user/Favorites'
-
-// import { useNavigate } from "react-router-dom";
-
+import Favorites from "./../components/user/Favorites";
+import UserInfo from "./../components/user/UserInfo"; 
+import UserBar from "./../components/user/UserBar"; 
+import { useAuth } from "../context/AuthContext";
 
 const Profil: React.FC = () => {
-  // const navigate = useNavigate();
-  // On considère l'utilisateur connecté s'il existe un token dans le localStorage
-  const isConnected = !!localStorage.getItem("token");
-
-  // const handleLogout = () => {
-  //   localStorage.clear();
-  //   navigate("/login");
-  // };
+  const { isConnected } = useAuth();
 
   return (
     <div className="profil">
       <h2>Mon Profil</h2>
       <p>Bienvenue sur votre page profil !</p>
 
-  
-
       {isConnected ? (
-        <Favorites />
+        <>
+          <UserInfo /> 
+          <br></br>
+          <Favorites />
+          <br></br>
+          <UserBar />
+        </>
       ) : (
-   
-        <NavLink to={`/login`}>Connexion</NavLink> 
-
+        <NavLink to="/login">Connexion</NavLink>
       )}
-
     </div>
   );
 };

@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Dialog, DialogContent, IconButton, List } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import { Zoom, Fade, Flip, Bounce, Roll } from "react-awesome-reveal";
+import { useAuth } from "../context/AuthContext";
 const Header: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isConnected, setIsConnected] = useState(!!localStorage.getItem("token"));
+  // const [isConnected, setIsConnected] = useState(!!localStorage.getItem("token"));
+  const { isConnected, logout } = useAuth();
+  // useEffect(() => {
+  //   const handleStorageChange = () => {
+  //     setIsConnected(!!localStorage.getItem("token"));
+  //   };
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setIsConnected(!!localStorage.getItem("token"));
-    };
+  //   window.addEventListener("storage", handleStorageChange);
 
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("storage", handleStorageChange);
+  //   };
+  // }, []);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -53,7 +54,10 @@ const Header: React.FC = () => {
                 <Roll>
                 <li><Link to="/event-form" onClick={toggleModal}>Ajouter un event</Link></li></Roll>
                 <li><Link to="/about" onClick={toggleModal}>A propos</Link></li>
-                <li><Link to="/BarsMapPage" onClick={toggleModal}>BarsMapPage</Link></li>
+
+              <li><Link to="/BarsMapPage" onClick={toggleModal}>BarsMapPage</Link></li>
+                {isConnected && <button onClick={logout}>Déconnexion</button>}
+
                 {isConnected ? (
                   <li><Link to="/profil" onClick={toggleModal}>Profil</Link></li>
                 ) : (

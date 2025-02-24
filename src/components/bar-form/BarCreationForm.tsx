@@ -1,8 +1,7 @@
-import { useState } from "react";
-// import { useAuth } from "../context/AuthContext"; 
+import { useState, useEffect } from "react";
 import './BarFormComponent.css'
+
 const BarCreationForm: React.FC = () => {
-  // const { user } = useAuth(); 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [happyHour, setHappyHour] = useState("");
@@ -10,6 +9,17 @@ const BarCreationForm: React.FC = () => {
   const [localisationY, setLocalisationY] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(null); // Stockage de l'ID utilisateur
+
+  // Récupérer l'ID utilisateur depuis le localStorage
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserId) {
+      setUserId(storedUserId);
+    } else {
+      setErrorMessage("Erreur : utilisateur non authentifié.");
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,10 +31,10 @@ const BarCreationForm: React.FC = () => {
       return;
     }
 
-    // if (!user?.id) {
-    //   setErrorMessage("Erreur : utilisateur non authentifié.");
-    //   return;
-    // }
+    if (!userId) {
+      setErrorMessage("Erreur : utilisateur non authentifié.");
+      return;
+    }
 
     const barData = {
       name,
@@ -32,7 +42,7 @@ const BarCreationForm: React.FC = () => {
       happyHoure: happyHour,
       localisationX: parseFloat(localisationX),
       localisationY: parseFloat(localisationY),
-      id_User: "be57e5d7-0fbb-4d59-9232-e0933acc8b12",
+      id_User: userId,  // Utilisation de l'ID de l'utilisateur récupéré
     };
 
     console.log("Données du bar à envoyer :", barData);
@@ -57,40 +67,37 @@ const BarCreationForm: React.FC = () => {
       setLocalisationX("");
       setLocalisationY("");
     } catch (error) {
- 
       if (error instanceof Error) {
         setErrorMessage(error.message);
       } else {
         setErrorMessage("Une erreur inconnue est survenue.");
       }
     }
-    
   };
 
   return (
     <div className="form-container">
-    {errorMessage && <p className="error">{errorMessage}</p>}
-    {successMessage && <p className="success">{successMessage}</p>}
-    <form onSubmit={handleSubmit}>
-      <label>Nom:</label>
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-  
-      <label>Description:</label>
-      <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-  
-      <label>Happy Hour:</label>
-      <input type="text" value={happyHour} onChange={(e) => setHappyHour(e.target.value)} />
-  
-      <label>Localisation X:</label>
-      <input type="number" value={localisationX} onChange={(e) => setLocalisationX(e.target.value)} />
-  
-      <label>Localisation Y:</label>
-      <input type="number" value={localisationY} onChange={(e) => setLocalisationY(e.target.value)} />
-  
-      <button type="submit">Ajouter</button>
-    </form>
-  </div>
-  
+      {errorMessage && <p className="error">{errorMessage}</p>}
+      {successMessage && <p className="success">{successMessage}</p>}
+      <form onSubmit={handleSubmit}>
+        <label>Nom:</label>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+    
+        <label>Description:</label>
+        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+    
+        <label>Happy Hour:</label>
+        <input type="text" value={happyHour} onChange={(e) => setHappyHour(e.target.value)} />
+    
+        <label>Localisation X:</label>
+        <input type="number" value={localisationX} onChange={(e) => setLocalisationX(e.target.value)} />
+    
+        <label>Localisation Y:</label>
+        <input type="number" value={localisationY} onChange={(e) => setLocalisationY(e.target.value)} />
+    
+        <button type="submit">Ajouter</button>
+      </form>
+    </div>
   );
 };
 
