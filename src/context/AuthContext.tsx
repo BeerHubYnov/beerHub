@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useReducer, useEffect } fro
 
 // Définir les types des informations utilisateur
 interface UserInfos {
-  username: string;  // Utilisation du username pour le login
+  username: string; 
   email: string;
   password: string;
 }
