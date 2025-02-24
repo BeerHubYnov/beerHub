@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useAuth } from "../context/AuthContext"; // À activer si tu as un système d'authentification
 
 interface Bar {
   id: string;
@@ -14,8 +13,8 @@ const BarDeleteComponent: React.FC<{ barId: string }> = ({ barId }) => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // const { user } = useAuth(); // Récupérer l'utilisateur connecté si auth en place
-  const currentUserId = "be57e5d7-0fbb-4d59-9232-e0933acc8b12"; // À remplacer par `user?.id`
+  // Récupérer l'ID de l'utilisateur connecté depuis le localStorage
+  const currentUserId = localStorage.getItem("userId"); // On récupère l'ID depuis le localStorage
 
   useEffect(() => {
     const fetchBar = async () => {
@@ -41,6 +40,7 @@ const BarDeleteComponent: React.FC<{ barId: string }> = ({ barId }) => {
       return;
     }
 
+    // Vérification que l'utilisateur connecté est bien le propriétaire du bar
     if (bar.id_User !== currentUserId) {
       setErrorMessage("Vous n'êtes pas autorisé à supprimer ce bar.");
       return;
