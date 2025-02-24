@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Favorites from "./../components/user/Favorites";
 import UserInfo from "./../components/user/UserInfo"; 
+import UserBar from "./../components/user/UserBar"; 
 import { useAuth } from "../context/AuthContext";
 
 const Profil: React.FC = () => {
@@ -17,6 +18,8 @@ const Profil: React.FC = () => {
           <UserInfo /> 
           <br></br>
           <Favorites />
+          <br></br>
+          <UserBar />
         </>
       ) : (
         <NavLink to="/login">Connexion</NavLink>

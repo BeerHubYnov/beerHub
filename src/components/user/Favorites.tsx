@@ -85,7 +85,7 @@ const Favorites: React.FC = () => {
       ) : favorites.length > 0 ? (
         <div className="bar-list">
           {favorites.map((bar) => (
-            <BarCard key={bar.id} bar={bar} /> // Utilisation de BarCard
+            <BarCard key={bar.id} bar={bar} /> 
           ))}
         </div>
       ) : (

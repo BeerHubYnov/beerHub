@@ -3,7 +3,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import { AuthContext } from "./../../context/AuthContext"; // Importer le contexte
+import { AuthContext } from "./../../context/AuthContext";
 
 const UserInfo: React.FC = () => {
   const authContext = useContext(AuthContext);
