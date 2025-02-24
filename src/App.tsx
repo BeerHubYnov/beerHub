@@ -12,7 +12,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useState, useEffect } from "react";
 import Loading from "./pages/Loading";
-import Dashboard from "./pages/Dashboard";
+import BarsMapPage from "./pages/BarsMapPage";
 import EventList from "./pages/EventList";
 import EventForm from "./pages/EventForm";
 import EventEdit from "./pages/EventEdit";
@@ -50,7 +50,7 @@ export default function App() {
           <Route path="/event-delete/:id" element={<EventDeletePage />} />
           <Route path="/bar/:id" element={<BarDetail />} />
           <Route path="/event/:id" element={<EventDetail />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/BarsMapPage" element={<BarsMapPage />} />
           <Route path="/profil" element={<Profil />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
