@@ -1,36 +1,65 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './EventFormComponent.css';
+
+interface Bar {
+  id: string;
+  name: string;
+}
 
 const EventFormComponent: React.FC = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dateHour, setDateHour] = useState("");
+  const [category, setCategory] = useState("");
+  const [bars, setBars] = useState<Bar[]>([]);
+  const [selectedBarId, setSelectedBarId] = useState<string | "">("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  // const [userId, setUserId] = useState<string | null>(null);
 
-  // ID du bar hardcodé (Grizly Bar)
-  const hardcodedBarId = "6b9713ba-02d2-4b49-8925-71ea5565faaf";
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserId) {
+      fetchBars(storedUserId);  // Appel direct sans useState
+    } else {
+      setErrorMessage("Utilisateur non authentifié.");
+    }
+  }, []);
+  
+
+  const fetchBars = async (userId: string) => {
+    try {
+      const response = await fetch(`http://localhost:3000/bar/user/${userId}`);
+      if (!response.ok) {
+        throw new Error("Erreur lors de la récupération des bars.");
+      }
+      const data = await response.json();
+      setBars(Array.isArray(data) ? data : [data]);
+      if (data.length > 0) {
+        setSelectedBarId(data[0].id);
+      }
+    } catch (error) {
+      setErrorMessage("Impossible de récupérer les bars.");
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
     setSuccessMessage(null);
 
-    // Vérifier que tous les champs sont remplis
-    if (!title || !description || !dateHour) {
+    if (!title || !description || !dateHour || !category || !selectedBarId) {
       setErrorMessage("Tous les champs sont obligatoires.");
       return;
     }
 
-    // Format des données pour l'API
     const eventData = {
       title,
       description,
-      dateHour: new Date(dateHour).toISOString(), // Convertit la date au format ISO
-      id_Bar: hardcodedBarId, // Bar fixe
+      dateHour: new Date(dateHour).toISOString(),
+      category,
+      id_Bar: selectedBarId,
     };
-
-    console.log("Données de l'événement à envoyer :", eventData);
 
     try {
       const response = await fetch("http://localhost:3000/event", {
@@ -49,12 +78,9 @@ const EventFormComponent: React.FC = () => {
       setTitle("");
       setDescription("");
       setDateHour("");
+      setCategory("");
     } catch (error) {
-      if (error instanceof Error) {
-        setErrorMessage(error.message);
-      } else {
-        setErrorMessage("Une erreur inconnue est survenue.");
-      }
+      setErrorMessage("Une erreur est survenue.");
     }
   };
 
@@ -72,6 +98,32 @@ const EventFormComponent: React.FC = () => {
 
         <label>Date et heure :</label>
         <input type="datetime-local" value={dateHour} onChange={(e) => setDateHour(e.target.value)} />
+        
+        <label>Catégorie :</label>
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="">Sélectionnez une catégorie</option>
+          <option value="Concerts">Concerts</option>
+          <option value="Soirées dansantes">Soirées dansantes</option>
+          <option value="Quiz / Trivia">Quiz / Trivia</option>
+          <option value="Karaoké">Karaoké</option>
+          <option value="Happy hours">Happy hours</option>
+          <option value="Soirées à thème">Soirées à thème</option>
+          <option value="Dégustations">Dégustations</option>
+          <option value="Événements sportifs">Événements sportifs</option>
+          <option value="Soirées de lancement">Soirées de lancement</option>
+          <option value="Stand-up / Comedy nights">Stand-up / Comedy nights</option>
+        </select>
+
+        <label>Choisissez un bar :</label>
+        <select value={selectedBarId} onChange={(e) => setSelectedBarId(e.target.value)}>
+          {bars.length > 0 ? (
+            bars.map((bar) => (
+              <option key={bar.id} value={bar.id}>{bar.name}</option>
+            ))
+          ) : (
+            <option value="">Aucun bar trouvé</option>
+          )}
+        </select>
 
         <button type="submit">Créer l'événement</button>
       </form>
