@@ -95,6 +95,7 @@ nav ul li {
   justify-content: center;
   display: flex;
   align-items: center;
+  border-radius: 0 0 90px 90px;
 }
 
 .home-box {
