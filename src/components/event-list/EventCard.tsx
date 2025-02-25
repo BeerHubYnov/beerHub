@@ -7,6 +7,7 @@ interface Event {
   title: string;
   description: string;
   id_Bar: string;
+  category: string;
   Bar: {
     id: string;
     name: string;
@@ -21,6 +22,7 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => {
   return (
     <div className="bar-card">
       <h3>{event.title}</h3>
+      <p><strong>Catégorie :</strong> {event.category}</p>
       <p><strong>Description :</strong> {event.description}</p>
 
       <NavLink to={`/event/${event.id}`}>Voir les détails</NavLink>

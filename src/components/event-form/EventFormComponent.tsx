@@ -97,6 +97,7 @@ const EventFormComponent: React.FC = () => {
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
 
         <label>Date et heure :</label>
+        
         <input type="datetime-local" value={dateHour} onChange={(e) => setDateHour(e.target.value)} />
         
         <label>Catégorie :</label>
