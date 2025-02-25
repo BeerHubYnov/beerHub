@@ -34,7 +34,7 @@ const Header: React.FC = () => {
             <nav>
               <ul className="menu-list">
                 <Zoom>
-                  {" "}
+            
                   <li>
                     <Link to="/" onClick={toggleModal}>
                       Accueil
@@ -77,7 +77,7 @@ const Header: React.FC = () => {
 
                 <li>
                   <Link to="/BarsMapPage" onClick={toggleModal}>
-                    BarsMapPage
+                    Carte des bars
                   </Link>
                 </li>
 

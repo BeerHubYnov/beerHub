@@ -95,6 +95,7 @@ nav ul li {
   justify-content: center;
   display: flex;
   align-items: center;
+  border-radius: 0 0 90px 90px;
 }
 
 .home-box {
@@ -116,8 +117,9 @@ footer {
 .menu-icon {
   font-size: 2rem;
   cursor: pointer;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.6);
+  fill: black;
+  color: #030303 !important;
+  background: rgba(255, 255, 255, 0.6);
   padding: 10px;
   border-radius: 50%;
   transition: 0.3s ease-in-out;
@@ -133,19 +135,23 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.9);
-  color: white;
+  background: rgba(255, 255, 255, 0.9);
+  color: rgb(0, 0, 0);
+}
+
+.modal-header h2 {
+  color: black !important;
 }
 
 .close-btn {
-  color: white !important;
+  color: rgb(0, 0, 0) !important;
 }
 
 .menu-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   height: 100%;
   padding: 40px;
 }
@@ -164,17 +170,18 @@ footer {
 
 .menu-list a {
   text-decoration: none;
-  color: white;
+
+  color: black !important;
   font-size: 1.5rem;
   font-weight: bold;
   transition: 0.3s ease-in-out;
 }
 
 .menu-list a:hover {
-  background-color: #fdfdfd;
+  font-weight: bolder;
+  font-style: italic;
   padding: 10px;
   color: black;
-  /* text-decoration: underline; */
 }
 
 .modal-header h2 {
@@ -194,4 +201,30 @@ form {
   border-radius: 15px;
   justify-content: center;
   align-items: center;
+}
+
+
+.homeBtn {
+  display: flex;
+}
+
+.homeLink {
+  border: 1px black solid;
+  border-radius: 25px;
+  padding: 15px 10px;
+  margin: 10px;
+  color: black;
+}
+
+.homeLink:hover {
+  background-color: black;
+  color: white;
+}
+
+.user-profile-accordion {
+  background-color: transparent !important;
+}
+
+.user-profile-accordion:hover {
+  background-color: none !important;
 }
