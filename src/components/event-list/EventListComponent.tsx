@@ -8,6 +8,7 @@ interface Event {
   title: string;
   description: string;
   id_Bar: string;
+  category: string;
   Bar: {
     id: string;
     name: string;
