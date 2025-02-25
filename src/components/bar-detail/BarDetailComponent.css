@@ -1,54 +1,83 @@
 .bar-detail {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.bar-detail h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.BarBtn {
+  color: black !important;
+  border: 1px solid black;
+  padding: 15px 10px;
+  border-radius: 35px;
+  margin: 10px
+}
+
+.BarBtn:hover {
+  color: white !important;
+  background-color: black;
+}
+
+.btnLink {
+  /* border: 1px solid black; */
+  background-color: transparent;
+  color: black;
+  border: none !important;
+}
+.btnLink:hover {
+  background-color: transparent;
+  border: none !important;
+}
+
+.BtnList {
+  display: flex;
+  justify-content: center;
+
+}
+
+.bar-detail p {
+  font-size: 16px;
+  color: #555;
+  margin: 8px 0;
+}
+
+.bar-detail p strong {
+  color: #222;
+}
+
+.bar-detail p:last-child {
+  font-style: italic;
+  color: #777;
+}
+
+/* Effet de survol pour un peu d’interactivité */
+.bar-detail:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bar-detail {
+    max-width: 90%;
+    padding: 15px;
   }
-  
+
   .bar-detail h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-    text-align: center;
+    font-size: 22px;
   }
-  
+
   .bar-detail p {
-    font-size: 16px;
-    color: #555;
-    margin: 8px 0;
+    font-size: 14px;
   }
-  
-  .bar-detail p strong {
-    color: #222;
-  }
-  
-  .bar-detail p:last-child {
-    font-style: italic;
-    color: #777;
-  }
-  
-  /* Effet de survol pour un peu d’interactivité */
-  .bar-detail:hover {
-    transform: scale(1.02);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .bar-detail {
-      max-width: 90%;
-      padding: 15px;
-    }
-    
-    .bar-detail h2 {
-      font-size: 22px;
-    }
-  
-    .bar-detail p {
-      font-size: 14px;
-    }
-  }
-  
+}

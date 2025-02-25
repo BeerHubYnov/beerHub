@@ -9,8 +9,11 @@ const HomeContent: React.FC = () => {
       <div className="anim-home">
         <h3>Trouver les évènements</h3>
         <Lottie animationData={drinkFill} style={{ width: "350px", height: "350px" }} />
-        <Link to="/bars" >Liste des bars</Link>
-        <Link to="/events" >Liste des évents</Link>
+        <div className="homeBtn">
+        <Link to="/bars" className="homeLink">Liste des bars</Link>
+        <Link to="/events" className="homeLink">Liste des évents</Link>
+        </div>
+  
       </div>
     </>
   );

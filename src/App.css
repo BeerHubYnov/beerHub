@@ -195,3 +195,28 @@ form {
   justify-content: center;
   align-items: center;
 }
+
+
+.homeBtn {
+  display: flex;
+}
+
+.homeLink {
+  border: 1px black solid;
+  border-radius: 25px; 
+  padding: 15px 10px;
+  margin: 10px;
+  color: black;
+}
+
+.homeLink:hover {
+background-color: black;
+color: white;
+}
+
+.user-profile-accordion {
+  background-color: transparent !important;
+}
+.user-profile-accordion:hover {
+  background-color: none !important;
+}
