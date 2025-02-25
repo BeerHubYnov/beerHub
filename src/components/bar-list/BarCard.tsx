@@ -1,4 +1,3 @@
-
 import { NavLink } from "react-router-dom";
 import "./BarCard.css";
 
@@ -9,16 +8,15 @@ interface Bar {
 }
 
 const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
-
-
   return (
     <div className="bar-card">
       <h3>{bar.name}</h3>
-      <p><strong>Description :</strong> {bar.description}</p>
+      <p>
+        <strong>Description :</strong> {bar.description}
+      </p>
 
-      <NavLink to={`/bar/${bar.id}`}>Voir les détails</NavLink>
+      <NavLink to={`/bar/${bar.id}`} className="homeLink">Voir les détails</NavLink>
       <br />
-
     </div>
   );
 };

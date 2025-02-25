@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import BarCard from "./../bar-list/BarCard"; 
+import BarCard from "./../bar-list/BarCard";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -37,11 +37,13 @@ const Favorites: React.FC = () => {
     const fetchFavorites = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:3000/favorite/user/${userId}`);
+        const response = await fetch(
+          `http://localhost:3000/favorite/user/${userId}`
+        );
         if (!response.ok) {
           throw new Error("Erreur lors de la récupération des favoris.");
         }
-        
+
         const data = await response.json();
         console.log("Réponse API favorite :", data); // Vérification du format
 
@@ -69,34 +71,31 @@ const Favorites: React.FC = () => {
 
   return (
     <div>
-         <Accordion className="user-profile-accordion">
-      <AccordionSummary
-        expandIcon={<ArrowDownwardIcon />}
-        aria-controls="panel1-content"
-        id="panel1-header"
-      >
-       <h2>Mes Bars Favoris</h2>
-      </AccordionSummary>
-      <AccordionDetails>
-      {loading ? (
-        <p>Chargement des favoris...</p>
-      ) : error ? (
-        <p style={{ color: "red" }}>❌ {error}</p>
-      ) : favorites.length > 0 ? (
-        <div className="bar-list">
-          {favorites.map((bar) => (
-            <BarCard key={bar.id} bar={bar} /> 
-          ))}
-        </div>
-      ) : (
-        <p>Aucun favori ajouté.</p>
-      )}
-      </AccordionDetails>
-    </Accordion>
-  
-    
-
-     
+      <Accordion className="user-profile-accordion">
+        <AccordionSummary
+          expandIcon={<ArrowDownwardIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+          
+        >
+          <h2>Mes Bars Favoris</h2>
+        </AccordionSummary>
+        <AccordionDetails>
+          {loading ? (
+            <p>Chargement des favoris...</p>
+          ) : error ? (
+            <p style={{ color: "red" }}>❌ {error}</p>
+          ) : favorites.length > 0 ? (
+            <div className="bar-list">
+              {favorites.map((bar) => (
+                <BarCard key={bar.id} bar={bar} />
+              ))}
+            </div>
+          ) : (
+            <p>Aucun favori ajouté.</p>
+          )}
+        </AccordionDetails>
+      </Accordion>
     </div>
   );
 };

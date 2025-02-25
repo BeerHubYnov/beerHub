@@ -3,7 +3,11 @@ import MapComponent from "../Map/MapComponent";
 import { useAuth } from "./../../context/AuthContext"; 
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import "./BarDetailComponent.css";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 interface Bar {
   id: string;
   name: string;
@@ -98,19 +102,22 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
       <p>{bar.description}</p>
       <p>Happy Hour : {bar.happyHoure}</p>
       <br />
-      <NavLink to={`/bar-edit/${bar.id}`}>Modifier</NavLink>
+      <div className="BtnList">
+      <NavLink to={`/bar-edit/${bar.id}`} className="BarBtn"> <EditIcon/> Modifier</NavLink>
       <br />
-      <NavLink to={`/bar-delete/${bar.id}`}>Supprimer</NavLink>
-      <br />
+      <NavLink to={`/bar-delete/${bar.id}`} className="BarBtn"><DeleteForeverIcon/> Supprimer</NavLink>
+      </div>
+
 
       {/* Bouton Favori */}
       {isConnected ? (
         isFavorite ? (
-          <button onClick={removeFromFavorites} style={{ background: "red", color: "white" }}>
-            Retirer des favoris
+          <button onClick={removeFromFavorites} className="btnLink">
+            Retirer des favoris  <FavoriteIcon style={{ fill: "red" }}/>
           </button>
         ) : (
-          <button onClick={addToFavorites}>Ajouter aux favoris</button>
+          <button onClick={addToFavorites} className="btnLink">Ajouter aux favoris <FavoriteBorderIcon style={{ fill: "red" }}/>
+         </button>
         )
       ) : (
         <p>Connectez-vous pour ajouter ce bar en favori.</p>
