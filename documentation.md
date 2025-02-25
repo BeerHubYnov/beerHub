@@ -27,3 +27,6 @@ npx playwright test --debug
 
 npx playwright test landing-page.spec.ts
 npx playwright test tests/todo-page/ tests/landing-page/
+
+### Reporting
+npx playwright test --reporter=json

@@ -91,17 +91,17 @@ const EventFormComponent: React.FC = () => {
       <p>Vous devez avoir un bar pour publier un évent</p>
       <form onSubmit={handleSubmit}>
         <label>Titre de l'événement :</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input data-testid="event-form-title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
 
         <label>Description :</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        <textarea data-testid="event-form-description" value={description} onChange={(e) => setDescription(e.target.value)} />
 
         <label>Date et heure :</label>
         
-        <input type="datetime-local" value={dateHour} onChange={(e) => setDateHour(e.target.value)} />
+        <input data-testid="event-form-time" type="datetime-local" value={dateHour} onChange={(e) => setDateHour(e.target.value)} />
         
         <label>Catégorie :</label>
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <select data-testid="event-form-category" value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Sélectionnez une catégorie</option>
           <option value="Concerts">Concerts</option>
           <option value="Soirées dansantes">Soirées dansantes</option>
@@ -116,7 +116,7 @@ const EventFormComponent: React.FC = () => {
         </select>
 
         <label>Choisissez un bar :</label>
-        <select value={selectedBarId} onChange={(e) => setSelectedBarId(e.target.value)}>
+        <select data-testid="event-form-bar" value={selectedBarId} onChange={(e) => setSelectedBarId(e.target.value)}>
           {bars.length > 0 ? (
             bars.map((bar) => (
               <option key={bar.id} value={bar.id}>{bar.name}</option>
