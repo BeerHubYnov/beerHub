@@ -77,7 +77,7 @@ const Header: React.FC = () => {
 
                 <li>
                   <Link to="/BarsMapPage" onClick={toggleModal}>
-                    BarsMapPage
+                    Carte des bars
                   </Link>
                 </li>
 
