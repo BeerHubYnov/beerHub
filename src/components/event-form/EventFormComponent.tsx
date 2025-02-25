@@ -88,7 +88,7 @@ const EventFormComponent: React.FC = () => {
     <div className="form-container">
       {errorMessage && <p className="error">{errorMessage}</p>}
       {successMessage && <p className="success">{successMessage}</p>}
-      
+      <p>Vous devez avoir un bar pour publier un évent</p>
       <form onSubmit={handleSubmit}>
         <label>Titre de l'événement :</label>
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -97,6 +97,7 @@ const EventFormComponent: React.FC = () => {
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
 
         <label>Date et heure :</label>
+        
         <input type="datetime-local" value={dateHour} onChange={(e) => setDateHour(e.target.value)} />
         
         <label>Catégorie :</label>

@@ -4,8 +4,7 @@ test('La page d\'accueil doit se charger et afficher les bons éléments', async
   await page.goto('/'); // Accède à la page d'accueil
 //   await page.pause();
 
-  // Vérifie si le titre de la page est correct
-//   await expect(page).toHaveTitle(/BeerHub/i);
+await page.waitForTimeout(15000);
 
   // Vérifie si l'élément HeadHomeContent est présent
   const headTitle = page.getByRole('heading', { name: 'BeerHub' });
