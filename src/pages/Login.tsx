@@ -42,6 +42,7 @@ const Login: React.FC = () => {
         <div>
           <label>Nom d'utilisateur :</label>
           <input
+          data-testid="login-name"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -51,6 +52,7 @@ const Login: React.FC = () => {
         <div>
           <label>Mot de passe :</label>
           <input
+             data-testid="login-pwd"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

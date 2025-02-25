@@ -81,19 +81,19 @@ const BarCreationForm: React.FC = () => {
       {successMessage && <p className="success">{successMessage}</p>}
       <form onSubmit={handleSubmit}>
         <label>Nom:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <input data-testid="bar-form-name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
     
         <label>Description:</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        <textarea data-testid="bar-form-description" value={description} onChange={(e) => setDescription(e.target.value)} />
     
         <label>Happy Hour:</label>
-        <input type="text" value={happyHour} onChange={(e) => setHappyHour(e.target.value)} />
+        <input data-testid="bar-form-happy-hour"  type="text" value={happyHour} onChange={(e) => setHappyHour(e.target.value)} />
     
         <label>Localisation X:</label>
-        <input type="number" value={localisationX} onChange={(e) => setLocalisationX(e.target.value)} />
+        <input data-testid="bar-form-latitude" type="number" value={localisationX} onChange={(e) => setLocalisationX(e.target.value)} />
     
         <label>Localisation Y:</label>
-        <input type="number" value={localisationY} onChange={(e) => setLocalisationY(e.target.value)} />
+        <input data-testid="bar-form-longitude" type="number" value={localisationY} onChange={(e) => setLocalisationY(e.target.value)} />
     
         <button type="submit">Ajouter</button>
       </form>
