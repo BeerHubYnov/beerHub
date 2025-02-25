@@ -34,7 +34,7 @@ const Header: React.FC = () => {
             <nav>
               <ul className="menu-list">
                 <Zoom>
-                  {" "}
+            
                   <li>
                     <Link to="/" onClick={toggleModal}>
                       Accueil
