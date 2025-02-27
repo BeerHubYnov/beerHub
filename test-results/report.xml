@@ -1,3 +1,4 @@
+<testExecutions version="1">
 <testsuites id="" name="" tests="10" failures="0" skipped="0" errors="0" time="30.488269">
 <testsuite name="tests/bar-form.spec.ts" timestamp="2025-02-27T14:17:27.814Z" hostname="Desktop Chrome" tests="2" failures="0" skipped="0" time="9.836" errors="0">
 <testcase name="La page de formulaire d&apos;ajout de bar doit se charger et afficher un message d&apos;erreur" classname="tests/bar-form.spec.ts" time="5.151">
