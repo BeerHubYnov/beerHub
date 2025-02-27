@@ -30,3 +30,4 @@ npx playwright test tests/todo-page/ tests/landing-page/
 
 ### Reporting
 npx playwright test --reporter=json
+ npx playwright show-report --> localhost:9323
