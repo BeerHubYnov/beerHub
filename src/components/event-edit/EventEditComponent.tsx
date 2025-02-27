@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './EventEditComponent.css';
 
 interface EventEditComponentProps {
   eventId: string; 

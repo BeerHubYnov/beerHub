@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './BarEditComponent.css';
+
 
 interface Bar {
   id: string;
@@ -22,8 +22,6 @@ const BarEditComponent: React.FC<{ barId: string }> = ({ barId }) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const navigate = useNavigate();
-
-  // const { user } = useAuth(); // Récupérer l'utilisateur authentifié si l'auth est en place
 
   useEffect(() => {
     const fetchBar = async () => {
@@ -69,7 +67,7 @@ const BarEditComponent: React.FC<{ barId: string }> = ({ barId }) => {
       happyHoure: happyHour,
       localisationX: parseFloat(localisationX),
       localisationY: parseFloat(localisationY),
-      id_User: userId, // On garde l'ID utilisateur lors de la modification
+      id_User: userId, 
     };
 
     try {
@@ -95,23 +93,48 @@ const BarEditComponent: React.FC<{ barId: string }> = ({ barId }) => {
       {errorMessage && <p className="error">{errorMessage}</p>}
       {successMessage && <p className="success">{successMessage}</p>}
       <form onSubmit={handleSubmit}>
-        <label>Nom:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+  <label htmlFor="nom">Nom:</label>
+  <input
+    id="nom"
+    type="text"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+  />
 
-        <label>Description:</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+  <label htmlFor="description">Description:</label>
+  <textarea
+    id="description"
+    value={description}
+    onChange={(e) => setDescription(e.target.value)}
+  />
 
-        <label>Happy Hour:</label>
-        <input type="text" value={happyHour} onChange={(e) => setHappyHour(e.target.value)} />
+  <label htmlFor="happyHour">Happy Hour:</label>
+  <input
+    id="happyHour"
+    type="text"
+    value={happyHour}
+    onChange={(e) => setHappyHour(e.target.value)}
+  />
 
-        <label>Localisation X:</label>
-        <input type="number" value={localisationX} onChange={(e) => setLocalisationX(e.target.value)} />
+  <label htmlFor="localisationX">Localisation X:</label>
+  <input
+    id="localisationX"
+    type="number"
+    value={localisationX}
+    onChange={(e) => setLocalisationX(e.target.value)}
+  />
 
-        <label>Localisation Y:</label>
-        <input type="number" value={localisationY} onChange={(e) => setLocalisationY(e.target.value)} />
+  <label htmlFor="localisationY">Localisation Y:</label>
+  <input
+    id="localisationY"
+    type="number"
+    value={localisationY}
+    onChange={(e) => setLocalisationY(e.target.value)}
+  />
 
-        <button type="submit">Modifier</button>
-      </form>
+  <button type="submit">Modifier</button>
+</form>
+
     </div>
   );
 };

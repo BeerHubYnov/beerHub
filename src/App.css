@@ -6,7 +6,6 @@
   min-height: 100vh;
 }
 
-
 .card {
   padding: 2em;
 }
@@ -17,13 +16,11 @@
 
 .header-content {
   height: 100px !important;
-  /* width: 100vw !important; */
   position: absolute;
   top: 0;
 }
 
 nav {
-
   height: 100px;
 }
 
@@ -37,30 +34,25 @@ nav ul {
 }
 
 nav ul li {
-
   text-decoration: none;
   list-style: none;
 }
 
 .home-title {
   font-size: 7em;
-
 }
 
 .loader-container {
   position: fixed;
-  /* Couvre toute la page */
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: white;
-  /* Ajuste la couleur de fond */
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  /* S'assure qu'il est au-dessus du header */
 }
 
 .loader-text {
@@ -170,7 +162,6 @@ footer {
 
 .menu-list a {
   text-decoration: none;
-
   color: black !important;
   font-size: 1.5rem;
   font-weight: bold;
@@ -182,10 +173,6 @@ footer {
   font-style: italic;
   padding: 10px;
   color: black;
-}
-
-.modal-header h2 {
-  color: white;
 }
 
 form {
@@ -202,7 +189,6 @@ form {
   justify-content: center;
   align-items: center;
 }
-
 
 .homeBtn {
   display: flex;
@@ -229,8 +215,3 @@ form {
   background-color: none !important;
 }
 
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-}
