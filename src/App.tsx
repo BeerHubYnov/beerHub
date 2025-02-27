@@ -19,15 +19,14 @@ import EventEdit from "./pages/EventEdit";
 import EventDeletePage from "./pages/EventDeletePage";
 import EventDetail from "./pages/EventDetail";
 import Footer from "./components/Footer";
-
 import { AuthProvider } from "./context/AuthContext";
 
 export default function App() {
-  const [loading, setLoding] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      setLoding(false);
+      setLoading(false);
     }, 3500);
   }, []);
 
