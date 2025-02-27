@@ -31,4 +31,8 @@ npx playwright test --reporter=json
 npx playwright show-report --> localhost:9323
 npx playwright show-report
 
+npx playwright test --reporter=lcov
+
+
+
 await page.pause();
