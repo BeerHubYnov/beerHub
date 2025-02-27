@@ -154,7 +154,7 @@ const EventFormComponent: React.FC = () => {
     )}
   </select>
 
-  <button id="event-form-submit" type="submit">Créer l'événement</button>
+  <button data-testid="event-form-submit" type="submit">Créer l'événement</button>
 </form>
 
     </div>
