@@ -71,17 +71,31 @@ const EventEditComponent: React.FC<EventEditComponentProps> = ({ eventId }) => {
       {errorMessage && <p className="error">{errorMessage}</p>}
       {successMessage && <p className="success">{successMessage}</p>}
       <form onSubmit={handleSubmit}>
-        <label>Titre:</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+  <label htmlFor="title">Titre:</label>
+  <input
+    id="title"
+    type="text"
+    value={title}
+    onChange={(e) => setTitle(e.target.value)}
+  />
 
-        <label>Description:</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+  <label htmlFor="description">Description:</label>
+  <textarea
+    id="description"
+    value={description}
+    onChange={(e) => setDescription(e.target.value)}
+  />
 
-        <label>Date et heure:</label>
-        <input type="datetime-local" value={dateHour} onChange={(e) => setDateHour(e.target.value)} />
+  <label htmlFor="dateHour">Date et heure:</label>
+  <input
+    id="dateHour"
+    type="datetime-local"
+    value={dateHour}
+    onChange={(e) => setDateHour(e.target.value)}
+  />
 
-        <button type="submit">Modifier</button>
-      </form>
+  <button type="submit">Modifier</button>
+</form>
     </div>
   );
 };
