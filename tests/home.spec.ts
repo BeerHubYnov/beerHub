@@ -9,7 +9,7 @@ await page.waitForTimeout(15000);
   // Vérifie si l'élément HeadHomeContent est présent
   const headTitle = page.getByRole('heading', { name: 'BeerHub' });
   await expect(headTitle).toBeVisible();
-  await page.pause();
+  // await page.pause();
   await expect(headTitle).toHaveText('BeerHub');
 
   // Vérifie si le sous-titre de HeadHomeContent est bien affiché

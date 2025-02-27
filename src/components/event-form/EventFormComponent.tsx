@@ -15,8 +15,7 @@ const EventFormComponent: React.FC = () => {
   const [selectedBarId, setSelectedBarId] = useState<string | "">("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  // const [userId, setUserId] = useState<string | null>(null);
-
+ 
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
     if (storedUserId) {
@@ -90,44 +89,74 @@ const EventFormComponent: React.FC = () => {
       {successMessage && <p className="success">{successMessage}</p>}
       <p>Vous devez avoir un bar pour publier un évent</p>
       <form onSubmit={handleSubmit}>
-        <label>Titre de l'événement :</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
 
-        <label>Description :</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+  <label htmlFor="event-form-title">Titre de l'événement :</label>
+  <input
+    id="event-form-title"
+    data-testid="event-form-title"
+    type="text"
+    value={title}
+    onChange={(e) => setTitle(e.target.value)}
+  />
 
-        <label>Date et heure :</label>
-        
-        <input type="datetime-local" value={dateHour} onChange={(e) => setDateHour(e.target.value)} />
-        
-        <label>Catégorie :</label>
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="">Sélectionnez une catégorie</option>
-          <option value="Concerts">Concerts</option>
-          <option value="Soirées dansantes">Soirées dansantes</option>
-          <option value="Quiz / Trivia">Quiz / Trivia</option>
-          <option value="Karaoké">Karaoké</option>
-          <option value="Happy hours">Happy hours</option>
-          <option value="Soirées à thème">Soirées à thème</option>
-          <option value="Dégustations">Dégustations</option>
-          <option value="Événements sportifs">Événements sportifs</option>
-          <option value="Soirées de lancement">Soirées de lancement</option>
-          <option value="Stand-up / Comedy nights">Stand-up / Comedy nights</option>
-        </select>
+  <label htmlFor="event-form-description">Description :</label>
+  <textarea
+    id="event-form-description"
+    data-testid="event-form-description"
+    value={description}
+    onChange={(e) => setDescription(e.target.value)}
+  />
 
-        <label>Choisissez un bar :</label>
-        <select value={selectedBarId} onChange={(e) => setSelectedBarId(e.target.value)}>
-          {bars.length > 0 ? (
-            bars.map((bar) => (
-              <option key={bar.id} value={bar.id}>{bar.name}</option>
-            ))
-          ) : (
-            <option value="">Aucun bar trouvé</option>
-          )}
-        </select>
+  <label htmlFor="event-form-time">Date et heure :</label>
+  <input
+    id="event-form-time"
+    data-testid="event-form-time"
+    type="datetime-local"
+    value={dateHour}
+    onChange={(e) => setDateHour(e.target.value)}
+  />
 
-        <button type="submit">Créer l'événement</button>
-      </form>
+  <label htmlFor="event-form-category">Catégorie :</label>
+  <select
+    id="event-form-category"
+    data-testid="event-form-category"
+    value={category}
+    onChange={(e) => setCategory(e.target.value)}
+  >
+    <option value="">Sélectionnez une catégorie</option>
+    <option value="Concerts">Concerts</option>
+    <option value="Soirées dansantes">Soirées dansantes</option>
+    <option value="Quiz / Trivia">Quiz / Trivia</option>
+    <option value="Karaoké">Karaoké</option>
+    <option value="Happy hours">Happy hours</option>
+    <option value="Soirées à thème">Soirées à thème</option>
+    <option value="Dégustations">Dégustations</option>
+    <option value="Événements sportifs">Événements sportifs</option>
+    <option value="Soirées de lancement">Soirées de lancement</option>
+    <option value="Stand-up / Comedy nights">Stand-up / Comedy nights</option>
+  </select>
+
+  <label htmlFor="event-form-bar">Choisissez un bar :</label>
+  <select
+    id="event-form-bar"
+    data-testid="event-form-bar"
+    value={selectedBarId}
+    onChange={(e) => setSelectedBarId(e.target.value)}
+  >
+    {bars.length > 0 ? (
+      bars.map((bar) => (
+        <option key={bar.id} value={bar.id}>
+          {bar.name}
+        </option>
+      ))
+    ) : (
+      <option value="">Aucun bar trouvé</option>
+    )}
+  </select>
+
+  <button type="submit">Créer l'événement</button>
+</form>
+
     </div>
   );
 };

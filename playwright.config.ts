@@ -18,4 +18,8 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:5173', 
   },
+  reporter: [
+    ['html', { outputFolder: 'playwright-report' }], // Génère un rapport HTML
+    ['json', { outputFile: 'playwright-report/results.json' }], // Génère un rapport JSON
+  ],
 });

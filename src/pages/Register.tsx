@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -8,50 +8,45 @@ const Register: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [idRole, setIdRole] = useState<string>("");
+  const [error, setError] = useState<string | null>(null); // ✅ État pour stocker le message d'erreur
   const navigate = useNavigate();
-  
 
-  const fetchRoleId = async () => {
-    try {
-      // Appel à l'endpoint pour récupérer le rôle "Bar"
-      const response = await axios.get("http://localhost:3000/role/name/User");
-      // Supposons que la réponse renvoie un objet avec une propriété "id"
-      setIdRole(response.data.id);
-    } catch (error) {
-      console.error("Erreur lors de la récupération de l'id du role", error);
-    }
-  };
+  useEffect(() => {
+    const fetchRoleId = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/role/name/User");
+        setIdRole(response.data.id);
+      } catch (error) {
+        console.error("Erreur lors de la récupération de l'id du rôle", error);
+        setError("Impossible de récupérer le rôle utilisateur.");
+      }
+    };
 
-  fetchRoleId();
-  
+    fetchRoleId();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    
-    
     e.preventDefault();
+    setError(null); // ✅ Réinitialisation de l'erreur avant chaque soumission
 
     if (password !== confirmPassword) {
-      alert("Les mots de passe ne correspondent pas !");
+      setError("Les mots de passe ne correspondent pas !");
       return;
     }
 
     try {
-      // Votre id_Role reste inchangé
       const id_Role = idRole;
-
-      
-      const response = await axios.post("http://localhost:3000/auth/register", {
+      await axios.post("http://localhost:3000/auth/register", {
         email,
         password,
         username,
         id_Role,
       });
 
-      console.log("Réponse register :", response.data);
       navigate("/login");
     } catch (error) {
       console.error("Erreur lors de l'inscription", error);
-      alert("Erreur lors de l'inscription.");
+      setError("Erreur lors de l'inscription. Veuillez réessayer."); // ✅ Gestion de l'erreur
     }
   };
 
@@ -62,6 +57,7 @@ const Register: React.FC = () => {
         <div>
           <label>Nom d'utilisateur :</label>
           <input
+            data-testid="register-username"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -71,6 +67,7 @@ const Register: React.FC = () => {
         <div>
           <label>Email :</label>
           <input
+            data-testid="register-email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -80,6 +77,7 @@ const Register: React.FC = () => {
         <div>
           <label>Mot de passe :</label>
           <input
+            data-testid="register-password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -89,13 +87,19 @@ const Register: React.FC = () => {
         <div>
           <label>Confirmer le mot de passe :</label>
           <input
+            data-testid="register-password-confirm"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </div>
-        <button type="submit">S'inscrire</button>
+
+        {/* ✅ Affichage du message d'erreur si présent */}
+        {error && <p className="error-message">{error}</p>}
+
+
+        <button data-testid="register-submit" type="submit">S'inscrire</button>
       </form>
       <p>
         Vous avez déjà un compte ? <a href="/login">Connectez-vous</a>
