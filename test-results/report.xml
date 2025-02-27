@@ -1,0 +1,36 @@
+<testsuites id="" name="" tests="10" failures="0" skipped="0" errors="0" time="30.488269">
+<testsuite name="tests/bar-form.spec.ts" timestamp="2025-02-27T14:17:27.814Z" hostname="Desktop Chrome" tests="2" failures="0" skipped="0" time="9.836" errors="0">
+<testcase name="La page de formulaire d&apos;ajout de bar doit se charger et afficher un message d&apos;erreur" classname="tests/bar-form.spec.ts" time="5.151">
+</testcase>
+<testcase name="La page de formulaire d&apos;ajout de bar doit se charger et afficher les bons éléments" classname="tests/bar-form.spec.ts" time="4.685">
+</testcase>
+</testsuite>
+<testsuite name="tests/bar-list.spec.ts" timestamp="2025-02-27T14:17:27.814Z" hostname="Desktop Chrome" tests="1" failures="0" skipped="0" time="3.938" errors="0">
+<testcase name="La page de listing des bars doit se charger correctement" classname="tests/bar-list.spec.ts" time="3.938">
+</testcase>
+</testsuite>
+<testsuite name="tests/event-form.spec.ts" timestamp="2025-02-27T14:17:27.814Z" hostname="Desktop Chrome" tests="1" failures="0" skipped="0" time="6.445" errors="0">
+<testcase name="La page de formulaire d&apos;ajout de bar doit se charger et afficher les bons éléments" classname="tests/event-form.spec.ts" time="6.445">
+</testcase>
+</testsuite>
+<testsuite name="tests/event-list.spec.ts" timestamp="2025-02-27T14:17:27.814Z" hostname="Desktop Chrome" tests="1" failures="0" skipped="0" time="2.735" errors="0">
+<testcase name="La page de listing des events doit se charger correctement" classname="tests/event-list.spec.ts" time="2.735">
+</testcase>
+</testsuite>
+<testsuite name="tests/home.spec.ts" timestamp="2025-02-27T14:17:27.814Z" hostname="Desktop Chrome" tests="1" failures="0" skipped="0" time="17.947" errors="0">
+<testcase name="La page d&apos;accueil doit se charger et afficher les bons éléments" classname="tests/home.spec.ts" time="17.947">
+</testcase>
+</testsuite>
+<testsuite name="tests/login.spec.ts" timestamp="2025-02-27T14:17:27.814Z" hostname="Desktop Chrome" tests="2" failures="0" skipped="0" time="4.063" errors="0">
+<testcase name="La page de formulaire de login doit se charger et afficher un message d&apos;erreur" classname="tests/login.spec.ts" time="1.929">
+</testcase>
+<testcase name="La page de formulaire de login doit se charger et afficher les bons éléments" classname="tests/login.spec.ts" time="2.134">
+</testcase>
+</testsuite>
+<testsuite name="tests/register.spec.ts" timestamp="2025-02-27T14:17:27.814Z" hostname="Desktop Chrome" tests="2" failures="0" skipped="0" time="3.835" errors="0">
+<testcase name="La page de formulaire de register doit se charger et vérifier le bon déroulement de la connexion" classname="tests/register.spec.ts" time="1.941">
+</testcase>
+<testcase name="La page de formulaire de register doit se charger et afficher un message d&apos;erreur" classname="tests/register.spec.ts" time="1.894">
+</testcase>
+</testsuite>
+</testsuites>

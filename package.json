@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test:e2e": "nyc --reporter=lcov --reporter=json npx playwright test",
+    "test:e2e": "npx playwright test --reporter=junit --output=playwright-report",
     "preview": "vite preview",
     "prettier:check": "prettier --check src/**/*.ts",
     "prettier:fix": "prettier --write src/**/*.ts"
