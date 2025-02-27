@@ -23,4 +23,6 @@ test("La page de listing des bars doit se charger correctement", async ({
 
   // ✅ Vérifie que la navigation s'est bien effectuée
   await expect(page).toHaveURL(/\/bar\/\d+/); // Vérifie que l'URL contient "/bar/{id}"
+
+  
 });

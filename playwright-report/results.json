@@ -58,13 +58,13 @@
   },
   "suites": [
     {
-      "title": "tests/bar-list.spec.ts",
-      "file": "tests/bar-list.spec.ts",
+      "title": "tests/event-list.spec.ts",
+      "file": "tests/event-list.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "La page de listing des bars doit se charger correctement",
+          "title": "La page de listing des events doit se charger correctement",
           "ok": true,
           "tags": [],
           "tests": [
@@ -78,17 +78,17 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 5030,
+                  "duration": 4535,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-02-27T10:09:04.823Z",
+                  "startTime": "2025-02-27T10:13:49.518Z",
                   "attachments": [
                     {
                       "name": "trace",
                       "contentType": "application/zip",
-                      "path": "/Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub/test-results/tests-bar-list-La-page-de--0c033-oit-se-charger-correctement-Desktop-Chrome/trace.zip"
+                      "path": "/Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub/test-results/tests-event-list-La-page-d-64a8e-oit-se-charger-correctement-Desktop-Chrome/trace.zip"
                     }
                   ]
                 }
@@ -96,8 +96,8 @@
               "status": "expected"
             }
           ],
-          "id": "0a2eab50b6a1a28a2c0d-7ece96361e0938daaf99",
-          "file": "tests/bar-list.spec.ts",
+          "id": "1bc9311e5d684edfcc6c-388f25bc4707bdd6f0bc",
+          "file": "tests/event-list.spec.ts",
           "line": 4,
           "column": 1
         }
@@ -106,8 +106,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-02-27T10:09:02.124Z",
-    "duration": 9350.467,
+    "startTime": "2025-02-27T10:13:46.972Z",
+    "duration": 8028.2119999999995,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,
