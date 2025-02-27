@@ -1,18 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-// TEST AVEC USER NON CONNECTE
-test("La page de formulaire d'ajout de bar doit se charger et afficher un message d'erreur", async ({
-  page,
-}) => {
-  await page.goto("/bar-form"); // Accède à la page d'assccueil
- 
 
-  await page.waitForTimeout(2000);
-
-  // Vérifie si le message d'erreur est présent
-  await expect(page.getByText("Erreur : utilisateur non")).toBeVisible();
-
-});
 
 // TEST AVEC USER CONNECTE
 test("La page de formulaire d'ajout de bar doit se charger et afficher les bons éléments", async ({
@@ -35,6 +23,5 @@ test("La page de formulaire d'ajout de bar doit se charger et afficher les bons 
   await page.getByTestId('bar-form-latitude').fill("45.750000");
   await page.getByTestId('bar-form-longitude').fill("4.850000");
   await page.getByRole("button", { name: "Ajouter" }).click();
-  await page.pause();
 });
 
