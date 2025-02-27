@@ -7,8 +7,8 @@ test("La page de formulaire de register doit se charger et vérifier le bon dér
   await page.goto("/register");
   const headTitle = page.getByRole("heading", { name: "Inscription" });
   await expect(headTitle).toBeVisible();
-  await page.getByTestId("register-username").fill("testPlaywright727");
-  await page.getByTestId("register-email").fill("testPlaywright727@test.com");
+  await page.getByTestId("register-username").fill("testPlaywright767");
+  await page.getByTestId("register-email").fill("testPlaywright767@test.com");
   await page.getByTestId("register-password").fill("123Test");
   await page.getByTestId("register-password-confirm").fill("123Test");
   await page.getByTestId("register-submit").click();
