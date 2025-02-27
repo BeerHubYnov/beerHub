@@ -15,6 +15,7 @@ import Loading from "./pages/Loading";
 import BarsMapPage from "./pages/BarsMapPage";
 import EventList from "./pages/EventList";
 import EventForm from "./pages/EventForm";
+import EasterEgg from './components/EasterEgg/EasterEgg';
 import EventEdit from "./pages/EventEdit";
 import EventDeletePage from "./pages/EventDeletePage";
 import EventDetail from "./pages/EventDetail";
@@ -33,6 +34,7 @@ export default function App() {
   return (
     <div className="home-box">
       <AuthProvider>
+      <EasterEgg />
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={loading ? <Loading /> : <Homepage />} />
