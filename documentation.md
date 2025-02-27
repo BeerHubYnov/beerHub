@@ -27,8 +27,17 @@ npx playwright test tests/todo-page/ tests/landing-page/
 
 ### Reporting
 
-npx playwright test --reporter=json
+
 npx playwright show-report --> localhost:9323
 npx playwright show-report
+
+#### Modifier le format du rapport de test
+
+npx playwright test --reporter=json
+npx playwright test --reporter=lcov
+npx playwright test --reporter=junit
+npx playwright test --reporter=junit --output=playwright-report
+
+
 
 await page.pause();
