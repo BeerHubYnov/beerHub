@@ -9,7 +9,7 @@ interface Bar {
 
 const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
   return (
-    <div className="bar-card">
+    <div className="bar-card" data-testid="bar-card">
       <h3>{bar.name}</h3>
       <p>
         <strong>Description :</strong> {bar.description}
