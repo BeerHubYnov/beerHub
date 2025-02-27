@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import BarCard from "./../bar-list/BarCard";
+import BarCard from "./../bar-list/BarCard"; 
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+
 interface Bar {
   id: string;
   name: string;
@@ -11,10 +12,16 @@ interface Bar {
   happyHoure: string;
   localisationX: number;
   localisationY: number;
+  id_User: string;
+  User: {
+    id: string;
+    username: string;
+    email: string;
+  };
 }
 
-const Favorites: React.FC = () => {
-  const [favorites, setFavorites] = useState<Bar[]>([]);
+const UserBar: React.FC = () => {
+  const [proprio, setProprio] = useState<Bar[]>([]);
   const [userId, setUserId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -22,39 +29,47 @@ const Favorites: React.FC = () => {
   // Récupérer userId depuis localStorage
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
+    console.log("Récupération du userId depuis localStorage:", storedUserId);
     if (storedUserId) {
       setUserId(storedUserId);
+    } else {
+      console.log("Aucun userId trouvé dans localStorage.");
     }
   }, []);
 
-  // Récupérer les favoris de l'utilisateur
+  // Récupérer les bars de l'utilisateur
   useEffect(() => {
     if (!userId) {
       setLoading(false);
+      console.log("userId est vide, arrêt du chargement.");
       return;
     }
 
-    const fetchFavorites = async () => {
+    const fetchProprio = async () => {
+      console.log("Début de la récupération des bars pour l'utilisateur:", userId);
       setLoading(true);
       try {
-        const response = await fetch(
-          `http://localhost:3000/favorite/user/${userId}`
-        );
+        const response = await fetch(`http://localhost:3000/bar/user/${userId}`);
+        console.log("Réponse du serveur reçue, statut:", response.status);
+        
         if (!response.ok) {
-          throw new Error("Erreur lors de la récupération des favoris.");
+          throw new Error("Erreur lors de la récupération des bars dont vous êtes proprio.");
         }
 
         const data = await response.json();
-        console.log("Réponse API favorite :", data); // Vérification du format
+        console.log("Réponse API bars :", data); // Vérification du format
 
-        if (Array.isArray(data)) {
-          setFavorites(data.map((fav: any) => fav.Bar));
+        // Si l'API renvoie un seul bar, on transforme en tableau
+        if (data) {
+          // Si la réponse est un objet, on le met dans un tableau
+          const bars = Array.isArray(data) ? data : [data];
+          console.log("Nombre de bars récupérés :", bars.length);
+          setProprio(bars);  // Met à jour l'état avec le tableau de bars
         } else {
-          console.error("Format de réponse inattendu :", data);
-          setError("Format de réponse incorrect.");
+          console.error("Aucune donnée retournée par l'API.");
+          setError("Aucun bar trouvé.");
         }
       } catch (error) {
-        // Vérifie si l'erreur est une instance d'Error
         if (error instanceof Error) {
           setError(error.message); // Accède à message si c'est une instance d'Error
         } else {
@@ -63,10 +78,11 @@ const Favorites: React.FC = () => {
         console.error("Erreur :", error);
       } finally {
         setLoading(false);
+        console.log("Chargement terminé.");
       }
     };
 
-    fetchFavorites();
+    fetchProprio();
   }, [userId]);
 
   return (
@@ -76,23 +92,22 @@ const Favorites: React.FC = () => {
           expandIcon={<ArrowDownwardIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
-          
         >
-          <h2>Mes Bars Favoris</h2>
+          <h2>Mes Bars</h2>
         </AccordionSummary>
         <AccordionDetails>
           {loading ? (
-            <p>Chargement des favoris...</p>
+            <p>Chargement de mes bars...</p>
           ) : error ? (
             <p style={{ color: "red" }}>❌ {error}</p>
-          ) : favorites.length > 0 ? (
+          ) : proprio.length > 0 ? (
             <div className="bar-list">
-              {favorites.map((bar) => (
-                <BarCard key={bar.id} bar={bar} />
+              {proprio.map((bar) => (
+                <BarCard key={bar.id} bar={bar} /> // Affichage des bars
               ))}
             </div>
           ) : (
-            <p>Aucun favori ajouté.</p>
+            <p>Aucun bar ajouté.</p>
           )}
         </AccordionDetails>
       </Accordion>
@@ -100,4 +115,4 @@ const Favorites: React.FC = () => {
   );
 };
 
-export default Favorites;
+export default UserBar;

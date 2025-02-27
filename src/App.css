@@ -6,7 +6,6 @@
   min-height: 100vh;
 }
 
-
 .card {
   padding: 2em;
 }
@@ -17,13 +16,11 @@
 
 .header-content {
   height: 100px !important;
-  /* width: 100vw !important; */
   position: absolute;
   top: 0;
 }
 
 nav {
-
   height: 100px;
 }
 
@@ -37,30 +34,25 @@ nav ul {
 }
 
 nav ul li {
-
   text-decoration: none;
   list-style: none;
 }
 
 .home-title {
   font-size: 7em;
-
 }
 
 .loader-container {
   position: fixed;
-  /* Couvre toute la page */
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: white;
-  /* Ajuste la couleur de fond */
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  /* S'assure qu'il est au-dessus du header */
 }
 
 .loader-text {
@@ -71,7 +63,11 @@ nav ul li {
 
 .profil {
   min-height: 100vh;
-  margin: 0;
+  margin: 40px;
+}
+
+.profil p {
+  padding-bottom: 40px;
 }
 
 .anim-home {
@@ -91,6 +87,7 @@ nav ul li {
   justify-content: center;
   display: flex;
   align-items: center;
+  border-radius: 0 0 90px 90px;
 }
 
 .home-box {
@@ -112,8 +109,9 @@ footer {
 .menu-icon {
   font-size: 2rem;
   cursor: pointer;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.6);
+  fill: black;
+  color: #030303 !important;
+  background: rgba(255, 255, 255, 0.6);
   padding: 10px;
   border-radius: 50%;
   transition: 0.3s ease-in-out;
@@ -129,19 +127,23 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.9);
-  color: white;
+  background: rgba(255, 255, 255, 0.9);
+  color: rgb(0, 0, 0);
+}
+
+.modal-header h2 {
+  color: black !important;
 }
 
 .close-btn {
-  color: white !important;
+  color: rgb(0, 0, 0) !important;
 }
 
 .menu-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   height: 100%;
   padding: 40px;
 }
@@ -160,21 +162,17 @@ footer {
 
 .menu-list a {
   text-decoration: none;
-  color: white;
+  color: black !important;
   font-size: 1.5rem;
   font-weight: bold;
   transition: 0.3s ease-in-out;
 }
 
 .menu-list a:hover {
-  background-color: #fdfdfd;
+  font-weight: bolder;
+  font-style: italic;
   padding: 10px;
   color: black;
-  /* text-decoration: underline; */
-}
-
-.modal-header h2 {
-  color: white;
 }
 
 form {
@@ -190,4 +188,29 @@ form {
   border-radius: 15px;
   justify-content: center;
   align-items: center;
+}
+
+.homeBtn {
+  display: flex;
+}
+
+.homeLink {
+  border: 1px black solid;
+  border-radius: 25px;
+  padding: 15px 10px;
+  margin: 10px;
+  color: black;
+}
+
+.homeLink:hover {
+  background-color: black;
+  color: white;
+}
+
+.user-profile-accordion {
+  background-color: transparent !important;
+}
+
+.user-profile-accordion:hover {
+  background-color: none !important;
 }

@@ -13,3 +13,20 @@ react-router
 npm install @mui/material @emotion/react @emotion/styled
 npm i @mui/icons-material
 npm i react-awesome-reveal
+
+## PLAYWRIGHT / TESTING 
+
+npx playwright test
+npx playwright test --headed
+
+### Debug 
+
+npx playwright test --debug  
+
+### Run specific test
+
+npx playwright test landing-page.spec.ts
+npx playwright test tests/todo-page/ tests/landing-page/
+
+### Reporting
+npx playwright test --reporter=json
