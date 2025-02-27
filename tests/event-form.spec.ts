@@ -41,7 +41,7 @@ test("La page de formulaire d'ajout de bar doit se charger et afficher les bons 
   await page.getByTestId('event-form-bar').selectOption(firstBarValue);
   
 
-  await page.getByRole("button", { name: "Ajouter" }).click();
+  await page.getByTestId('event-form-submit').click();
 
 });
 

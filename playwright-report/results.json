@@ -9,7 +9,7 @@
     "globalTimeout": 0,
     "grep": {},
     "grepInvert": null,
-    "maxFailures": 1,
+    "maxFailures": 0,
     "metadata": {
       "actualWorkers": 1
     },
@@ -46,30 +46,30 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 0
+        "timeout": 30000
       }
     ],
     "shard": null,
     "updateSnapshots": "missing",
     "updateSourceMethod": "patch",
     "version": "1.50.1",
-    "workers": 1,
+    "workers": 2,
     "webServer": null
   },
   "suites": [
     {
-      "title": "tests/register.spec.ts",
-      "file": "tests/register.spec.ts",
+      "title": "tests/event-form.spec.ts",
+      "file": "tests/event-form.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "La page de formulaire de register doit se charger et vérifier le bon déroulement de la connexion",
+          "title": "La page de formulaire d'ajout de bar doit se charger et afficher les bons éléments",
           "ok": true,
           "tags": [],
           "tests": [
             {
-              "timeout": 0,
+              "timeout": 30000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "Desktop Chrome",
@@ -78,53 +78,27 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 8581,
+                  "duration": 16658,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-02-27T09:27:25.797Z",
-                  "attachments": []
+                  "startTime": "2025-02-27T09:33:25.587Z",
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub/test-results/tests-event-form-La-page-d-c2020--afficher-les-bons-éléments-Desktop-Chrome/trace.zip"
+                    }
+                  ]
                 }
               ],
               "status": "expected"
             }
           ],
-          "id": "70b6fafed16e3c06d12a-9998e71d810c41df263d",
-          "file": "tests/register.spec.ts",
-          "line": 4,
-          "column": 1
-        },
-        {
-          "title": "La page de formulaire de register doit se charger et afficher un message d'erreur",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 0,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "Desktop Chrome",
-              "projectName": "Desktop Chrome",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 7482,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2025-02-27T09:27:35.223Z",
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "70b6fafed16e3c06d12a-86e0a6e0b54bbc294d62",
-          "file": "tests/register.spec.ts",
-          "line": 23,
+          "id": "752aa2e0ecd5d82a254c-ac7cf5b95d648a53a746",
+          "file": "tests/event-form.spec.ts",
+          "line": 6,
           "column": 1
         }
       ]
@@ -132,9 +106,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-02-27T09:27:24.161Z",
-    "duration": 20153.617,
-    "expected": 2,
+    "startTime": "2025-02-27T09:33:22.114Z",
+    "duration": 22250.610999999997,
+    "expected": 1,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
