@@ -14,7 +14,7 @@ test("La page de formulaire de register doit se charger et vérifier le bon dér
   await page.getByTestId('register-password-confirm').fill("123Test");
   await page.getByTestId('register-submit').click();
 
-  await page.waitForURL('/login');
+  await page.waitForURL('**/login');
 
 });
 
