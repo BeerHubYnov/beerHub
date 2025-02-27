@@ -36,6 +36,7 @@ npx playwright show-report
 npx playwright test --reporter=json
 npx playwright test --reporter=lcov
 npx playwright test --reporter=junit
+npx playwright test --reporter=junit --output=playwright-report
 
 
 
