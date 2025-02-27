@@ -10,7 +10,6 @@ export default defineConfig({
 
   resolve: {
     alias: {
-        '@react-three/fiber/jsx-runtime': 'react/jsx-runtime',
         '@react-three/fiber/jsx-dev-runtime': 'react/jsx-dev-runtime'
     }
   },
