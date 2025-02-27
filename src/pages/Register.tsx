@@ -8,7 +8,7 @@ const Register: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [idRole, setIdRole] = useState<string>("");
-  const [error, setError] = useState<string | null>(null); // ✅ État pour stocker le message d'erreur
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,9 +25,25 @@ const Register: React.FC = () => {
     fetchRoleId();
   }, []);
 
+  // Vérifie si l'email est valide (contient un @ et un domaine correct)
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null); // ✅ Réinitialisation de l'erreur avant chaque soumission
+    setError(null);
+
+    if (!validateEmail(email)) {
+      setError("Email invalide !");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Le mot de passe doit contenir au moins 6 caractères !");
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError("Les mots de passe ne correspondent pas !");
@@ -35,18 +51,23 @@ const Register: React.FC = () => {
     }
 
     try {
-      const id_Role = idRole;
       await axios.post("http://localhost:3000/auth/register", {
         email,
         password,
         username,
-        id_Role,
+        id_Role: idRole,
       });
 
       navigate("/login");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Erreur lors de l'inscription", error);
-      setError("Erreur lors de l'inscription. Veuillez réessayer."); // ✅ Gestion de l'erreur
+      
+      // Vérifie si le backend retourne une erreur spécifique (ex: email déjà utilisé)
+      if (error.response?.data?.message === "Cet email est déjà utilisé") {
+        setError("Cet email est déjà utilisé !");
+      } else {
+        setError("Erreur lors de l'inscription. Veuillez réessayer.");
+      }
     }
   };
 
@@ -55,7 +76,7 @@ const Register: React.FC = () => {
       <h2>Inscription</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Nom d'utilisateur :</label>
+          <label htmlFor="username">Nom d'utilisateur :</label>
           <input
             data-testid="register-username"
             type="text"
@@ -65,7 +86,7 @@ const Register: React.FC = () => {
           />
         </div>
         <div>
-          <label>Email :</label>
+          <label htmlFor="email">Email :</label>
           <input
             data-testid="register-email"
             type="email"
@@ -75,7 +96,7 @@ const Register: React.FC = () => {
           />
         </div>
         <div>
-          <label>Mot de passe :</label>
+          <label htmlFor="password">Mot de passe :</label>
           <input
             data-testid="register-password"
             type="password"
@@ -85,7 +106,7 @@ const Register: React.FC = () => {
           />
         </div>
         <div>
-          <label>Confirmer le mot de passe :</label>
+          <label htmlFor="password-confirm">Confirmer le mot de passe :</label>
           <input
             data-testid="register-password-confirm"
             type="password"
@@ -95,9 +116,7 @@ const Register: React.FC = () => {
           />
         </div>
 
-        {/* ✅ Affichage du message d'erreur si présent */}
         {error && <p className="error-message">{error}</p>}
-
 
         <button data-testid="register-submit" type="submit">S'inscrire</button>
       </form>
