@@ -99,7 +99,7 @@ const Register: React.FC = () => {
         {error && <p className="error-message">{error}</p>}
 
 
-        <button type="submit">S'inscrire</button>
+        <button data-testid="register-submit" type="submit">S'inscrire</button>
       </form>
       <p>
         Vous avez déjà un compte ? <a href="/login">Connectez-vous</a>
