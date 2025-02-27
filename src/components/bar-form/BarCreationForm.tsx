@@ -80,23 +80,53 @@ const BarCreationForm: React.FC = () => {
       {errorMessage && <p className="error">{errorMessage}</p>}
       {successMessage && <p className="success">{successMessage}</p>}
       <form onSubmit={handleSubmit}>
-        <label>Nom:</label>
-        <input data-testid="bar-form-name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
-    
-        <label>Description:</label>
-        <textarea data-testid="bar-form-description" value={description} onChange={(e) => setDescription(e.target.value)} />
-    
-        <label>Happy Hour:</label>
-        <input data-testid="bar-form-happy-hour"  type="text" value={happyHour} onChange={(e) => setHappyHour(e.target.value)} />
-    
-        <label>Localisation X:</label>
-        <input data-testid="bar-form-latitude" type="number" value={localisationX} onChange={(e) => setLocalisationX(e.target.value)} />
-    
-        <label>Localisation Y:</label>
-        <input data-testid="bar-form-longitude" type="number" value={localisationY} onChange={(e) => setLocalisationY(e.target.value)} />
-    
-        <button type="submit">Ajouter</button>
-      </form>
+  <label htmlFor="name">Nom:</label>
+  <input
+    data-testid="bar-form-name"
+    id="name"
+    type="text"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+  />
+
+  <label htmlFor="description">Description:</label>
+  <textarea
+    data-testid="bar-form-description"
+    id="description"
+    value={description}
+    onChange={(e) => setDescription(e.target.value)}
+  />
+
+  <label htmlFor="happyHour">Happy Hour:</label>
+  <input
+    data-testid="bar-form-happy-hour"
+    id="happyHour"
+    type="text"
+    value={happyHour}
+    onChange={(e) => setHappyHour(e.target.value)}
+  />
+
+  <label htmlFor="localisationX">Localisation X:</label>
+  <input
+    data-testid="bar-form-latitude"
+    id="localisationX"
+    type="number"
+    value={localisationX}
+    onChange={(e) => setLocalisationX(e.target.value)}
+  />
+
+  <label htmlFor="localisationY">Localisation Y:</label>
+  <input
+    data-testid="bar-form-longitude"
+    id="localisationY"
+    type="number"
+    value={localisationY}
+    onChange={(e) => setLocalisationY(e.target.value)}
+  />
+
+  <button type="submit">Ajouter</button>
+</form>
+
     </div>
   );
 };
