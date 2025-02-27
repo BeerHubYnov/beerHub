@@ -89,6 +89,7 @@ const EventFormComponent: React.FC = () => {
       {successMessage && <p className="success">{successMessage}</p>}
       <p>Vous devez avoir un bar pour publier un évent</p>
       <form onSubmit={handleSubmit}>
+
   <label htmlFor="event-form-title">Titre de l'événement :</label>
   <input
     id="event-form-title"
@@ -155,6 +156,7 @@ const EventFormComponent: React.FC = () => {
 
   <button type="submit">Créer l'événement</button>
 </form>
+
     </div>
   );
 };
