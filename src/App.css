@@ -228,3 +228,9 @@ form {
 .user-profile-accordion:hover {
   background-color: none !important;
 }
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}

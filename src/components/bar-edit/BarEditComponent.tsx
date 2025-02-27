@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useAuth } from "../context/AuthContext"; // À décommenter si l'auth est en place
 import './BarEditComponent.css';
 
 interface Bar {
