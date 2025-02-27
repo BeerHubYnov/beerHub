@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 2
     },
     "preserveOutput": "always",
     "reporter": [
@@ -58,6 +58,78 @@
   },
   "suites": [
     {
+      "title": "tests/bar-form.spec.ts",
+      "file": "tests/bar-form.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "La page de formulaire d'ajout de bar doit se charger et afficher un message d'erreur",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5537,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-02-27T08:31:14.626Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9ea2047114bbac9d0229-9b3ce83f579806e36b44",
+          "file": "tests/bar-form.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "La page de formulaire d'ajout de bar doit se charger et afficher les bons éléments",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 4356,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-02-27T08:31:20.765Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9ea2047114bbac9d0229-e4c6928588139f45012b",
+          "file": "tests/bar-form.spec.ts",
+          "line": 18,
+          "column": 1
+        }
+      ]
+    },
+    {
       "title": "tests/event-form.spec.ts",
       "file": "tests/event-form.spec.ts",
       "column": 0,
@@ -76,9 +148,9 @@
               "projectName": "Desktop Chrome",
               "results": [
                 {
-                  "workerIndex": 0,
+                  "workerIndex": 1,
                   "status": "interrupted",
-                  "duration": 132658,
+                  "duration": 192568,
                   "error": {
                     "message": "Error: locator.click: Test ended.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Ajouter' })\u001b[22m\n",
                     "stack": "Error: locator.click: Test ended.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Ajouter' })\u001b[22m\n\n    at /Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub/tests/event-form.spec.ts:44:55",
@@ -102,7 +174,7 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-02-25T15:43:28.949Z",
+                  "startTime": "2025-02-27T08:31:14.676Z",
                   "attachments": [],
                   "errorLocation": {
                     "file": "/Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub/tests/event-form.spec.ts",
@@ -120,13 +192,125 @@
           "column": 1
         }
       ]
+    },
+    {
+      "title": "tests/home.spec.ts",
+      "file": "tests/home.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "La page d'accueil doit se charger et afficher les bons éléments",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 18359,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-02-27T08:31:25.146Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6bac76d6ade8ac28891d-e355145200d4493620b2",
+          "file": "tests/home.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "tests/login.spec.ts",
+      "file": "tests/login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "La page de formulaire de login doit se charger et afficher un message d'erreur",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 1725,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-02-27T08:31:43.525Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b6dc33e290e5a0a43b1-df0253577d35e8c960d6",
+          "file": "tests/login.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "La page de formulaire de login doit se charger et afficher les bons éléments",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 1464,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-02-27T08:31:45.257Z",
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b6dc33e290e5a0a43b1-6a99fd6618b33419404e",
+          "file": "tests/login.spec.ts",
+          "line": 19,
+          "column": 1
+        }
+      ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-02-25T15:43:27.830Z",
-    "duration": 134328.528,
-    "expected": 0,
+    "startTime": "2025-02-27T08:31:13.123Z",
+    "duration": 194810.12600000002,
+    "expected": 5,
     "skipped": 1,
     "unexpected": 0,
     "flaky": 0

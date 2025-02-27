@@ -31,7 +31,7 @@ test("La page de formulaire d'ajout de bar doit se charger et afficher les bons 
 
   await page.getByTestId('event-form-title').fill("Event Test");
   await page.getByTestId('event-form-description').fill("Event description");
-  await page.pause();
+
   await page.getByTestId('event-form-time').fill("2025-02-25T17:00");
 
   await page.getByTestId('event-form-category').selectOption("Concerts");
@@ -42,6 +42,6 @@ test("La page de formulaire d'ajout de bar doit se charger et afficher les bons 
   
 
   await page.getByRole("button", { name: "Ajouter" }).click();
-  await page.pause();
+
 });
 
