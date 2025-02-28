@@ -4,6 +4,11 @@
   padding: 0;
   text-align: center;
   min-height: 100vh;
+  background: rgb(255, 255, 255);
+  background: -moz-radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(226, 233, 148, 1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(226, 233, 148, 1) 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(226, 233, 148, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#e2e994", GradientType=1);
 }
 
 .card {
@@ -77,6 +82,7 @@ nav ul li {
   margin-top: 150px;
   align-items: center;
   min-height: 100vh;
+
 }
 
 .head-home {
