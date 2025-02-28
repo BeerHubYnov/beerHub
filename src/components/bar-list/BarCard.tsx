@@ -15,7 +15,7 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
         <strong>Description :</strong> {bar.description}
       </p>
 
-      <NavLink to={`/bar/${bar.id}`} className="homeLink">Voir les détails</NavLink>
+      <NavLink to={`/bar/${bar.id}`} className="bar-btn">Voir les détails</NavLink>
       <br />
     </div>
   );

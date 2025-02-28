@@ -1,9 +1,9 @@
 .bar-card {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 10px 0;
+    border: 1px black solid;
+    padding: 40px;
+    margin: 40px;
     transition: transform 0.2s ease-in-out;
   }
   
@@ -22,3 +22,15 @@
     margin: 5px 0;
   }
   
+  .bar-btn {
+    background-color: green;
+    border-radius: 35px;
+    padding: 25px 10px;
+    color: white;
+    padding-bottom: 10px;
+  }
+
+  .bar-btn:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+  }
