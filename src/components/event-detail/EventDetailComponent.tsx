@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import MapComponent from "../Map/MapComponent";
 
 interface Event {
   id: string;
@@ -24,28 +25,64 @@ interface EventDetailComponentProps {
   event: Event;
 }
 
-const EventDetailComponent: React.FC<EventDetailComponentProps> = ({ event }) => {
+const EventDetailComponent: React.FC<EventDetailComponentProps> = ({
+  event,
+}) => {
   return (
-    <div className="profil">
+    <div className="profil-event">
       <div className="card-event">
-     <h3>{event.title}</h3>
-      <p><strong>Description :</strong> {event.description}</p>
-      <p><strong>Catégorie :</strong> {event.category}</p>
-      <p><strong>Date :</strong> {new Date(event.dateHour).toLocaleString()}</p>
-      <p><strong>Lieu :</strong> {event.Bar.name}</p>
-      <p><strong>Happy Hour :</strong> {event.Bar.happyHoure}</p>
-      <p><strong>Localisation :</strong> {event.Bar.localisationX}, {event.Bar.localisationY}</p>
-      <br />
-      <hr/>
-      <br></br>
-      <NavLink to={`/event-edit/${event.id}`}><EditIcon/> Modifier</NavLink>
-      <br />
-      <NavLink to={`/event-delete/${event.id}`}><DeleteForeverIcon/> Supprimer</NavLink>
-      </div>
+        <h3>{event.title}</h3>
+        <p>
+          <strong>Description :</strong> {event.description}
+        </p>
+        <p>
+          <strong>Catégorie :</strong> {event.category}
+        </p>
+        <p>
+          <strong>Date :</strong> {new Date(event.dateHour).toLocaleString()}
+        </p>
+        <p>
+          <strong>Lieu :</strong> {event.Bar.name}
+        </p>
+        <p>
+          <strong>Happy Hour :</strong> {event.Bar.happyHoure}
+        </p>
+        <p>
+          <strong>Localisation :</strong> {event.Bar.localisationX},{" "}
+          {event.Bar.localisationY}
+        </p>
 
-     
-      
-      {/* Ajouter une carte ou autre information si nécessaire */}
+        <br />
+        <hr />
+        <br />
+
+        <NavLink to={`/event-edit/${event.id}`}>
+          <EditIcon /> Modifier
+        </NavLink>
+        <br />
+        <NavLink to={`/event-delete/${event.id}`}>
+          <DeleteForeverIcon /> Supprimer
+        </NavLink>
+      </div>
+      <div className="map-event">
+        {" "}
+        {/* Affichage de la carte */}
+        <h3>Localisation</h3>
+        <div style={{ height: "400px", width: "100%" }}>
+          <MapComponent
+            lat={event.Bar.localisationX}
+            lng={event.Bar.localisationY}
+            markers={[
+              {
+                id: event.Bar.id,
+                name: event.Bar.name,
+                localisationX: event.Bar.localisationX,
+                localisationY: event.Bar.localisationY,
+              },
+            ]}
+          />
+        </div>
+      </div>
     </div>
   );
 };

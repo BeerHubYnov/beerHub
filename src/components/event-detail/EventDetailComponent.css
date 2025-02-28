@@ -36,6 +36,10 @@
     transition: transform 0.3s ease-in-out;
   }
   
+  .profil-event {
+    display: flex;
+    flex-direction: row;
+  }
   /* Responsive */
   @media (max-width: 768px) {
     .bar-detail {
