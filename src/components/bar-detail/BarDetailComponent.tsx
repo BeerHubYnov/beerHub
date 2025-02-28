@@ -15,6 +15,7 @@ interface Bar {
   happyHoure: string;
   localisationX: number;
   localisationY: number;
+  id_User: string; // Ajout de l'ID du propriétaire
 }
 
 interface BarDetailComponentProps {
@@ -23,21 +24,25 @@ interface BarDetailComponentProps {
 
 const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
   const { isConnected } = useAuth();
-  const [isFavorite, setIsFavorite] = useState(false);
   const userId = localStorage.getItem("userId");
+  const [isOwner, setIsOwner] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [favoriteId, setFavoriteId] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (userId && bar.id_User === userId) {
+      setIsOwner(true);
+    }
+  }, [userId, bar.id_User]);
 
   useEffect(() => {
     if (!userId) return;
 
     const checkIfFavorite = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3000/favorite/user/${userId}`
-        );
-        if (!response.ok)
-          throw new Error("Erreur lors de la récupération des favoris.");
+        const response = await fetch(`http://localhost:3000/favorite/user/${userId}`);
+        if (!response.ok) throw new Error("Erreur lors de la récupération des favoris.");
 
         const data = await response.json();
         const favorite = data.find((fav: any) => fav.id_Bar === bar.id);
@@ -84,17 +89,13 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
   };
 
   const removeFromFavorites = async () => {
-    if (!favoriteId)
-      return showTemporaryMessage("Ce bar n'est pas dans vos favoris.");
+    if (!favoriteId) return showTemporaryMessage("Ce bar n'est pas dans vos favoris.");
 
     try {
-      const response = await fetch(
-        `http://localhost:3000/favorite/${favoriteId}`,
-        {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      const response = await fetch(`http://localhost:3000/favorite/${favoriteId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
 
       if (response.ok) {
         setIsFavorite(false);
@@ -108,7 +109,6 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
     }
   };
 
-  /** Fonction qui extrait l'affichage du bouton favori */
   const renderFavoriteButton = () => {
     if (!isConnected) {
       return <p>Connectez-vous pour ajouter ce bar en favori.</p>;
@@ -130,21 +130,21 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
       <h2>{bar.name}</h2>
       <p>{bar.description}</p>
       <p>Happy Hour : {bar.happyHoure}</p>
-      <br />
-      <div className="BtnList">
-        <NavLink to={`/bar-edit/${bar.id}`} className="BarBtn">
-          <EditIcon /> Modifier
-        </NavLink>
-        <br />
-        <NavLink to={`/bar-delete/${bar.id}`} className="BarBtn">
-          <DeleteForeverIcon /> Supprimer
-        </NavLink>
-      </div>
 
-      {/* ✅ Affichage du message temporaire */}
+      {/* Afficher les boutons Modifier/Supprimer seulement si l'utilisateur est propriétaire */}
+      {isOwner && (
+        <div className="BtnList">
+          <NavLink to={`/bar-edit/${bar.id}`} className="BarBtn">
+            <EditIcon /> Modifier
+          </NavLink>
+          <br />
+          <NavLink to={`/bar-delete/${bar.id}`} className="BarBtn">
+            <DeleteForeverIcon /> Supprimer
+          </NavLink>
+        </div>
+      )}
+
       {successMessage && <p className="success-message">{successMessage}</p>}
-
-      {/* ✅ Appel de la fonction indépendante pour le bouton favori */}
       {renderFavoriteButton()}
 
       <h3>Localisation</h3>
