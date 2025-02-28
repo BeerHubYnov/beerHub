@@ -31,7 +31,7 @@
   button {
     background-color: #007bff;
     color: white;
-    border: none;
+    border: 1px solid transparent !important;
     padding: 10px;
     margin-top: 15px;
     font-size: 18px;
@@ -40,9 +40,8 @@
   }
   
   button:hover {
-    background-color: #fff9c8;
+    background-color: transparent !important;
     color: black;
-    border: 1px solid black;
   }
   
   p {
