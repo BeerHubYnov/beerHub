@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import form from "./../assets/form.jpg";
 const Register: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [username, setUsername] = useState<string>("");
@@ -92,66 +92,85 @@ const Register: React.FC = () => {
 
   return (
     <div className="profil">
-      <h2>Inscription</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Nom d'utilisateur :</label>
-          <input
-            data-testid="register-username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
+      <div className="form-box">
+        <div className="form-img">
+          <img
+            src={form}
+            alt="Illustration du formulaire"
+            className="form-image"
           />
         </div>
+        <div className="form-content">
+          <h2>Inscription</h2>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="username">Nom d'utilisateur :</label>
+              <input
+                data-testid="register-username"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
 
-        <div>
-          <label htmlFor="email">Email :</label>
-          <input
-            data-testid="register-email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          {emailError && <p className="error-message">{emailError}</p>}
+            <div>
+              <label htmlFor="email">Email :</label>
+              <input
+                data-testid="register-email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              {emailError && <p className="error-message">{emailError}</p>}
+            </div>
+
+            <div>
+              <label htmlFor="password">Mot de passe :</label>
+              <input
+                data-testid="register-password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              {passwordError && (
+                <p className="error-message">{passwordError}</p>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="password-confirm">
+                Confirmer le mot de passe :
+              </label>
+              <input
+                data-testid="register-password-confirm"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+              {confirmPasswordError && (
+                <p className="error-message">{confirmPasswordError}</p>
+              )}
+            </div>
+
+            {serverError && <p className="error-message">{serverError}</p>}
+
+            <button
+              className="btn-authent"
+              data-testid="register-submit"
+              type="submit"
+            >
+              S'inscrire
+            </button>
+          </form>
+          <p>
+            Vous avez déjà un compte ? <a href="/login">Connectez-vous</a>
+          </p>
         </div>
-
-        <div>
-          <label htmlFor="password">Mot de passe :</label>
-          <input
-            data-testid="register-password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          {passwordError && <p className="error-message">{passwordError}</p>}
-        </div>
-
-        <div>
-          <label htmlFor="password-confirm">Confirmer le mot de passe :</label>
-          <input
-            data-testid="register-password-confirm"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-          {confirmPasswordError && (
-            <p className="error-message">{confirmPasswordError}</p>
-          )}
-        </div>
-
-        {serverError && <p className="error-message">{serverError}</p>}
-
-        <button data-testid="register-submit" type="submit">
-          S'inscrire
-        </button>
-      </form>
-      <p>
-        Vous avez déjà un compte ? <a href="/login">Connectez-vous</a>
-      </p>
+      </div>
     </div>
   );
 };

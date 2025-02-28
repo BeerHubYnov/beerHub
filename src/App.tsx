@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import BarList from "./pages/BarList";
 import BarForm from "./pages/BarForm";
 import Profil from "./pages/Profil";
+import About from "./pages/About";
 import BarEdit from "./pages/BarEdit";
 import BarDetail from "./pages/BarDetail";
 import BarDeletePage from "./pages/BarDeletePage";
@@ -62,10 +63,3 @@ export default function App() {
   );
 }
 
-function About() {
-  return (
-    <div className="profil">
-      <h2>About</h2>
-    </div>
-  );
-}

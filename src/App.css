@@ -194,17 +194,18 @@ form {
 
 .homeBtn {
   display: flex;
+  align-items: center;
 }
 
 .homeLink {
-  border: 1px black solid;
-  border-radius: 25px;
   padding: 15px 10px;
+  height: auto;
   margin: 10px;
   color: black;
 }
 
 .homeLink:hover {
+  border: 1px black solid;
   background-color: black;
   color: white;
 }
@@ -227,4 +228,31 @@ form {
     display: flex;
     flex-direction: column;
   }
+}
+
+.form-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.form-img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.form-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.form-content {
+  flex: 1;
+  max-width: 600px;
+}
+.btn-authent:hover {
+  border: 1px solid black !important;
 }

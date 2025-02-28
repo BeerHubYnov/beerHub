@@ -53,6 +53,11 @@
   animation: bounce 1.5s infinite ease-in-out;
 }
 
+.anim-home h2 {
+  font-size: 3em;
+  color: black;
+}
+
 @keyframes bounce {
   0%, 100% {
     transform: translateY(0);

@@ -6,17 +6,18 @@ import { Link } from "react-router-dom";
 const HomeContent: React.FC = () => {
   return (
     <div className="anim-home">
-      <h3>Trouver les évènements</h3>
-      <Lottie
+      <h2>Trouver les évènements</h2>
+
+      <div className="homeBtn">
+        <Link to="/bars" className="homeLink">
+          LISTE DES BARS
+        </Link>
+        <Lottie
         animationData={drinkFill}
         style={{ width: "350px", height: "350px" }}
       />
-      <div className="homeBtn">
-        <Link to="/bars" className="homeLink">
-          Liste des bars
-        </Link>
         <Link to="/events" className="homeLink">
-          Liste des évents
+          LISTE DES EVENTS
         </Link>
       </div>
     </div>
