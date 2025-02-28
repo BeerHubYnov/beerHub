@@ -6,7 +6,7 @@ const Loading: React.FC = () => {
       <div className="loader-wrap">
         <Lottie animationData={drink} />
 
-        <p className="loader-text">chargement en cours</p>
+        <p className="loader-text">Chargement en cours</p>
       </div>
     </div>
   );

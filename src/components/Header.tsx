@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Dialog, DialogContent, IconButton, List } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import WidgetsIcon from "@mui/icons-material/Widgets";
 import { Zoom, Fade, Flip, Bounce, Roll } from "react-awesome-reveal";
+import MenuIcon from '@mui/icons-material/Menu';
 import { useAuth } from "../context/AuthContext";
 const Header: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,7 +17,7 @@ const Header: React.FC = () => {
     <>
       {/* Icône pour ouvrir le menu */}
       <div className="header-container">
-        <WidgetsIcon onClick={toggleModal} className="menu-icon" />
+        <MenuIcon onClick={toggleModal} className="menu-icon" />
       </div>
 
       {/* Menu en dialogue modal */}
