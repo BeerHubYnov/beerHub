@@ -100,7 +100,7 @@ const UserBar: React.FC = () => {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <h2>Mes Bars</h2>
+          <h2>Mes bars publiés</h2>
         </AccordionSummary>
         <AccordionDetails>
           {loading && <p>Chargement de mes bars...</p>}

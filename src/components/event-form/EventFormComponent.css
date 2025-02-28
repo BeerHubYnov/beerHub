@@ -40,7 +40,9 @@
   }
   
   button:hover {
-    background-color: #0056b3;
+    background-color: #fff9c8;
+    color: black;
+    border: 1px solid black;
   }
   
   p {

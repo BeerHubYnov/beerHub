@@ -1,8 +1,16 @@
-import React, { createContext, useContext, useState, useReducer, useEffect, useMemo } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useReducer,
+  useEffect,
+  useMemo,
+} from "react";
+import { useNavigate } from "react-router-dom";
 
 // Définir les types des informations utilisateur
 interface UserInfos {
-  username: string; 
+  username: string;
   email: string;
   password: string;
 }
@@ -31,7 +39,9 @@ const authReducer = (state: AuthContextType, action: any): AuthContextType => {
 };
 
 // Création du contexte
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(
+  undefined
+);
 
 // Hook personnalisé pour utiliser le contexte
 export const useAuth = () => {
@@ -43,16 +53,22 @@ export const useAuth = () => {
 };
 
 // Provider pour gérer l'authentification
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isConnected, setIsConnected] = useState<boolean>(!!localStorage.getItem("token"));
-  
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const navigate = useNavigate(); // ✅ Déplacement de useNavigate() dans le composant
+
+  const [isConnected, setIsConnected] = useState<boolean>(
+    !!localStorage.getItem("token")
+  );
+
   // Charger les infos utilisateur depuis localStorage au démarrage
   const savedUserInfos = localStorage.getItem("userInfos");
   const initialUserInfos = savedUserInfos ? JSON.parse(savedUserInfos) : null;
-  
+
   const [state, dispatch] = useReducer(authReducer, {
     isConnected,
-    userInfos: initialUserInfos,  // Initialiser avec les infos utilisateur sauvegardées
+    userInfos: initialUserInfos, // Initialiser avec les infos utilisateur sauvegardées
     login: () => {},
     logout: () => {},
     updateUserInfos: () => {},
@@ -73,13 +89,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = (token: string) => {
     localStorage.setItem("token", token);
     setIsConnected(true);
+    window.location.reload(); // ✅ Rafraîchir la page après connexion si nécessaire
   };
 
   // Fonction pour gérer la déconnexion
   const logout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("userInfos"); // Supprimer les infos utilisateur en local
+    localStorage.removeItem("userInfos"); // ✅ Supprimer les infos utilisateur en local
     setIsConnected(false);
+    navigate("/"); // ✅ Rediriger vers l'accueil après déconnexion
+    window.location.reload(); // ✅ Forcer le refresh de la page
   };
 
   // Fonction pour mettre à jour les informations utilisateur
@@ -94,12 +113,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   // Utilisation de useMemo pour éviter que l'objet ne change à chaque rendu
-  const contextValue = useMemo(() => ({
-    ...state,
-    login,
-    logout,
-    updateUserInfos,
-  }), [state, login, logout, updateUserInfos]);
+  const contextValue = useMemo(
+    () => ({
+      ...state,
+      login,
+      logout,
+      updateUserInfos,
+    }),
+    [state]
+  );
 
   return (
     <AuthContext.Provider value={contextValue}>

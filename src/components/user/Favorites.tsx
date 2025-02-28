@@ -77,7 +77,7 @@ const Favorites: React.FC = () => {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <h2>Mes Bars Favoris</h2>
+          <h2>Mes favoris</h2>
         </AccordionSummary>
         <AccordionDetails>
           {loading && <p>Chargement des favoris...</p>}
