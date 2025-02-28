@@ -15,6 +15,7 @@ interface Event {
   id_User: string; // Ajout de l'ID du propriétaire
   Bar: {
     id: string;
+    id_User: string;
     name: string;
     description: string;
     happyHoure: string;
@@ -34,10 +35,12 @@ const EventDetailComponent: React.FC<EventDetailComponentProps> = ({
   const [isOwner, setIsOwner] = useState(false);
 
   useEffect(() => {
-    if (userId && event.id_User === userId) {
+    if (userId && event?.Bar?.id_User === userId) { // Vérifie event.Bar.id_User
       setIsOwner(true);
     }
-  }, [userId, event.id_User]);
+  }, [userId, event]);
+  
+  
 
   return (
     <div className="profil-event">
