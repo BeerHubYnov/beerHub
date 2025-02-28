@@ -12,7 +12,7 @@ const EventFormComponent: React.FC = () => {
   const [dateHour, setDateHour] = useState("");
   const [category, setCategory] = useState("");
   const [bars, setBars] = useState<Bar[]>([]);
-  const [selectedBarId, setSelectedBarId] = useState<string | "">("");
+  const [selectedBarId, setSelectedBarId] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
  

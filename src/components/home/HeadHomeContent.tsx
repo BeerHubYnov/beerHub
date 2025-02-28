@@ -3,7 +3,7 @@ import "./Home.css";
 import Model from './animation/Model'
 const HeadHomeContent: React.FC = () => {
   return (
-    <>
+
     <div style={{ position: "relative" }}>
       <div className="head-home">
         <h1 className="home-title">BeerHub</h1>
@@ -13,9 +13,6 @@ const HeadHomeContent: React.FC = () => {
       <Model/>
       </div>
     </div>
-
-  
-    </>
   );
 };
 

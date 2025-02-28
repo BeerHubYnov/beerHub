@@ -75,12 +75,6 @@ const Header: React.FC = () => {
                   </Link>
                 </li>
 
-                <li>
-                  <Link to="/BarsMapPage" onClick={toggleModal}>
-                    Carte des bars
-                  </Link>
-                </li>
-
                 {isConnected ? (
                   <li>
                     <Link to="/profil" onClick={toggleModal}>

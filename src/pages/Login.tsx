@@ -42,7 +42,7 @@ const Login: React.FC = () => {
       <h2>Connexion</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Nom d'utilisateur :</label>
+          <label htmlFor="username">Nom d'utilisateur :</label>
           <input
             data-testid="login-name"
             type="text"
@@ -52,7 +52,7 @@ const Login: React.FC = () => {
           />
         </div>
         <div>
-          <label>Mot de passe :</label>
+          <label htmlFor="password">Mot de passe :</label>
           <input
             data-testid="login-pwd"
             type="password"

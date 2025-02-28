@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import BarCard from "./../bar-list/BarCard"; 
+import BarCard from "./../bar-list/BarCard";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -46,14 +46,21 @@ const UserBar: React.FC = () => {
     }
 
     const fetchProprio = async () => {
-      console.log("Début de la récupération des bars pour l'utilisateur:", userId);
+      console.log(
+        "Début de la récupération des bars pour l'utilisateur:",
+        userId
+      );
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:3000/bar/user/${userId}`);
+        const response = await fetch(
+          `http://localhost:3000/bar/user/${userId}`
+        );
         console.log("Réponse du serveur reçue, statut:", response.status);
-        
+
         if (!response.ok) {
-          throw new Error("Erreur lors de la récupération des bars dont vous êtes proprio.");
+          throw new Error(
+            "Erreur lors de la récupération des bars dont vous êtes proprio."
+          );
         }
 
         const data = await response.json();
@@ -64,7 +71,7 @@ const UserBar: React.FC = () => {
           // Si la réponse est un objet, on le met dans un tableau
           const bars = Array.isArray(data) ? data : [data];
           console.log("Nombre de bars récupérés :", bars.length);
-          setProprio(bars);  // Met à jour l'état avec le tableau de bars
+          setProprio(bars); // Met à jour l'état avec le tableau de bars
         } else {
           console.error("Aucune donnée retournée par l'API.");
           setError("Aucun bar trouvé.");
@@ -96,17 +103,19 @@ const UserBar: React.FC = () => {
           <h2>Mes Bars</h2>
         </AccordionSummary>
         <AccordionDetails>
-          {loading ? (
-            <p>Chargement de mes bars...</p>
-          ) : error ? (
-            <p style={{ color: "red" }}>❌ {error}</p>
-          ) : proprio.length > 0 ? (
+          {loading && <p>Chargement de mes bars...</p>}
+
+          {!loading && error && <p style={{ color: "red" }}>❌ {error}</p>}
+
+          {!loading && !error && proprio.length > 0 && (
             <div className="bar-list">
               {proprio.map((bar) => (
-                <BarCard key={bar.id} bar={bar} /> // Affichage des bars
+                <BarCard key={bar.id} bar={bar} />
               ))}
             </div>
-          ) : (
+          )}
+
+          {!loading && !error && proprio.length === 0 && (
             <p>Aucun bar ajouté.</p>
           )}
         </AccordionDetails>

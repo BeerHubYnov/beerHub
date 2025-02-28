@@ -10,6 +10,7 @@ import EventDetailComponent from "../components/event-detail/EventDetailComponen
     description: string;
     id_Bar: string;
     category: string;
+    id_User: string; 
     Bar: {
       id: string;
       name: string;

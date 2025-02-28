@@ -7,7 +7,6 @@ const BarList: React.FC = () => {
     <div className="profil">
       <h2>Liste des Bars</h2>
       <div className="bars-page">
-        {" "}
         <BarListComponent />
         <BarsMapPage />
       </div>

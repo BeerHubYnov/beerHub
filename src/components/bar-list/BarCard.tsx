@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./BarCard.css";
-
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 interface Bar {
   id: string;
   name: string;
@@ -15,7 +15,9 @@ const BarCard: React.FC<{ bar: Bar }> = ({ bar }) => {
         <strong>Description :</strong> {bar.description}
       </p>
 
-      <NavLink to={`/bar/${bar.id}`} className="bar-btn">Voir les détails</NavLink>
+      <NavLink to={`/bar/${bar.id}`} className="bar-btn">
+        <RemoveRedEyeIcon/>   Voir
+      </NavLink>
       <br />
     </div>
   );

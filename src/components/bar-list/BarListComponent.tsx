@@ -37,7 +37,7 @@ const BarListComponent: React.FC = () => {
       {errorMessage && <p className="error">{errorMessage}</p>}
       <div className="bar-list">
         {bars.length > 0 ? (
-          bars.map((bar) => <BarCard key={bar.id} bar={bar} />) 
+          bars.map((bar) => <BarCard key={bar.id} bar={bar} />)
         ) : (
           <p>Chargement des bars...</p>
         )}

@@ -76,22 +76,23 @@ const Favorites: React.FC = () => {
           expandIcon={<ArrowDownwardIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
-          
         >
           <h2>Mes Bars Favoris</h2>
         </AccordionSummary>
         <AccordionDetails>
-          {loading ? (
-            <p>Chargement des favoris...</p>
-          ) : error ? (
-            <p style={{ color: "red" }}>❌ {error}</p>
-          ) : favorites.length > 0 ? (
+          {loading && <p>Chargement des favoris...</p>}
+
+          {!loading && error && <p style={{ color: "red" }}>❌ {error}</p>}
+
+          {!loading && !error && favorites.length > 0 && (
             <div className="bar-list">
               {favorites.map((bar) => (
                 <BarCard key={bar.id} bar={bar} />
               ))}
             </div>
-          ) : (
+          )}
+
+          {!loading && !error && favorites.length === 0 && (
             <p>Aucun favori ajouté.</p>
           )}
         </AccordionDetails>

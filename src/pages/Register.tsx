@@ -8,11 +8,13 @@ const Register: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [idRole, setIdRole] = useState<string>("");
-  
+
   // États pour stocker les erreurs spécifiques
   const [emailError, setEmailError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
-  const [confirmPasswordError, setConfirmPasswordError] = useState<string | null>(null);
+  const [confirmPasswordError, setConfirmPasswordError] = useState<
+    string | null
+  >(null);
   const [serverError, setServerError] = useState<string | null>(null);
 
   const navigate = useNavigate();
@@ -20,7 +22,9 @@ const Register: React.FC = () => {
   useEffect(() => {
     const fetchRoleId = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/role/name/User");
+        const response = await axios.get(
+          "http://localhost:3000/role/name/User"
+        );
         setIdRole(response.data.id);
       } catch (error) {
         console.error("Erreur lors de la récupération de l'id du rôle", error);
@@ -76,7 +80,7 @@ const Register: React.FC = () => {
       navigate("/login");
     } catch (error: any) {
       console.error("Erreur lors de l'inscription", error);
-      
+
       // Vérifie si le backend retourne une erreur spécifique (ex: email déjà utilisé)
       if (error.response?.data?.message === "Cet email est déjà utilisé") {
         setEmailError("Cet email est déjà utilisé !");
@@ -134,12 +138,16 @@ const Register: React.FC = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-          {confirmPasswordError && <p className="error-message">{confirmPasswordError}</p>}
+          {confirmPasswordError && (
+            <p className="error-message">{confirmPasswordError}</p>
+          )}
         </div>
 
         {serverError && <p className="error-message">{serverError}</p>}
 
-        <button data-testid="register-submit" type="submit">S'inscrire</button>
+        <button data-testid="register-submit" type="submit">
+          S'inscrire
+        </button>
       </form>
       <p>
         Vous avez déjà un compte ? <a href="/login">Connectez-vous</a>

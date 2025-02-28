@@ -1,4 +1,4 @@
-// EasterEgg.tsx
+
 import React, { useState, useEffect, useRef } from 'react';
 import './EasterEgg.css';
 

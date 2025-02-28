@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useReducer, useEffect } from "react";
+import React, { createContext, useContext, useState, useReducer, useEffect, useMemo } from "react";
 
 // Définir les types des informations utilisateur
 interface UserInfos {
@@ -21,19 +21,19 @@ interface AuthContextType {
 
 // Le reducer pour gérer les actions
 const authReducer = (state: AuthContextType, action: any): AuthContextType => {
-  switch (action.type) {
-    case UPDATE_USER_INFOS:
-      return {
-        ...state,
-        userInfos: action.payload, // Mettre à jour les infos utilisateur
-      };
-    default:
-      return state;
+  if (action.type === UPDATE_USER_INFOS) {
+    return {
+      ...state,
+      userInfos: action.payload, // Mettre à jour les infos utilisateur
+    };
   }
+  return state;
 };
 
+// Création du contexte
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Hook personnalisé pour utiliser le contexte
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -42,6 +42,7 @@ export const useAuth = () => {
   return context;
 };
 
+// Provider pour gérer l'authentification
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isConnected, setIsConnected] = useState<boolean>(!!localStorage.getItem("token"));
   
@@ -68,18 +69,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, []);
 
+  // Fonction pour gérer la connexion
   const login = (token: string) => {
     localStorage.setItem("token", token);
     setIsConnected(true);
   };
 
+  // Fonction pour gérer la déconnexion
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userInfos"); // Supprimer les infos utilisateur en local
     setIsConnected(false);
-    localStorage.removeItem("userInfos"); // Optionnellement, supprimer les infos utilisateur aussi
   };
 
-  // Fonction pour mettre à jour les informations de l'utilisateur dans l'état global et localStorage
+  // Fonction pour mettre à jour les informations utilisateur
   const updateUserInfos = (userInfos: UserInfos) => {
     dispatch({
       type: UPDATE_USER_INFOS,
@@ -90,8 +93,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.setItem("userInfos", JSON.stringify(userInfos));
   };
 
+  // Utilisation de useMemo pour éviter que l'objet ne change à chaque rendu
+  const contextValue = useMemo(() => ({
+    ...state,
+    login,
+    logout,
+    updateUserInfos,
+  }), [state, login, logout, updateUserInfos]);
+
   return (
-    <AuthContext.Provider value={{ ...state, login, logout, updateUserInfos }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );

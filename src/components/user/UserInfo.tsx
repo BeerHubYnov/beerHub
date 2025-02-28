@@ -13,10 +13,12 @@ const UserInfo: React.FC = () => {
   }
 
   const { userInfos, updateUserInfos } = authContext;
-  const [username, setUsername] = useState(userInfos?.username || "");
-  const [email, setEmail] = useState(userInfos?.email || "");
-  const [password, setPassword] = useState(userInfos?.password || "");
-  const [confirmationMessage, setConfirmationMessage] = useState<string | null>(null);
+  const [username, setUsername] = useState(userInfos?.username ?? "");
+  const [email, setEmail] = useState(userInfos?.email ?? "");
+  const [password, setPassword] = useState(userInfos?.password ?? "");
+  const [confirmationMessage, setConfirmationMessage] = useState<string | null>(
+    null
+  );
   const [loading, setLoading] = useState(false);
 
   const updateUserInfo = async () => {
@@ -24,7 +26,9 @@ const UserInfo: React.FC = () => {
     const userId = localStorage.getItem("userId");
 
     if (!token || !userId) {
-      setConfirmationMessage("Vous devez être connecté pour modifier vos informations.");
+      setConfirmationMessage(
+        "Vous devez être connecté pour modifier vos informations."
+      );
       return;
     }
 
@@ -34,7 +38,7 @@ const UserInfo: React.FC = () => {
         method: "PATCH", // Utiliser la méthode PATCH pour la mise à jour partielle
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`, // Passer le token dans les headers
+          Authorization: `Bearer ${token}`, // Passer le token dans les headers
         },
         body: JSON.stringify({ username, email, password }), // Utilise les valeurs mises à jour
       });
@@ -42,7 +46,9 @@ const UserInfo: React.FC = () => {
       if (response.ok) {
         // Si la mise à jour est réussie
         updateUserInfos({ username, email, password }); // Utilise les nouvelles valeurs
-        setConfirmationMessage("Les informations ont été mises à jour avec succès !");
+        setConfirmationMessage(
+          "Les informations ont été mises à jour avec succès !"
+        );
       } else {
         throw new Error("Erreur lors de la mise à jour.");
       }
@@ -65,32 +71,44 @@ const UserInfo: React.FC = () => {
       </AccordionSummary>
       <AccordionDetails>
         <div>
-          <label className="input-label">Nom d'utilisateur</label>
+          <label className="input-label" htmlFor="username">
+            Nom d'utilisateur
+          </label>
           <input
+            id="username"
             className="input-component"
             type="text"
             value={username}
-            onChange={(e) => setUsername(e.target.value)} // Mettre à jour l'username
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
+
         <div>
-          <label className="input-label">Email</label>
+          <label className="input-label" htmlFor="email">
+            Email
+          </label>
           <input
+            id="email"
             className="input-component"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)} // Mettre à jour l'email
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+
         <div>
-          <label className="input-label">Mot de passe</label>
+          <label className="input-label" htmlFor="password">
+            Mot de passe
+          </label>
           <input
+            id="password"
             className="input-component"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)} // Mettre à jour le mot de passe
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+
         <div>
           <button
             className="button-component"

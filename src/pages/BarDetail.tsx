@@ -9,6 +9,7 @@ interface Bar {
   happyHoure: string;
   localisationX: number;
   localisationY: number;
+  id_User: string;
 }
 
 const BarDetail: React.FC = () => {
