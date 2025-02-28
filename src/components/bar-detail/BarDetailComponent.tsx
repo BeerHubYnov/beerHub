@@ -126,7 +126,7 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
   };
 
   return (
-    <div>
+    <div className="profil">
       <h2>{bar.name}</h2>
       <p>{bar.description}</p>
       <p>Happy Hour : {bar.happyHoure}</p>

@@ -43,7 +43,7 @@ const EventDetailComponent: React.FC<EventDetailComponentProps> = ({
   
 
   return (
-    <div className="profil-event">
+    <div className="profil-event profil">
       <div className="card-event">
         <h3>{event.title}</h3>
         <p>
