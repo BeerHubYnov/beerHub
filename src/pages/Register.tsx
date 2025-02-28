@@ -8,7 +8,13 @@ const Register: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [idRole, setIdRole] = useState<string>("");
-  const [error, setError] = useState<string | null>(null);
+  
+  // États pour stocker les erreurs spécifiques
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [confirmPasswordError, setConfirmPasswordError] = useState<string | null>(null);
+  const [serverError, setServerError] = useState<string | null>(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,14 +24,14 @@ const Register: React.FC = () => {
         setIdRole(response.data.id);
       } catch (error) {
         console.error("Erreur lors de la récupération de l'id du rôle", error);
-        setError("Impossible de récupérer le rôle utilisateur.");
+        setServerError("Impossible de récupérer le rôle utilisateur.");
       }
     };
 
     fetchRoleId();
   }, []);
 
-  // Vérifie si l'email est valide (contient un @ et un domaine correct)
+  // Vérifie si l'email est valide
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -33,22 +39,31 @@ const Register: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null);
+
+    // Réinitialisation des erreurs
+    setEmailError(null);
+    setPasswordError(null);
+    setConfirmPasswordError(null);
+    setServerError(null);
+
+    let hasError = false;
 
     if (!validateEmail(email)) {
-      setError("Email invalide !");
-      return;
+      setEmailError("Email invalide !");
+      hasError = true;
     }
 
     if (password.length < 6) {
-      setError("Le mot de passe doit contenir au moins 6 caractères !");
-      return;
+      setPasswordError("Le mot de passe doit contenir au moins 6 caractères !");
+      hasError = true;
     }
 
     if (password !== confirmPassword) {
-      setError("Les mots de passe ne correspondent pas !");
-      return;
+      setConfirmPasswordError("Les mots de passe ne correspondent pas !");
+      hasError = true;
     }
+
+    if (hasError) return; // Stoppe l'envoi du formulaire s'il y a une erreur
 
     try {
       await axios.post("http://localhost:3000/auth/register", {
@@ -64,9 +79,9 @@ const Register: React.FC = () => {
       
       // Vérifie si le backend retourne une erreur spécifique (ex: email déjà utilisé)
       if (error.response?.data?.message === "Cet email est déjà utilisé") {
-        setError("Cet email est déjà utilisé !");
+        setEmailError("Cet email est déjà utilisé !");
       } else {
-        setError("Erreur lors de l'inscription. Veuillez réessayer.");
+        setServerError("Erreur lors de l'inscription. Veuillez réessayer.");
       }
     }
   };
@@ -85,6 +100,7 @@ const Register: React.FC = () => {
             required
           />
         </div>
+
         <div>
           <label htmlFor="email">Email :</label>
           <input
@@ -94,7 +110,9 @@ const Register: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          {emailError && <p className="error-message">{emailError}</p>}
         </div>
+
         <div>
           <label htmlFor="password">Mot de passe :</label>
           <input
@@ -104,7 +122,9 @@ const Register: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          {passwordError && <p className="error-message">{passwordError}</p>}
         </div>
+
         <div>
           <label htmlFor="password-confirm">Confirmer le mot de passe :</label>
           <input
@@ -114,9 +134,10 @@ const Register: React.FC = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+          {confirmPasswordError && <p className="error-message">{confirmPasswordError}</p>}
         </div>
 
-        {error && <p className="error-message">{error}</p>}
+        {serverError && <p className="error-message">{serverError}</p>}
 
         <button data-testid="register-submit" type="submit">S'inscrire</button>
       </form>
