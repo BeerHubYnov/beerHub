@@ -180,15 +180,7 @@ form {
   margin: auto;
 }
 
-.card-event {
-  background-color: #FDA76F;
-  margin: 30px;
-  padding: 20px;
-  margin-top: 180px;
-  border-radius: 15px;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .homeBtn {
   display: flex;

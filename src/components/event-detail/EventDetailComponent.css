@@ -8,6 +8,16 @@
     font-family: Arial, sans-serif;
   }
   
+  .card-event, .map-event {
+    flex: 1;
+  }
+  .card-event {
+    margin: 30px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  
   .bar-detail h2 {
     font-size: 24px;
     color: #333;
@@ -39,6 +49,9 @@
   .profil-event {
     display: flex;
     flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    margin: 40px;
   }
   /* Responsive */
   @media (max-width: 768px) {
@@ -54,5 +67,8 @@
     .bar-detail p {
       font-size: 14px;
     }
+    .profil-event {
+      flex-direction: column;
+    }
   }
-  
+ 

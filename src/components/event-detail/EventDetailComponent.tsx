@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import MapComponent from "../Map/MapComponent";
+import "./EventDetailComponent.css";
 
 interface Event {
   id: string;
@@ -11,6 +12,7 @@ interface Event {
   description: string;
   id_Bar: string;
   category: string;
+  id_User: string; // Ajout de l'ID du propriétaire
   Bar: {
     id: string;
     name: string;
@@ -28,6 +30,15 @@ interface EventDetailComponentProps {
 const EventDetailComponent: React.FC<EventDetailComponentProps> = ({
   event,
 }) => {
+  const userId = localStorage.getItem("userId");
+  const [isOwner, setIsOwner] = useState(false);
+
+  useEffect(() => {
+    if (userId && event.id_User === userId) {
+      setIsOwner(true);
+    }
+  }, [userId, event.id_User]);
+
   return (
     <div className="profil-event">
       <div className="card-event">
@@ -52,21 +63,20 @@ const EventDetailComponent: React.FC<EventDetailComponentProps> = ({
           {event.Bar.localisationY}
         </p>
 
-        <br />
-        <hr />
-        <br />
-
-        <NavLink to={`/event-edit/${event.id}`}>
-          <EditIcon /> Modifier
-        </NavLink>
-        <br />
-        <NavLink to={`/event-delete/${event.id}`}>
-          <DeleteForeverIcon /> Supprimer
-        </NavLink>
+        {isOwner && (
+          <>
+            <NavLink to={`/event-edit/${event.id}`}>
+              <EditIcon /> Modifier
+            </NavLink>
+            <br />
+            <NavLink to={`/event-delete/${event.id}`}>
+              <DeleteForeverIcon /> Supprimer
+            </NavLink>
+          </>
+        )}
       </div>
+
       <div className="map-event">
-        {" "}
-        {/* Affichage de la carte */}
         <h3>Localisation</h3>
         <div style={{ height: "400px", width: "100%" }}>
           <MapComponent
