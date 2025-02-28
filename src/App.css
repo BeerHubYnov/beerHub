@@ -215,3 +215,14 @@ form {
   background-color: none !important;
 }
 
+
+.bars-page {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .bars-page {
+    display: flex;
+    flex-direction: column;
+  }
+}
