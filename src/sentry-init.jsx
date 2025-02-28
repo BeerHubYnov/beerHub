@@ -1,6 +1,3 @@
-import React from "react"; // Nécessaire pour le JSX
-import { createRoot } from "react-dom/client"; // Import de createRoot
-import App from "./App"; // Import du composant principal
 import * as Sentry from "@sentry/react";
 
 // Initialisation de Sentry
