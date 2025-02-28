@@ -68,6 +68,7 @@ const EventDetailComponent: React.FC<EventDetailComponentProps> = ({
 
         {isOwner && (
           <>
+          <hr/>
             <NavLink to={`/event-edit/${event.id}`}>
               <EditIcon /> Modifier
             </NavLink>

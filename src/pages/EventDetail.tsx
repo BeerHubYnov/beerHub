@@ -3,23 +3,24 @@ import { useParams } from "react-router-dom";
 import EventDetailComponent from "../components/event-detail/EventDetailComponent";
 
 
-  interface Event {
+interface Event {
+  id: string;
+  dateHour: string;
+  title: string;
+  description: string;
+  id_Bar: string;
+  category: string;
+  id_User: string; 
+  Bar: {
     id: string;
-    dateHour: string;
-    title: string;
+    id_User: string;
+    name: string;
     description: string;
-    id_Bar: string;
-    category: string;
-    id_User: string; 
-    Bar: {
-      id: string;
-      name: string;
-      description: string;
-      happyHoure: string;
-      localisationX: number;
-      localisationY: number;
-    };
-  }
+    happyHoure: string;
+    localisationX: number;
+    localisationY: number;
+  };
+}
 
 const EventDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
