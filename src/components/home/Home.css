@@ -39,10 +39,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  cursor: pointer;
+  cursor: auto !important;
   display: flex;
   z-index: 2;
-  pointer-events: none;
 }
 
 
