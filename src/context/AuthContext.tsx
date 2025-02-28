@@ -89,7 +89,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const login = (token: string) => {
     localStorage.setItem("token", token);
     setIsConnected(true);
-    window.location.reload(); // ✅ Rafraîchir la page après connexion si nécessaire
+    navigate("/");
+    window.location.reload(); 
   };
 
   // Fonction pour gérer la déconnexion
