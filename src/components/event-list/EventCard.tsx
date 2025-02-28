@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import "./EventCard.css";
 
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+
 interface Event {
   id: string;
   dateHour: string;
@@ -25,7 +27,7 @@ const EventCard: React.FC<{ event: Event }> = ({ event }) => {
       <p><strong>Catégorie :</strong> {event.category}</p>
       <p><strong>Description :</strong> {event.description}</p>
 
-      <NavLink to={`/event/${event.id}`}>Voir les détails</NavLink>
+      <NavLink to={`/event/${event.id}`} className="bar-btn"> <RemoveRedEyeIcon/> Voir</NavLink>
       <br />
 
     </div>
