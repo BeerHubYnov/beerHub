@@ -41,3 +41,9 @@ npx playwright test --reporter=junit --output=playwright-report
 
 
 await page.pause();
+
+
+## DOCKER 
+
+docker build -t react-app .
+docker images

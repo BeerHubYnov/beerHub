@@ -1,6 +1,9 @@
 import "./../../App.css";
 import "./Home.css";
-import Model from './animation/Model'
+import Model from './animation/Model';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
+
 const HeadHomeContent: React.FC = () => {
   return (
 
@@ -12,6 +15,10 @@ const HeadHomeContent: React.FC = () => {
       <div className="canvas-container">
       <Model/>
       </div>
+      <div className="btn-down">
+      <ArrowDownwardIcon className="icon-large" />
+      </div>
+
     </div>
   );
 };
