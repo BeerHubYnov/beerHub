@@ -47,3 +47,10 @@ await page.pause();
 
 docker build -t react-app .
 docker images
+
+
+## ESLINT PRETTIER
+
+npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks @typescript-eslint/parser @typescript-eslint/eslint-plugin
+npx eslint . --ext .js,.jsx,.ts,.tsx
+npx prettier --write .

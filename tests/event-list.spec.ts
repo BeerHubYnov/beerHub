@@ -5,7 +5,7 @@ test("La page de listing des events doit se charger correctement", async ({
   page,
 }) => {
   await page.goto("/events"); // Accède à la page d'assccueil
- 
+
   const headTitle = page.getByRole("heading", { name: "Liste des Events" });
   await expect(headTitle).toBeVisible();
 
@@ -23,9 +23,4 @@ test("La page de listing des events doit se charger correctement", async ({
 
   // ✅ Vérifie que la navigation s'est bien effectuée
   await expect(page).toHaveURL(/\/event\/\d+/); // Vérifie que l'URL contient "/bar/{id}"
-
-  
 });
-
-
-

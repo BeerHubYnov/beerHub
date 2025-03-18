@@ -4,20 +4,17 @@
   margin: -200px 0 0 0;
   display: block;
   padding: 50px;
-
 }
 
 .head-home {
   display: flex;
   flex-direction: column;
-
 }
 
 .head-home p {
-  color: #D9BBF9;
+  color: #d9bbf9;
   font-weight: bold;
   font-size: 3em;
-
 }
 
 .head-home-title {
@@ -44,12 +41,11 @@
   z-index: 2;
 }
 
-
 .btn-down {
   margin-top: -100px;
 }
 .icon-large {
-  font-size: 4rem !important; 
+  font-size: 4rem !important;
   animation: bounce 1.5s infinite ease-in-out;
 }
 
@@ -59,12 +55,11 @@
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(10px);
   }
 }
-
-

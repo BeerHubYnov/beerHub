@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { NotificationContext } from "../../context/NotificationContext";
 import "./BarListComponent.css";
 import BarCard from "./BarCard";
 
@@ -13,7 +14,7 @@ interface Bar {
 
 const BarListComponent: React.FC = () => {
   const [bars, setBars] = useState<Bar[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const notificationContext = useContext(NotificationContext);
 
   useEffect(() => {
     const fetchBars = async () => {
@@ -24,17 +25,17 @@ const BarListComponent: React.FC = () => {
         }
         const data = await response.json();
         setBars(data);
+        notificationContext?.setNotification("Bars chargés avec succès !", "success"); 
       } catch (error) {
-        setErrorMessage("Impossible de charger les bars.");
+        notificationContext?.setNotification("Impossible de charger les bars.", "error"); 
       }
     };
 
     fetchBars();
-  }, []);
+  }, [notificationContext]);
 
   return (
     <div className="bar-list-container">
-      {errorMessage && <p className="error">{errorMessage}</p>}
       <div className="bar-list">
         {bars.length > 0 ? (
           bars.map((bar) => <BarCard key={bar.id} bar={bar} />)

@@ -1,39 +1,37 @@
 # beerHub
 
-
-### Pour récupérer le projet : 
+### Pour récupérer le projet :
 
 ```
 git clone https://github.com/BeerHubYnov/beerHub.git
-cd beerHub 
-npm install 
+cd beerHub
+npm install
 ```
 
-### Pour lancer le projet : 
- ```
- npm run dev
- ````
+### Pour lancer le projet :
+
+```
+npm run dev
+```
 
 localhost: http://localhost:5173/
-
 
 ### Récupérer le back :
 
 ```
 git clone https://github.com/BeerHubYnov/beerhub-nest.git
-cd beerhub-nest 
-npm install 
+cd beerhub-nest
+npm install
 ```
 
-### Lancer le back : 
+### Lancer le back :
 
-````
-npm run start 
-````
+```
+npm run start
+```
+
 localhost: http://localhost:3000/
 
-### Accéder swagger 
+### Accéder swagger
 
 http://localhost:3000/api#/
-
-

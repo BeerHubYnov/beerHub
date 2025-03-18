@@ -1,6 +1,5 @@
-
-import React, { useState, useEffect, useRef } from 'react';
-import './EasterEgg.css';
+import React, { useState, useEffect, useRef } from "react";
+import "./EasterEgg.css";
 
 const EasterEgg: React.FC = () => {
   const [easterEggTriggered, setEasterEggTriggered] = useState<boolean>(false);
@@ -16,19 +15,19 @@ const EasterEgg: React.FC = () => {
     const handleKeyUp = (event: KeyboardEvent): void => {
       if (event.key === "Control") {
         ctrlPressedRef.current = false;
-        setEasterEggTriggered(false); 
+        setEasterEggTriggered(false);
       }
     };
 
     const handleMouseMove = (event: MouseEvent): void => {
-      const topThreshold = 100;    
-      const rightThreshold = 100;  
+      const topThreshold = 100;
+      const rightThreshold = 100;
       const windowWidth = window.innerWidth;
 
       const isInArea =
         ctrlPressedRef.current &&
         event.clientY < topThreshold &&
-        (windowWidth - event.clientX) < rightThreshold;
+        windowWidth - event.clientX < rightThreshold;
       setEasterEggTriggered(isInArea);
     };
 

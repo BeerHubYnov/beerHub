@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { NotificationContext } from "../../context/NotificationContext";
 import "./EventListComponent.css";
 import EventCard from "./EventCard";
 
@@ -20,29 +21,27 @@ interface Event {
 }
 
 const EventListComponent: React.FC = () => {
+  const notificationContext = useContext(NotificationContext); 
   const [events, setEvents] = useState<Event[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const response = await fetch("http://localhost:3000/event");
-        if (!response.ok) {
-          throw new Error("Erreur lors de la récupération des évènements.");
-        }
+        if (!response.ok) throw new Error("Erreur lors de la récupération des évènements.");
+
         const data: Event[] = await response.json();
         setEvents(data);
       } catch (error) {
-        setErrorMessage("Impossible de charger les évènements.");
+        notificationContext?.setNotification("Impossible de charger les évènements.", "error");
       }
     };
 
     fetchEvents();
-  }, []);
+  }, [notificationContext]);
 
   return (
     <div className="bar-list-container">
-      {errorMessage && <p className="error">{errorMessage}</p>}
       <div className="bar-list">
         {events.length > 0 ? (
           events.map((event) => <EventCard key={event.id} event={event} />)

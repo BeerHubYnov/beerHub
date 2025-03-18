@@ -13,7 +13,6 @@ interface MapCardProps {
   }[];
 }
 
-
 const cardMapStyle: React.CSSProperties = {
   height: "100vh",
   width: "100vh",
@@ -24,7 +23,7 @@ const cardMapStyle: React.CSSProperties = {
 };
 
 const leftContainerStyle: React.CSSProperties = {
-  marginLeft: "3rem", 
+  marginLeft: "3rem",
   marginBottom: "3rem",
 };
 
@@ -36,7 +35,9 @@ const EventMapCard: React.FC<MapCardProps> = ({ lat, lng, markers }) => {
       <div style={leftContainerStyle}>
         <Card className="w-[400px] h-[50vh] shadow-lg rounded-lg border border-gray-300 bg-white overflow-hidden flex flex-col">
           <CardHeader>
-            <div className="text-center text-xl font-bold">Carte des Events</div>
+            <div className="text-center text-xl font-bold">
+              Carte des Events
+            </div>
           </CardHeader>
           <CardContent>
             <div className="relative w-full" style={cardMapStyle}>
@@ -48,6 +49,5 @@ const EventMapCard: React.FC<MapCardProps> = ({ lat, lng, markers }) => {
     </div>
   );
 };
-
 
 export default EventMapCard;

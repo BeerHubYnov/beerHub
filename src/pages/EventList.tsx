@@ -6,8 +6,8 @@ const EventList: React.FC = () => {
     <div className="profil">
       <h2>Liste des Events</h2>
       <div className="bars-page">
-      <EventListComponent />
-      <EventsMapPage />
+        <EventListComponent />
+        <EventsMapPage />
       </div>
     </div>
   );

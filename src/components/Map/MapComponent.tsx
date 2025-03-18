@@ -17,17 +17,20 @@ interface MapComponentProps {
 
 const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, markers }) => {
   return (
-    <MapContainer 
-      center={[lat, lng]} 
-      zoom={5} 
-      style={{ height: "100%", width: "100%" }} 
+    <MapContainer
+      center={[lat, lng]}
+      zoom={5}
+      style={{ height: "100%", width: "100%" }}
     >
       <TileLayer
-        attribution='&copy; OpenStreetMap contributors'
+        attribution="&copy; OpenStreetMap contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {markers.map(marker => (
-        <Marker key={marker.id} position={[marker.localisationX, marker.localisationY]}>
+      {markers.map((marker) => (
+        <Marker
+          key={marker.id}
+          position={[marker.localisationX, marker.localisationY]}
+        >
           <Popup>{marker.name}</Popup>
         </Marker>
       ))}

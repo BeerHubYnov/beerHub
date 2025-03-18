@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import { Dialog, DialogContent, IconButton, List } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Zoom, Fade, Flip, Bounce, Roll } from "react-awesome-reveal";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import { useAuth } from "../context/AuthContext";
 const Header: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +34,6 @@ const Header: React.FC = () => {
             <nav>
               <ul className="menu-list">
                 <Zoom>
-            
                   <li>
                     <Link to="/" onClick={toggleModal}>
                       Accueil

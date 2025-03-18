@@ -5,9 +5,21 @@
   text-align: center;
   min-height: 100vh;
   background: rgb(255, 255, 255);
-  background: -moz-radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(226, 233, 148, 1) 100%);
-  background: -webkit-radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(226, 233, 148, 1) 100%);
-  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(226, 233, 148, 1) 100%);
+  background: -moz-radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(226, 233, 148, 1) 100%
+  );
+  background: -webkit-radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(226, 233, 148, 1) 100%
+  );
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(226, 233, 148, 1) 100%
+  );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#e2e994", GradientType=1);
 }
 
@@ -54,9 +66,21 @@ nav ul li {
   width: 100vw;
   height: 100vh;
   background: rgb(255, 255, 255);
-  background: -moz-radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(226, 233, 148, 1) 100%);
-  background: -webkit-radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(226, 233, 148, 1) 100%);
-  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(226, 233, 148, 1) 100%);
+  background: -moz-radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(226, 233, 148, 1) 100%
+  );
+  background: -webkit-radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(226, 233, 148, 1) 100%
+  );
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(226, 233, 148, 1) 100%
+  );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#e2e994", GradientType=1);
   display: flex;
   align-items: center;
@@ -86,11 +110,10 @@ nav ul li {
   margin-top: 150px;
   align-items: center;
   min-height: 100vh;
-
 }
 
 .head-home {
-  background-color: #3F612D;
+  background-color: #3f612d;
   width: 100vw;
   margin: 0;
   height: 100vh;
@@ -106,7 +129,7 @@ nav ul li {
 
 footer {
   height: 100px;
-  background-color: #D9BBF9;
+  background-color: #d9bbf9;
 }
 
 .header-container {
@@ -190,8 +213,6 @@ form {
   margin: auto;
 }
 
-
-
 .homeBtn {
   display: flex;
   align-items: center;
@@ -217,7 +238,6 @@ form {
 .user-profile-accordion:hover {
   background-color: transparent !important;
 }
-
 
 .bars-page {
   display: flex;
@@ -259,9 +279,37 @@ form {
   max-width: 600px;
 }
 
-.form-content h2{
-font-size: 3em;
+.form-content h2 {
+  font-size: 3em;
 }
 .btn-authent:hover {
   border: 1px solid black !important;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.notification.success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.notification.error {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-container {
+  min-height: 100vh;
+
 }

@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext"; // ✅ Import du contexte Auth
+import { useAuth } from "../context/AuthContext"; 
 import form from "./../assets/form.jpg";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<string | null>(null); // ✅ Ajout d'un état pour gérer l'erreur
+  const [error, setError] = useState<string | null>(null); 
   const navigate = useNavigate();
-  const { login } = useAuth(); // ✅ Récupère la fonction login() du contexte
+  const { login } = useAuth(); 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null); // ✅ Réinitialisation de l'erreur avant la tentative de connexion
+    setError(null); 
     try {
-      // ✅ Envoi des identifiants au backend
+   
       const response = await axios.post("http://localhost:3000/auth/login", {
         username,
         password,
@@ -23,18 +23,18 @@ const Login: React.FC = () => {
 
       console.log("Réponse login :", response.data);
 
-      // ✅ Stockage du token et de l'ID utilisateur
+     
       localStorage.setItem("token", response.data.access_token);
       localStorage.setItem("userId", response.data.userId);
 
-      // ✅ Appel de login() pour mettre à jour le contexte d'authentification
+ 
       login(response.data.access_token);
 
-      // ✅ Redirection après connexion
+  
       navigate("/");
     } catch (error) {
       console.error("Erreur lors de la connexion", error);
-      setError("Erreur de connexion. Veuillez vérifier vos identifiants."); // ✅ Affichage du message d'erreur
+      setError("Erreur de connexion. Veuillez vérifier vos identifiants."); 
     }
   };
 
@@ -74,7 +74,9 @@ const Login: React.FC = () => {
             </div>
             {error && <p style={{ color: "red" }}>{error}</p>}{" "}
             {/* ✅ Affichage du message d'erreur */}
-            <button className="btn-authent" type="submit">Se connecter</button>
+            <button className="btn-authent" type="submit">
+              Se connecter
+            </button>
           </form>
           <p>
             Vous n'avez pas de compte ? <a href="/register">Inscrivez-vous</a>

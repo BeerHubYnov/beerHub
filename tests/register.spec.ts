@@ -12,14 +12,18 @@ import { test, expect } from "@playwright/test";
 //   await page.getByTestId("register-password-confirm").fill("123Test");
 //   await page.getByTestId("register-submit").click();
 
-  // Optionnel : Vérifie que l'utilisateur est redirigé vers la page de connexion
-  // await expect(page).toHaveURL("/login");
+// Optionnel : Vérifie que l'utilisateur est redirigé vers la page de connexion
+// await expect(page).toHaveURL("/login");
 // });
 
 // ✅ TEST AVEC WRONG PASSWORD CONFIRMATION
-test("La page de formulaire de register doit afficher une erreur si les mots de passe ne correspondent pas", async ({ page }) => {
+test("La page de formulaire de register doit afficher une erreur si les mots de passe ne correspondent pas", async ({
+  page,
+}) => {
   await page.goto("/register");
-  await expect(page.getByRole("heading", { name: "Inscription" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Inscription" })
+  ).toBeVisible();
 
   await page.getByTestId("register-username").fill("testPlaywright772");
   await page.getByTestId("register-email").fill("testPlaywright772@test.com");
@@ -28,13 +32,19 @@ test("La page de formulaire de register doit afficher une erreur si les mots de 
   await page.getByTestId("register-submit").click();
 
   // Vérifie le message d'erreur
-  await expect(page.getByText("Les mots de passe ne correspondent pas !")).toBeVisible();
+  await expect(
+    page.getByText("Les mots de passe ne correspondent pas !")
+  ).toBeVisible();
 });
 
 // ✅ TEST AVEC EMAIL INVALIDE
-test("La page de formulaire de register doit afficher une erreur si l'email est invalide", async ({ page }) => {
+test("La page de formulaire de register doit afficher une erreur si l'email est invalide", async ({
+  page,
+}) => {
   await page.goto("/register");
-  await expect(page.getByRole("heading", { name: "Inscription" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Inscription" })
+  ).toBeVisible();
 
   await page.getByTestId("register-username").fill("testPlaywrightEmail");
   await page.getByTestId("register-email").fill("emailInvalide"); // Email invalide
@@ -47,9 +57,13 @@ test("La page de formulaire de register doit afficher une erreur si l'email est 
 });
 
 // ✅ TEST AVEC MOT DE PASSE TROP COURT
-test("La page de formulaire de register doit afficher une erreur si le mot de passe est trop court", async ({ page }) => {
+test("La page de formulaire de register doit afficher une erreur si le mot de passe est trop court", async ({
+  page,
+}) => {
   await page.goto("/register");
-  await expect(page.getByRole("heading", { name: "Inscription" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Inscription" })
+  ).toBeVisible();
 
   await page.getByTestId("register-username").fill("testShortPass");
   await page.getByTestId("register-email").fill("testShortPass@test.com");
@@ -58,7 +72,9 @@ test("La page de formulaire de register doit afficher une erreur si le mot de pa
   await page.getByTestId("register-submit").click();
 
   // Vérifie le message d'erreur
-  await expect(page.getByText("Le mot de passe doit contenir au moins 6 caractères !")).toBeVisible();
+  await expect(
+    page.getByText("Le mot de passe doit contenir au moins 6 caractères !")
+  ).toBeVisible();
 });
 
 // ✅ TEST AVEC EMAIL DÉJÀ UTILISÉ
