@@ -44,12 +44,14 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ childr
         onClose={() => setOpen(false)}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
-        {message && (
+        {message ? (
           <Alert severity={messageType ?? "error"} onClose={() => setOpen(false)}>
             {message}
           </Alert>
+        ) : (
+          <div /> // Retourner un élément vide au lieu de `null`
         )}
-      </Snackbar>
+        </Snackbar>
     </NotificationContext.Provider>
   );
 };
