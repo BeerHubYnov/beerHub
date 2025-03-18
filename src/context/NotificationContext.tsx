@@ -45,7 +45,7 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ childr
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         {message && (
-          <Alert severity={messageType || "error"} onClose={() => setOpen(false)}>
+          <Alert severity={messageType ?? "error"} onClose={() => setOpen(false)}>
             {message}
           </Alert>
         )}
