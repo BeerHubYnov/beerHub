@@ -20,8 +20,8 @@ const EasterEgg: React.FC = () => {
     };
 
     const handleMouseMove = (event: MouseEvent): void => {
-      const topThreshold = 100;
-      const rightThreshold = 100;
+      const topThreshold = 10;
+      const rightThreshold = 10;
       const windowWidth = window.innerWidth;
 
       const isInArea =
@@ -47,6 +47,9 @@ const EasterEgg: React.FC = () => {
       {easterEggTriggered && (
         <div className="easterEgg">
           Félicitations, vous avez trouvé l'easter egg !
+          <img src="https://media.istockphoto.com/id/179575149/fr/vectoriel/bien-jou%C3%A9.jpg?s=1024x1024&w=is&k=20&c=2DLG-AIoHSPGQeDpML9dOgW3-m17ABDlL7rIX3poYnw=" 
+          alt="Bien joué !" 
+          className="imgEasterEgg"/>
         </div>
       )}
     </>
