@@ -14,6 +14,7 @@ interface Bar {
 
 const BarListComponent: React.FC = () => {
   const [bars, setBars] = useState<Bar[]>([]);
+  const [hasLoaded, setHasLoaded] = useState(false); // Ajout d'un état pour suivre le chargement
   const notificationContext = useContext(NotificationContext);
 
   useEffect(() => {
@@ -25,14 +26,19 @@ const BarListComponent: React.FC = () => {
         }
         const data = await response.json();
         setBars(data);
-        notificationContext?.setNotification("Bars chargés avec succès !", "success"); 
+        
+        // Ne pas afficher la notification si les bars sont déjà chargés
+        if (!hasLoaded) {
+          notificationContext?.setNotification("Bars chargés avec succès !", "success");
+          setHasLoaded(true); // Marquer comme chargé
+        }
       } catch (error) {
-        notificationContext?.setNotification("Impossible de charger les bars.", "error"); 
+        notificationContext?.setNotification("Impossible de charger les bars.", "error");
       }
     };
 
     fetchBars();
-  }, [notificationContext]);
+  }, [notificationContext, hasLoaded]); // Ajout de hasLoaded comme dépendance pour éviter les répétitions
 
   return (
     <div className="bar-list-container">
