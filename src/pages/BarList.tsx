@@ -8,14 +8,13 @@ const BarList: React.FC = () => {
     <div className="profil">
       <h2>Liste des Bars</h2>
       <div className="bars-page">
-  <div className="bar-list-container">
-    <BarListComponent />
-  </div>
-  <div className="bars-map">
-    <BarsMapPage />
-  </div>
-</div>
-
+        <div className="bar-list-container">
+          <BarListComponent />
+        </div>
+        <div className="bars-map">
+          <BarsMapPage />
+        </div>
+      </div>
     </div>
   );
 };

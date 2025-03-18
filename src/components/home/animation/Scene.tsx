@@ -18,7 +18,11 @@ const Scene: React.FC = () => {
     <Canvas camera={{ position: [0, 2, 5] }} shadows>
       <Suspense fallback={<Loader />}>
         {/* Lumière directionnelle */}
-        <directionalLight position={[1.3, 2.0, 2.4]} castShadow intensity={Math.PI} />
+        <directionalLight
+          position={[1.3, 2.0, 2.4]}
+          castShadow
+          intensity={Math.PI}
+        />
 
         {/* Ajout du modèle */}
         <Model />

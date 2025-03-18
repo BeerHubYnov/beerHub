@@ -35,12 +35,11 @@ const EventDetailComponent: React.FC<EventDetailComponentProps> = ({
   const [isOwner, setIsOwner] = useState(false);
 
   useEffect(() => {
-    if (userId && event?.Bar?.id_User === userId) { // Vérifie event.Bar.id_User
+    if (userId && event?.Bar?.id_User === userId) {
+      // Vérifie event.Bar.id_User
       setIsOwner(true);
     }
   }, [userId, event]);
-  
-  
 
   return (
     <div className="profil-event profil">
@@ -68,7 +67,7 @@ const EventDetailComponent: React.FC<EventDetailComponentProps> = ({
 
         {isOwner && (
           <>
-          <hr/>
+            <hr />
             <NavLink to={`/event-edit/${event.id}`}>
               <EditIcon /> Modifier
             </NavLink>

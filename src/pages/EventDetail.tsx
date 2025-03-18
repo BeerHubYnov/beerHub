@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EventDetailComponent from "../components/event-detail/EventDetailComponent";
 
-
 interface Event {
   id: string;
   dateHour: string;
@@ -10,7 +9,7 @@ interface Event {
   description: string;
   id_Bar: string;
   category: string;
-  id_User: string; 
+  id_User: string;
   Bar: {
     id: string;
     id_User: string;

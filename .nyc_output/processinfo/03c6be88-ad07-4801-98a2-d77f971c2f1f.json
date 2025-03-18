@@ -1,1 +1,16 @@
-{"parent":"6df482a7-bdf8-4def-822d-9e760a2755be","pid":7867,"argv":["/usr/local/bin/node","/Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub/node_modules/playwright/lib/common/process.js"],"execArgv":[],"cwd":"/Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub","time":1740652237065,"ppid":7863,"coverageFilename":"/Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub/.nyc_output/03c6be88-ad07-4801-98a2-d77f971c2f1f.json","externalId":"","uuid":"03c6be88-ad07-4801-98a2-d77f971c2f1f","files":[]}
+{
+  "parent": "6df482a7-bdf8-4def-822d-9e760a2755be",
+  "pid": 7867,
+  "argv": [
+    "/usr/local/bin/node",
+    "/Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub/node_modules/playwright/lib/common/process.js"
+  ],
+  "execArgv": [],
+  "cwd": "/Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub",
+  "time": 1740652237065,
+  "ppid": 7863,
+  "coverageFilename": "/Users/mathilde/Desktop/dev/M2/COORDINATION FRONT BACK/beerHub/.nyc_output/03c6be88-ad07-4801-98a2-d77f971c2f1f.json",
+  "externalId": "",
+  "uuid": "03c6be88-ad07-4801-98a2-d77f971c2f1f",
+  "files": []
+}

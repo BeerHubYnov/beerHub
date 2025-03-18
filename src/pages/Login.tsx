@@ -74,7 +74,9 @@ const Login: React.FC = () => {
             </div>
             {error && <p style={{ color: "red" }}>{error}</p>}{" "}
             {/* ✅ Affichage du message d'erreur */}
-            <button className="btn-authent" type="submit">Se connecter</button>
+            <button className="btn-authent" type="submit">
+              Se connecter
+            </button>
           </form>
           <p>
             Vous n'avez pas de compte ? <a href="/register">Inscrivez-vous</a>

@@ -32,16 +32,18 @@ const BarsMapPage: React.FC = () => {
     fetchBars();
   }, []);
 
-  if (loading) return <p className="text-center text-gray-500">Chargement...</p>;
-  if (error) return <p className="text-center text-red-500">Erreur : {error}</p>;
+  if (loading)
+    return <p className="text-center text-gray-500">Chargement...</p>;
+  if (error)
+    return <p className="text-center text-red-500">Erreur : {error}</p>;
 
   return (
     <div className="flex flex-col items-center p-4">
       {bars.length > 0 ? (
-        <MapCard 
-          lat={bars[0].localisationX} 
-          lng={bars[0].localisationY} 
-          markers={bars} 
+        <MapCard
+          lat={bars[0].localisationX}
+          lng={bars[0].localisationY}
+          markers={bars}
         />
       ) : (
         <p className="text-center text-gray-500">Aucun bar trouvé.</p>

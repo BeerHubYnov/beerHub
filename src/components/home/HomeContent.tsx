@@ -13,9 +13,9 @@ const HomeContent: React.FC = () => {
           LISTE DES BARS
         </Link>
         <Lottie
-        animationData={drinkFill}
-        style={{ width: "350px", height: "350px" }}
-      />
+          animationData={drinkFill}
+          style={{ width: "350px", height: "350px" }}
+        />
         <Link to="/events" className="homeLink">
           LISTE DES EVENTS
         </Link>

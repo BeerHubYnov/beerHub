@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MapComponent from "../Map/MapComponent";
-import { useAuth } from "./../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
+import { NotificationContext } from "../../context/NotificationContext";
 import { NavLink } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
@@ -15,7 +16,7 @@ interface Bar {
   happyHoure: string;
   localisationX: number;
   localisationY: number;
-  id_User: string; // Ajout de l'ID du propriétaire
+  id_User: string;
 }
 
 interface BarDetailComponentProps {
@@ -24,11 +25,11 @@ interface BarDetailComponentProps {
 
 const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
   const { isConnected } = useAuth();
+  const notificationContext = useContext(NotificationContext); 
   const userId = localStorage.getItem("userId");
   const [isOwner, setIsOwner] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [favoriteId, setFavoriteId] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (userId && bar.id_User === userId) {
@@ -52,21 +53,16 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
           setFavoriteId(favorite.id);
         }
       } catch (error) {
-        console.error("Erreur :", error);
+        notificationContext?.setNotification("Erreur lors de la récupération des favoris.", "error"); 
       }
     };
 
     checkIfFavorite();
-  }, [userId, bar.id]);
-
-  const showTemporaryMessage = (message: string) => {
-    setSuccessMessage(message);
-    setTimeout(() => setSuccessMessage(null), 3000);
-  };
+  }, [userId, bar.id, notificationContext]);
 
   const addToFavorites = async () => {
     if (!isConnected) {
-      showTemporaryMessage("Vous devez être connecté pour ajouter un favori !");
+      notificationContext?.setNotification("Vous devez être connecté pour ajouter un favori !", "error"); 
       return;
     }
 
@@ -79,17 +75,20 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
 
       if (response.ok) {
         setIsFavorite(true);
-        showTemporaryMessage("Bar ajouté aux favoris !");
+        notificationContext?.setNotification("Bar ajouté aux favoris !", "success"); 
       } else {
-        showTemporaryMessage("Erreur lors de l'ajout du favori.");
+        notificationContext?.setNotification("Erreur lors de l'ajout du favori.", "error"); 
       }
     } catch (error) {
-      console.error("Erreur :", error);
+      notificationContext?.setNotification("Erreur lors de l'ajout du favori.", "error"); 
     }
   };
 
   const removeFromFavorites = async () => {
-    if (!favoriteId) return showTemporaryMessage("Ce bar n'est pas dans vos favoris.");
+    if (!favoriteId) {
+      notificationContext?.setNotification("Ce bar n'est pas dans vos favoris.", "info"); 
+      return;
+    }
 
     try {
       const response = await fetch(`http://localhost:3000/favorite/${favoriteId}`, {
@@ -100,12 +99,12 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
       if (response.ok) {
         setIsFavorite(false);
         setFavoriteId(null);
-        showTemporaryMessage("Bar retiré des favoris !");
+        notificationContext?.setNotification("Bar retiré des favoris !", "success"); 
       } else {
-        showTemporaryMessage("Erreur lors de la suppression du favori.");
+        notificationContext?.setNotification("Erreur lors de la suppression du favori.", "error"); 
       }
     } catch (error) {
-      console.error("Erreur :", error);
+      notificationContext?.setNotification("Erreur lors de la suppression du favori.", "error"); 
     }
   };
 
@@ -144,7 +143,6 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
         </div>
       )}
 
-      {successMessage && <p className="success-message">{successMessage}</p>}
       {renderFavoriteButton()}
 
       <h3>Localisation</h3>

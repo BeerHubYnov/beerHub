@@ -25,7 +25,7 @@ const cardMapStyle: React.CSSProperties = {
 };
 
 const leftContainerStyle: React.CSSProperties = {
-  marginLeft: "3rem", 
+  marginLeft: "3rem",
   marginBottom: "3rem",
 };
 

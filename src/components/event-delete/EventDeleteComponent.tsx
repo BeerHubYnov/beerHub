@@ -20,7 +20,10 @@ const EventDeleteComponent: React.FC<{ eventId: string }> = ({ eventId }) => {
     const fetchEvent = async () => {
       try {
         const response = await fetch(`http://localhost:3000/event/${eventId}`);
-        if (!response.ok) throw new Error("Impossible de récupérer les données de l'événement.");
+        if (!response.ok)
+          throw new Error(
+            "Impossible de récupérer les données de l'événement."
+          );
         const data: Event = await response.json();
         setEvent(data);
       } catch (error) {
@@ -52,7 +55,8 @@ const EventDeleteComponent: React.FC<{ eventId: string }> = ({ eventId }) => {
         method: "DELETE",
       });
 
-      if (!response.ok) throw new Error("Erreur lors de la suppression de l'événement.");
+      if (!response.ok)
+        throw new Error("Erreur lors de la suppression de l'événement.");
 
       setSuccessMessage("Événement supprimé avec succès !");
       setTimeout(() => navigate("/events"), 1500); // Redirection vers la liste des événements
@@ -68,9 +72,16 @@ const EventDeleteComponent: React.FC<{ eventId: string }> = ({ eventId }) => {
       {event && (
         <>
           <h2>Supprimer l'événement : {event.title}</h2>
-          <p>Êtes-vous sûr de vouloir supprimer cet événement ? Cette action est irréversible.</p>
-          <button onClick={handleDelete} className="delete-button">Supprimer</button>
-          <button onClick={() => navigate(-1)} className="cancel-button">Annuler</button>
+          <p>
+            Êtes-vous sûr de vouloir supprimer cet événement ? Cette action est
+            irréversible.
+          </p>
+          <button onClick={handleDelete} className="delete-button">
+            Supprimer
+          </button>
+          <button onClick={() => navigate(-1)} className="cancel-button">
+            Annuler
+          </button>
         </>
       )}
     </div>

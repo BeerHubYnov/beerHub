@@ -1,3 +1,3 @@
-declare module '@react-three/fiber/jsx-runtime' {
-    export * from 'react/jsx-runtime';
-  }  
+declare module "@react-three/fiber/jsx-runtime" {
+  export * from "react/jsx-runtime";
+}

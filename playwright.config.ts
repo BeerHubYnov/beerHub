@@ -1,10 +1,10 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   projects: [
     {
-      name: 'Desktop Chrome',
-      use: { ...devices['Desktop Chrome'] },
+      name: "Desktop Chrome",
+      use: { ...devices["Desktop Chrome"] },
     },
     // {
     //   name: 'Desktop Firefox',
@@ -16,11 +16,11 @@ export default defineConfig({
     // },
   ],
   use: {
-    baseURL: 'http://localhost:5173', 
+    baseURL: "http://localhost:5173",
   },
   reporter: [
-    ['html', { outputFolder: 'playwright-report' }], // Génère un rapport HTML
-    ['json', { outputFile: 'playwright-report/results.json' }], // Génère un rapport JSON
-    ['junit', { outputFile: 'playwright-report/results.xml' }],
+    ["html", { outputFolder: "playwright-report" }], // Génère un rapport HTML
+    ["json", { outputFile: "playwright-report/results.json" }], // Génère un rapport JSON
+    ["junit", { outputFile: "playwright-report/results.xml" }],
   ],
 });

@@ -1,74 +1,74 @@
 .bar-detail {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.card-event,
+.map-event {
+  flex: 1;
+}
+.card-event {
+  margin: 30px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.bar-detail h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.bar-detail p {
+  font-size: 16px;
+  color: #555;
+  margin: 8px 0;
+}
+
+.bar-detail p strong {
+  color: #222;
+}
+
+.bar-detail p:last-child {
+  font-style: italic;
+  color: #777;
+}
+
+/* Effet de survol pour un peu d’interactivité */
+.bar-detail:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease-in-out;
+}
+
+.profil-event {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+  margin: 40px;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .bar-detail {
+    max-width: 90%;
+    padding: 15px;
   }
-  
-  .card-event, .map-event {
-    flex: 1;
-  }
-  .card-event {
-    margin: 30px;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-  }
-  
+
   .bar-detail h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-    text-align: center;
+    font-size: 22px;
   }
-  
+
   .bar-detail p {
-    font-size: 16px;
-    color: #555;
-    margin: 8px 0;
+    font-size: 14px;
   }
-  
-  .bar-detail p strong {
-    color: #222;
-  }
-  
-  .bar-detail p:last-child {
-    font-style: italic;
-    color: #777;
-  }
-  
-  /* Effet de survol pour un peu d’interactivité */
-  .bar-detail:hover {
-    transform: scale(1.02);
-    transition: transform 0.3s ease-in-out;
-  }
-  
   .profil-event {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: flex-start;
-    margin: 40px;
+    flex-direction: column;
   }
-  /* Responsive */
-  @media (max-width: 768px) {
-    .bar-detail {
-      max-width: 90%;
-      padding: 15px;
-    }
-    
-    .bar-detail h2 {
-      font-size: 22px;
-    }
-  
-    .bar-detail p {
-      font-size: 14px;
-    }
-    .profil-event {
-      flex-direction: column;
-    }
-  }
- 
+}

@@ -16,12 +16,13 @@ import Loading from "./pages/Loading";
 import BarsMapPage from "./pages/BarsMapPage";
 import EventList from "./pages/EventList";
 import EventForm from "./pages/EventForm";
-import EasterEgg from './components/EasterEgg/EasterEgg';
+import EasterEgg from "./components/EasterEgg/EasterEgg";
 import EventEdit from "./pages/EventEdit";
 import EventDeletePage from "./pages/EventDeletePage";
 import EventDetail from "./pages/EventDetail";
 import Footer from "./components/Footer";
 import { AuthProvider } from "./context/AuthContext";
+import { NotificationProvider } from "./context/NotificationContext";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -35,7 +36,8 @@ export default function App() {
   return (
     <div className="home-box">
       <AuthProvider>
-      <EasterEgg />
+      <NotificationProvider> 
+        <EasterEgg />
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={loading ? <Loading /> : <Homepage />} />
@@ -58,8 +60,8 @@ export default function App() {
           </Route>
         </Routes>
         <Footer />
+        </NotificationProvider>
       </AuthProvider>
     </div>
   );
 }
-
