@@ -55,7 +55,7 @@ const BarCreationForm: React.FC = () => {
         throw new Error("Erreur lors de l'ajout du bar.");
       }
 
-      notificationContext?.setNotification("Bar ajouté avec succès !", "success"); // ✅ Message de succès
+      notificationContext?.setNotification("Bar ajouté avec succès !", "success"); 
 
       // Réinitialisation du formulaire
       setName("");
@@ -66,9 +66,9 @@ const BarCreationForm: React.FC = () => {
 
     } catch (error) {
       if (error instanceof Error) {
-        notificationContext?.setNotification(error.message, "error"); // ✅ Message d'erreur
+        notificationContext?.setNotification(error.message, "error"); 
       } else {
-        notificationContext?.setNotification("Une erreur inconnue est survenue.", "error"); // ✅ Message d'erreur
+        notificationContext?.setNotification("Une erreur inconnue est survenue.", "error"); 
       }
     }
   };

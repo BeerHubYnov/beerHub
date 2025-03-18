@@ -25,9 +25,9 @@ const BarListComponent: React.FC = () => {
         }
         const data = await response.json();
         setBars(data);
-        notificationContext?.setNotification("Bars chargés avec succès !", "success"); // ✅ Message de succès
+        notificationContext?.setNotification("Bars chargés avec succès !", "success"); 
       } catch (error) {
-        notificationContext?.setNotification("Impossible de charger les bars.", "error"); // ✅ Message d'erreur
+        notificationContext?.setNotification("Impossible de charger les bars.", "error"); 
       }
     };
 

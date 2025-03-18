@@ -56,3 +56,8 @@ p.error {
 p.success {
   color: green;
 }
+
+
+.form-option {
+  color: black !important;
+}

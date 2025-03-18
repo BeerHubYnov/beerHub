@@ -56,7 +56,7 @@ export const useAuth = () => {
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const navigate = useNavigate(); // ✅ Déplacement de useNavigate() dans le composant
+  const navigate = useNavigate(); 
 
   const [isConnected, setIsConnected] = useState<boolean>(
     !!localStorage.getItem("token")
@@ -96,10 +96,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   // Fonction pour gérer la déconnexion
   const logout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("userInfos"); // ✅ Supprimer les infos utilisateur en local
+    localStorage.removeItem("userInfos"); 
     setIsConnected(false);
-    navigate("/"); // ✅ Rediriger vers l'accueil après déconnexion
-    window.location.reload(); // ✅ Forcer le refresh de la page
+    navigate("/"); 
+    window.location.reload(); 
   };
 
   // Fonction pour mettre à jour les informations utilisateur

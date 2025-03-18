@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { NotificationContext } from "../../context/NotificationContext";
 import "./EventFormComponent.css";
 
 interface Bar {
@@ -7,47 +8,45 @@ interface Bar {
 }
 
 const EventFormComponent: React.FC = () => {
+  const notificationContext = useContext(NotificationContext); 
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dateHour, setDateHour] = useState("");
   const [category, setCategory] = useState("");
   const [bars, setBars] = useState<Bar[]>([]);
   const [selectedBarId, setSelectedBarId] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId");
     if (storedUserId) {
-      fetchBars(storedUserId); // Appel direct sans useState
+      fetchBars(storedUserId);
     } else {
-      setErrorMessage("Utilisateur non authentifié.");
+      notificationContext?.setNotification("Utilisateur non authentifié.", "error");
     }
-  }, []);
+  }, [notificationContext]);
 
   const fetchBars = async (userId: string) => {
     try {
       const response = await fetch(`http://localhost:3000/bar/user/${userId}`);
-      if (!response.ok) {
-        throw new Error("Erreur lors de la récupération des bars.");
-      }
+      if (!response.ok) throw new Error("Erreur lors de la récupération des bars.");
+
       const data = await response.json();
       setBars(Array.isArray(data) ? data : [data]);
+
       if (data.length > 0) {
         setSelectedBarId(data[0].id);
       }
     } catch (error) {
-      setErrorMessage("Impossible de récupérer les bars.");
+      notificationContext?.setNotification("Impossible de récupérer les bars.", "error");
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage(null);
-    setSuccessMessage(null);
 
     if (!title || !description || !dateHour || !category || !selectedBarId) {
-      setErrorMessage("Tous les champs sont obligatoires.");
+      notificationContext?.setNotification("Tous les champs sont obligatoires.", "error");
       return;
     }
 
@@ -62,31 +61,27 @@ const EventFormComponent: React.FC = () => {
     try {
       const response = await fetch("http://localhost:3000/event", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(eventData),
       });
 
-      if (!response.ok) {
-        throw new Error("Erreur lors de la création de l'événement.");
-      }
+      if (!response.ok) throw new Error("Erreur lors de la création de l'événement.");
 
-      setSuccessMessage("Événement ajouté avec succès !");
+      notificationContext?.setNotification("Événement ajouté avec succès !", "success");
+
+      // Réinitialisation des champs après succès
       setTitle("");
       setDescription("");
       setDateHour("");
       setCategory("");
     } catch (error) {
-      setErrorMessage("Une erreur est survenue.");
+      notificationContext?.setNotification("Une erreur est survenue lors de la création.", "error");
     }
   };
 
   return (
     <div className="form-container">
-      {errorMessage && <p className="error">{errorMessage}</p>}
-      {successMessage && <p className="success">{successMessage}</p>}
-      <p>Vous devez avoir un bar pour publier un évent</p>
+      <p>Vous devez avoir un bar pour publier un événement</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="event-form-title">Titre de l'événement :</label>
         <input
@@ -119,6 +114,7 @@ const EventFormComponent: React.FC = () => {
           id="event-form-category"
           data-testid="event-form-category"
           value={category}
+          className="form-option"
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="">Sélectionnez une catégorie</option>
@@ -131,9 +127,7 @@ const EventFormComponent: React.FC = () => {
           <option value="Dégustations">Dégustations</option>
           <option value="Événements sportifs">Événements sportifs</option>
           <option value="Soirées de lancement">Soirées de lancement</option>
-          <option value="Stand-up / Comedy nights">
-            Stand-up / Comedy nights
-          </option>
+          <option value="Stand-up / Comedy nights">Stand-up / Comedy nights</option>
         </select>
 
         <label htmlFor="event-form-bar">Choisissez un bar :</label>
@@ -141,6 +135,7 @@ const EventFormComponent: React.FC = () => {
           id="event-form-bar"
           data-testid="event-form-bar"
           value={selectedBarId}
+          className="form-option"
           onChange={(e) => setSelectedBarId(e.target.value)}
         >
           {bars.length > 0 ? (
