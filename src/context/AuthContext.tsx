@@ -22,6 +22,7 @@ const UPDATE_USER_INFOS = "UPDATE_USER_INFOS";
 interface AuthContextType {
   isConnected: boolean;
   userInfos: UserInfos | null;
+  userId?: string; 
   login: (token: string) => void;
   logout: () => void;
   updateUserInfos: (userInfos: UserInfos) => void;

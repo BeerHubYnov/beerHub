@@ -86,7 +86,7 @@ const BarDetailComponent: React.FC<BarDetailComponentProps> = ({ bar }) => {
 
   const removeFromFavorites = async () => {
     if (!favoriteId) {
-      notificationContext?.setNotification("Ce bar n'est pas dans vos favoris.", "info"); 
+      notificationContext?.setNotification("Ce bar n'est pas dans vos favoris.", "success"); 
       return;
     }
 

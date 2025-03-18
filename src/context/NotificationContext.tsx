@@ -15,7 +15,7 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ childr
   const [messageType, setMessageType] = useState<"success" | "error" | null>(null);
   const [open, setOpen] = useState(false); // Pour gérer l'affichage de l'alerte
 
-  const setNotification = (msg: string | null, type: "success" | "error") => {
+  const setNotification = (msg: string | null, type: "success" | "error" ) => {
     setMessage(msg);
     setMessageType(type);
     setOpen(true);
