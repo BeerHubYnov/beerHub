@@ -1,0 +1,28 @@
+.bars-page {
+  display: flex;
+  height: 100vh; /* Prend toute la hauteur de l'écran */
+}
+
+.bar-list-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; /* Empêche le débordement */
+  background-color: white;
+  padding: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 100%;
+}
+
+.bar-list {
+  flex: 1;
+  overflow-y: auto; 
+  padding-right: 10px; 
+}
+
+.bars-map {
+  flex: 1;
+  height: 100%;
+}
