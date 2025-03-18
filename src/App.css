@@ -313,3 +313,11 @@ form {
   min-height: 100vh;
 
 }
+.about {
+  min-height: 100vh;
+  flex-direction: column;
+  margin: auto;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+}
